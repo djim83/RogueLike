@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var spawn_position: Vector2
-@export var patrol_radius: float = 300.0
+@export var patrol_radius: float = 350.0
 @export var speed: float = 100.0
 
 var current_direction := Vector2.ZERO
@@ -17,6 +17,7 @@ func set_spawn(pos: Vector2):
 	global_position = pos
 	current_direction = get_random_direction()
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	if player and global_position.distance_to(player.global_position) <= vision_range:
 		# Perseguir al jugador

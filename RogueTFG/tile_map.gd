@@ -7,7 +7,7 @@ extends TileMap
 @export var wall_tile_id := 1
 @export var tile_source_id := 0
 
-@export var target_coverage := 0.65
+@export var target_coverage := 0.5
 
 @export var enemy_scene: PackedScene
 @export var total_enemy_groups := 4

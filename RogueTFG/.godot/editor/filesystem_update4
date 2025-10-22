@@ -1,5 +1,2 @@
-res://tile_map.tscn
-res://tile_map.gd
 res://Enemigo.tscn
-res://Scripts/player.gd
 res://Scripts/enemigo.gd

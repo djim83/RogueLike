@@ -15,6 +15,13 @@ run/main_scene="uid://cvheuf6g8f1ee"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1500
+window/size/viewport_height=900
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+
 [input]
 
 arriba={
