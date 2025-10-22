@@ -1,2 +1,6 @@
+res://tile_map.tscn
 res://Enemigo.tscn
 res://Scripts/enemigo.gd
+res://Bala.tscn
+res://bala.gd
+res://Scripts/player.gd
