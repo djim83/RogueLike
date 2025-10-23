@@ -1,6 +1,8 @@
 res://tile_map.tscn
-res://Enemigo.tscn
-res://Scripts/enemigo.gd
-res://Bala.tscn
-res://bala.gd
 res://Scripts/player.gd
+res://Jugador.tscn
+res://Enemigo.tscn
+res://Bala.tscn
+res://tile_map.gd
+res://bala.gd
+res://Scripts/enemigo.gd

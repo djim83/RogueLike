@@ -4,7 +4,7 @@ var move_dir: Vector2
 @export var velocidad := 600.0
 
 @export var bullet_scene: PackedScene
-@export var fire_rate: float = 0.3  # tiempo entre disparos
+@export var fire_rate: float = 0.1
 
 var time_since_last_shot: float = 0.0
 
@@ -39,7 +39,7 @@ func _ready():
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	var muzzle = $Cañon.global_position
+	var muzzle = global_position  # Sale desde el centro del jugador
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - muzzle).normalized()
 
