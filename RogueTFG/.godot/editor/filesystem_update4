@@ -6,3 +6,5 @@ res://Bala.tscn
 res://tile_map.gd
 res://bala.gd
 res://Scripts/enemigo.gd
+res://Fragmento_Bala.tscn
+res://fragmento_bala.gd

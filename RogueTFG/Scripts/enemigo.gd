@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 var spawn_position: Vector2
 @export var patrol_radius: float = 350.0
-@export var speed: float = 100.0
+@export var speed: float = 200.0
 @export var life: float = 3
 
 var current_direction := Vector2.ZERO
 var change_direction_timer := 0.0
 @export var direction_interval := 1.0  # Cambia cada 1 segundo
 
-@export var vision_range: float = 150.0
+@export var vision_range: float = 500.0
 var player: Node2D = null  # Se asignará desde fuera
 
 func _ready() -> void:
