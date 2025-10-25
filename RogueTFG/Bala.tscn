@@ -9,7 +9,7 @@ radius = 12.0
 
 [node name="Area2D" type="Area2D" groups=["Proyectiles"]]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 21
 script = ExtResource("1_jql1f")
 speed = 800.0
 fragment_scene = ExtResource("2_taob5")

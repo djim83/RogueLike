@@ -11,6 +11,10 @@ var time_since_last_shot: float = 0.0
 @onready var tilemap: TileMap = $"../TileMap"
 @onready var camera: Camera2D = $Camera2D
 
+@export var max_ammo: int = 100
+var current_ammo: int
+@export var life: int = 3
+
 @warning_ignore("unused_parameter")
 
 func _physics_process(delta: float) -> void:
@@ -22,9 +26,9 @@ func _physics_process(delta: float) -> void:
 		shoot()
 		time_since_last_shot = 0.0	
 
-
-
 func _ready():
+	current_ammo = max_ammo
+	
 	var tile_pos = tilemap.player_spawn_tile
 	var world_pos = tilemap.map_to_local(tile_pos)
 	global_position = world_pos
@@ -36,14 +40,31 @@ func _ready():
 	camera.limit_top = int(used_rect.position.y * cell_size.y)
 	camera.limit_right = int((used_rect.position.x + used_rect.size.x) * cell_size.x)
 	camera.limit_bottom = int((used_rect.position.y + used_rect.size.y) * cell_size.y)
+	
+func _on_body_entered(body):
+	if body.is_in_group("Jugador"):
+		recibir_daño()
+		body.queue_free()
+		
+
+func recibir_daño(amount: int = 1) -> void:
+	life -= amount
+	if life <= 0:
+		queue_free()
 
 func shoot():
-	var bullet = bullet_scene.instantiate()
+	if current_ammo <= 0:
+		return  # No dispara si no quedan balas
+
+	current_ammo -= 1
+
+	var bala = bullet_scene.instantiate()
 	var muzzle = global_position  # Sale desde el centro del jugador
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - muzzle).normalized()
 
-	bullet.global_position = muzzle
-	bullet.direction = dir
+	bala.global_position = muzzle
+	bala.direction = dir
+	
 
-	get_parent().add_child(bullet)
+	get_parent().add_child(bala)

@@ -20,6 +20,7 @@ extends TileMap
 var rng = RandomNumberGenerator.new()
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
+
 func _ready():
 	rng.randomize()
 	generate_random_walk_with_coverage()

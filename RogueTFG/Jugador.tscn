@@ -8,26 +8,26 @@
 radius = 56.0
 height = 124.0
 
-[node name="Node2D" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Jugador"]]
 position = Vector2(561, 304)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 23
 script = ExtResource("1_ucnt4")
 bullet_scene = ExtResource("2_w2bje")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_pclxs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_kg3ks")
 debug_color = Color(0.921843, 0.195963, 0.502031, 0.42)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 position = Vector2(-288, 50)
 
-[node name="Cañon" type="Marker2D" parent="CharacterBody2D"]
+[node name="Cañon" type="Marker2D" parent="."]
 position = Vector2(62, 2)
+
+[node name="Node2D" type="Node2D" parent="." groups=["Jugador"]]
