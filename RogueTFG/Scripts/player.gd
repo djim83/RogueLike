@@ -68,3 +68,7 @@ func shoot():
 	
 
 	get_parent().add_child(bala)
+
+func sumar_municion(amount: int):
+	current_ammo += amount
+	

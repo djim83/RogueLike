@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf5cwadd5fm3"]
+
+[ext_resource type="Script" uid="uid://bsyp8xe08wda3" path="res://Scripts/player.gd" id="1_ucnt4"]
+[ext_resource type="PackedScene" uid="uid://dqyxwnpk8638p" path="res://Escenas/Bala.tscn" id="2_w2bje"]
+[ext_resource type="Texture2D" uid="uid://d2s61hvv0gyh3" path="res://Sprites/Player/Player_1.png" id="3_pclxs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kg3ks"]
+radius = 56.0
+height = 124.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Jugador"]]
+collision_layer = 2
+collision_mask = 55
+script = ExtResource("1_ucnt4")
+bullet_scene = ExtResource("2_w2bje")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_pclxs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kg3ks")
+debug_color = Color(0.921843, 0.195963, 0.502031, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(-288, 50)
+
+[node name="Cañon" type="Marker2D" parent="."]
+position = Vector2(62, 2)

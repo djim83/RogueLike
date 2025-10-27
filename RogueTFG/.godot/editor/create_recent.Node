@@ -1,9 +1,9 @@
 Area2D
+CollisionShape2D
+Sprite2D
 ColorRect
 Label
 CanvasLayer
-Sprite2D
-CollisionShape2D
 Marker2D
 Node2D
 Node

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2lgax3weodrg"]
+
+[ext_resource type="Script" uid="uid://c5bfw2ec48vjq" path="res://cofre.gd" id="1_gcwpr"]
+[ext_resource type="Texture2D" uid="uid://bkclj1nuxsdgo" path="res://Sprites/Varios/Municion.png" id="2_lb8dx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6wxn"]
+size = Vector2(64, 57)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_gcwpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_lb8dx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_r6wxn")

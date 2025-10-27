@@ -12,10 +12,12 @@ var change_direction_timer := 0.0
 @export var vision_range: float = 500.0
 var player: Node2D = null  # Se asignará desde fuera
 
-# --- NUEVO ---
 @export var bullet_scene: PackedScene
+@export var municion_scene: PackedScene
 @export var fire_rate: float = 1.5  # Disparo cada 1.5s aprox
 var time_since_last_shot: float = 0.0
+
+var drop_chance = 0.3  # 30% de probabilidad
 
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
@@ -65,8 +67,14 @@ func _on_body_entered(body):
 func recibir_daño(amount: int = 1) -> void:
 	life -= amount
 	if life <= 0:
-		queue_free()
+		# --- Intento de soltar munición ---
+		if municion_scene and randf() < drop_chance:
+			var pickup = municion_scene.instantiate()
+			pickup.global_position = global_position
+			get_parent().add_child(pickup)
 
+		queue_free()
+	
 func shoot_at_player():
 	if not player: 
 		return
@@ -75,3 +83,4 @@ func shoot_at_player():
 	bullet.global_position = global_position
 	bullet.direction = dir
 	get_parent().add_child(bullet)
+	

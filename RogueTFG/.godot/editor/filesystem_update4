@@ -7,3 +7,12 @@ res://Fragmento_Bala.tscn
 res://bala_enemigo.gd
 res://bala.gd
 res://Scripts/player.gd
+res://Escenas/tile_map.tscn
+res://Escenas/Jugador.tscn
+res://Escenas/Enemigo.tscn
+res://Escenas/Bala.tscn
+res://Escenas/Bala_Enemigo.tscn
+res://Escenas/Fragmento_Bala.tscn
+res://Scripts/enemigo.gd
+res://Escenas/Municion.tscn
+res://cofre.gd

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dunntpqbcqum3"]
+
+[ext_resource type="Script" uid="uid://brwiw6pkaysg6" path="res://Scripts/enemigo.gd" id="1_p2sjk"]
+[ext_resource type="Texture2D" uid="uid://bofghk280i761" path="res://Sprites/Enemigos/alienGreen.png" id="1_usilb"]
+[ext_resource type="PackedScene" uid="uid://bx6bfvfgm02v" path="res://Escenas/Bala_Enemigo.tscn" id="2_qws2e"]
+[ext_resource type="PackedScene" uid="uid://2lgax3weodrg" path="res://Escenas/Municion.tscn" id="3_id87n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usilb"]
+radius = 32.0
+height = 92.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Enemigos"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_p2sjk")
+bullet_scene = ExtResource("2_qws2e")
+municion_scene = ExtResource("3_id87n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_usilb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_usilb")
+
+[node name="Node" type="Node" parent="."]
