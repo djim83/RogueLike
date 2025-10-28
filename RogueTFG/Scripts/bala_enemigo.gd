@@ -19,8 +19,8 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if !body.is_in_group("Jugador"):
 		_spawn_fragments()
-		#if body.has_method("recibir_daño"):
-			#body.recibir_daño(1)
+		if body.has_method("recibir_daño"):
+			body.recibir_daño(1)
 		queue_free()
 	elif body is TileMap:
 		_spawn_fragments()

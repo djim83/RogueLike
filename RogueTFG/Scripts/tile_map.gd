@@ -15,7 +15,7 @@ extends TileMap
 
 @export var player: Node2D
 
-
+@onready var game_over_panel: Panel = $GameOverLayer/Panel
 
 var rng = RandomNumberGenerator.new()
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido

@@ -13,7 +13,15 @@ var time_since_last_shot: float = 0.0
 
 @export var max_ammo: int = 100
 var current_ammo: int
-@export var life: int = 3
+@export var life: int = 10
+
+@onready var mira_sprite: Sprite2D = $"MiraSprite"
+@export var mira_distance: float = 40.0  # distancia desde el jugador
+@onready var canon: Node2D = $Cañon  # Nodo que marca la salida de la bala
+
+@onready var game_over_panel: Panel = $"../GameOverLayer/Panel"
+@onready var btn_jugar: Button = $"../GameOverLayer/Panel/Jugar"
+@onready var btn_salir: Button = $"../GameOverLayer/Panel/Salir"
 
 @warning_ignore("unused_parameter")
 
@@ -41,6 +49,23 @@ func _ready():
 	camera.limit_right = int((used_rect.position.x + used_rect.size.x) * cell_size.x)
 	camera.limit_bottom = int((used_rect.position.y + used_rect.size.y) * cell_size.y)
 	
+	btn_jugar.pressed.connect(_on_jugar_pressed)
+	btn_salir.pressed.connect(_on_salir_pressed)
+	
+func _process(delta):
+	var mouse_pos = get_global_mouse_position()
+	var dir = (mouse_pos - global_position).normalized()
+
+	# Posicionar la mira
+	mira_sprite.global_position = global_position + dir * mira_distance
+	mira_sprite.rotation = dir.angle()
+
+	# Hacer que el cañon esté en la punta del arma y gire hacia el ratón
+	canon.global_position = global_position + dir * mira_distance  # o ajusta un offset
+	canon.rotation = dir.angle()
+
+
+	
 func _on_body_entered(body):
 	if body.is_in_group("Jugador"):
 		recibir_daño()
@@ -49,26 +74,37 @@ func _on_body_entered(body):
 
 func recibir_daño(amount: int = 1) -> void:
 	life -= amount
-	if life <= 0:
-		queue_free()
+	if life < 0:
+		game_over()
+		set_physics_process(false) # Detiene _physics_process
+		hide()   # Esto hace que el jugador desaparezca
 
 func shoot():
 	if current_ammo <= 0:
-		return  # No dispara si no quedan balas
-
+		return
 	current_ammo -= 1
 
 	var bala = bullet_scene.instantiate()
-	var muzzle = global_position  # Sale desde el centro del jugador
+	var muzzle = canon.global_position  # ahora sale desde la pistola
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - muzzle).normalized()
 
 	bala.global_position = muzzle
 	bala.direction = dir
-	
 
 	get_parent().add_child(bala)
 
 func sumar_municion(amount: int):
 	current_ammo += amount
 	
+func game_over():
+	game_over_panel.visible = true
+	#get_tree().paused = true  # pausa el juego
+
+func _on_jugar_pressed():
+	get_tree().reload_current_scene()  # recarga la escena actual
+	print("Jugar...")
+
+func _on_salir_pressed():
+	get_tree().quit()  # cierra el juego
+	print("Cerrar")

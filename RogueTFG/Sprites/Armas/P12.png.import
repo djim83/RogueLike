@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1mqdyl2cjnqe"
-path="res://.godot/imported/amarilla.png-7e07d48bfa9ab0828c8b237db6c364ba.ctex"
+uid="uid://ii71mywjse7e"
+path="res://.godot/imported/P12.png-07e707434e5e300a2acf44d4904a103c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Balas/amarilla.png"
-dest_files=["res://.godot/imported/amarilla.png-7e07d48bfa9ab0828c8b237db6c364ba.ctex"]
+source_file="res://Sprites/Armas/P12.png"
+dest_files=["res://.godot/imported/P12.png-07e707434e5e300a2acf44d4904a103c.ctex"]
 
 [params]
 
