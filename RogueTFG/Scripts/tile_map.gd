@@ -13,6 +13,9 @@ extends TileMap
 @export var total_enemy_groups := 4
 @export var group_size_range := Vector2i(2, 3)  # Entre 2 y 3 enemigos por grupo
 
+@export var arma_scene: PackedScene
+@export var max_armas: int = 3
+
 @export var player: Node2D
 
 @onready var game_over_panel: Panel = $GameOverLayer/Panel
@@ -25,9 +28,8 @@ func _ready():
 	rng.randomize()
 	generate_random_walk_with_coverage()
 	var numero_enemigos = randi_range(10, 15)
-
+	spawn_armas()
 	poner_enemigos(numero_enemigos)  
-
 
 func generate_random_walk_with_coverage():
 	var total_tiles = (map_width - 2) * (map_height - 2)
@@ -75,8 +77,22 @@ func poner_enemigos(count: int):
 			add_child(enemy)
 			spawned += 1
 			enemy.player = player
-
-
+			
 			
 func is_floor(pos: Vector2i) -> bool:
 	return get_cell_source_id(0, pos) == tile_source_id and get_cell_atlas_coords(0, pos) == Vector2i(floor_tile_id, 0)
+
+func spawn_armas():
+	for i in range(max_armas):
+		var arma = arma_scene.instantiate()
+
+		# Buscar posición libre en el TileMap
+		var tile_size = get_tileset().tile_size
+		var used_rect = get_used_rect()
+
+		var pos_x = randi_range(used_rect.position.x, used_rect.position.x + used_rect.size.x)
+		var pos_y = randi_range(used_rect.position.y, used_rect.position.y + used_rect.size.y)
+
+		var world_pos = map_to_local(Vector2i(pos_x, pos_y))
+		arma.global_position = world_pos
+		add_child(arma)

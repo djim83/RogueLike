@@ -11,3 +11,8 @@ res://Scripts/bala_enemigo.gd
 res://Scripts/tile_map.gd
 res://Escenas/nivel2.tscn
 res://Escenas/nivel2.gd
+res://Escenas/cofre_arma.gd
+res://Escenas/Cofre_Arma.tscn
+res://Escenas/arma_base.tscn
+res://arma.gd
+res://Escenas/arma_escopeta.tscn

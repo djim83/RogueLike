@@ -23,6 +23,9 @@ var current_ammo: int
 @onready var btn_jugar: Button = $"../GameOverLayer/Panel/Jugar"
 @onready var btn_salir: Button = $"../GameOverLayer/Panel/Salir"
 
+var armas: Array[Arma] = []
+var arma_actual: int = 0
+
 @warning_ignore("unused_parameter")
 
 func _physics_process(delta: float) -> void:
@@ -52,9 +55,18 @@ func _ready():
 	btn_jugar.pressed.connect(_on_jugar_pressed)
 	btn_salir.pressed.connect(_on_salir_pressed)
 	
+	# Añadimos el arma por defecto al iniciar
+	var arma_base = preload("res://Escenas/arma_base.tscn").instantiate()
+	add_child(arma_base)
+	armas.append(arma_base)
+	
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
+	
+	if Input.is_action_just_pressed("cambio_arma"):
+		arma_actual = (arma_actual + 1) % armas.size()
+		print("Arma actual: ", armas[arma_actual].nombre)
 
 	# Posicionar la mira
 	mira_sprite.global_position = global_position + dir * mira_distance
@@ -83,6 +95,8 @@ func shoot():
 	if current_ammo <= 0:
 		return
 	current_ammo -= 1
+	
+	var arma = armas[arma_actual]
 
 	var bala = bullet_scene.instantiate()
 	var muzzle = canon.global_position  # ahora sale desde la pistola
@@ -96,6 +110,12 @@ func shoot():
 
 func sumar_municion(amount: int):
 	current_ammo += amount
+	
+func add_arma(nueva_arma: Arma):
+	add_child(nueva_arma)
+	armas.append(nueva_arma)
+	print("Nueva arma añadida: ", nueva_arma.nombre)
+
 	
 func game_over():
 	game_over_panel.visible = true
