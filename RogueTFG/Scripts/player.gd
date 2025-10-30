@@ -25,20 +25,21 @@ var current_ammo: int
 
 var armas: Array[Arma] = []
 var arma_actual: int = 0
+var arma_secundaria: Arma = null
+var tiene_secundaria: bool = false
 
-@warning_ignore("unused_parameter")
+var arma_base_scene: PackedScene
+var arma_base_fire_rate: float
 
-func _physics_process(delta: float) -> void:
-	move_dir = Input.get_vector("izquierda", "derecha", "arriba", "abajo")
-	velocity = move_dir * velocidad
-	time_since_last_shot += delta
-	move_and_slide()
-	if Input.is_action_pressed("disparo") and time_since_last_shot >= fire_rate:
-		shoot()
-		time_since_last_shot = 0.0	
+var invulnerable_time: float = 0.5
+var tiempo_invulnerable: float = 0.0
+
 
 func _ready():
 	current_ammo = max_ammo
+	
+	arma_base_scene = bullet_scene
+	arma_base_fire_rate = fire_rate
 	
 	var tile_pos = tilemap.player_spawn_tile
 	var world_pos = tilemap.map_to_local(tile_pos)
@@ -58,15 +59,35 @@ func _ready():
 	# Añadimos el arma por defecto al iniciar
 	var arma_base = preload("res://Escenas/arma_base.tscn").instantiate()
 	add_child(arma_base)
-	armas.append(arma_base)
+
+
+func _physics_process(delta: float) -> void:
+	move_dir = Input.get_vector("izquierda", "derecha", "arriba", "abajo")
+	velocity = move_dir * velocidad
+	time_since_last_shot += delta
+	move_and_slide()
 	
+	if Input.is_action_pressed("disparo") and time_since_last_shot >= fire_rate:
+		shoot()
+		time_since_last_shot = 0.0	
+
+	if tiempo_invulnerable > 0:
+		tiempo_invulnerable -= delta
+
+
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
-	
-	if Input.is_action_just_pressed("cambio_arma"):
-		arma_actual = (arma_actual + 1) % armas.size()
-		print("Arma actual: ", armas[arma_actual].nombre)
+
+	# Cambiar el sprite de la mira según el arma actual
+	if arma_actual == 0:
+		# Arma principal
+		mira_sprite.texture = preload("res://Sprites/Armas/pistola.jpg")
+		mira_sprite.scale = Vector2(1, 1)
+	else:
+		# Arma secundaria
+		mira_sprite.texture = preload("res://Sprites/Armas/pistola.jpg")
+		mira_sprite.scale = Vector2(1.5, 1.5)
 
 	# Posicionar la mira
 	mira_sprite.global_position = global_position + dir * mira_distance
@@ -75,31 +96,45 @@ func _process(delta):
 	# Hacer que el cañon esté en la punta del arma y gire hacia el ratón
 	canon.global_position = global_position + dir * mira_distance  # o ajusta un offset
 	canon.rotation = dir.angle()
-
-
 	
-func _on_body_entered(body):
-	if body.is_in_group("Jugador"):
-		recibir_daño()
-		body.queue_free()
-		
+	# Cambio de arma con botón click 2 ratón
+	if Input.is_action_just_pressed("cambio_arma") and tiene_secundaria:
+		if arma_actual == 0:
+			# Cambiar a secundaria
+			arma_actual = 1
+			bullet_scene = arma_secundaria.bullet_scene
+			fire_rate = 0.3
+			print("Arma actual: Secundaria (Escopeta)")
+		else:
+			# Volver a principal
+			arma_actual = 0
+			bullet_scene = arma_base_scene
+			fire_rate = arma_base_fire_rate
+			print("Arma actual: Principal")
+
 
 func recibir_daño(amount: int = 1) -> void:
-	life -= amount
-	if life < 0:
+	if tiempo_invulnerable > 0:
+		return  # Ignora daño mientras invulnerable
+
+	life = max(life - amount, 0)
+	print("Vida: ", life)
+
+	if life <= 0:
 		game_over()
-		set_physics_process(false) # Detiene _physics_process
-		hide()   # Esto hace que el jugador desaparezca
+		set_physics_process(false)
+		hide()
+
+	tiempo_invulnerable = invulnerable_time
+
 
 func shoot():
 	if current_ammo <= 0:
 		return
 	current_ammo -= 1
 	
-	var arma = armas[arma_actual]
-
 	var bala = bullet_scene.instantiate()
-	var muzzle = canon.global_position  # ahora sale desde la pistola
+	var muzzle = canon.global_position
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - muzzle).normalized()
 
@@ -108,23 +143,29 @@ func shoot():
 
 	get_parent().add_child(bala)
 
+
 func sumar_municion(amount: int):
 	current_ammo += amount
 	
-func add_arma(nueva_arma: Arma):
-	add_child(nueva_arma)
-	armas.append(nueva_arma)
-	print("Nueva arma añadida: ", nueva_arma.nombre)
 
-	
 func game_over():
 	game_over_panel.visible = true
 	#get_tree().paused = true  # pausa el juego
 
+
 func _on_jugar_pressed():
-	get_tree().reload_current_scene()  # recarga la escena actual
+	get_tree().reload_current_scene()
 	print("Jugar...")
 
+
 func _on_salir_pressed():
-	get_tree().quit()  # cierra el juego
+	get_tree().quit()
 	print("Cerrar")
+
+
+func recoger_secundaria():
+	if not tiene_secundaria:
+		arma_secundaria = preload("res://Escenas/arma_escopeta.tscn").instantiate()
+		add_child(arma_secundaria)
+		tiene_secundaria = true
+		print("Secundaria recogida: Escopeta")

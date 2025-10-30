@@ -14,7 +14,7 @@ extends TileMap
 @export var group_size_range := Vector2i(2, 3)  # Entre 2 y 3 enemigos por grupo
 
 @export var arma_scene: PackedScene
-@export var max_armas: int = 3
+@export var max_armas: int = 10
 
 @export var player: Node2D
 

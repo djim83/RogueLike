@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b2puul8ostev1" path="res://arma.gd" id="1_i1p6q"]
 [ext_resource type="Texture2D" uid="uid://ii71mywjse7e" path="res://Sprites/Armas/P12.png" id="2_ux6uk"]
-[ext_resource type="PackedScene" uid="uid://dqyxwnpk8638p" path="res://Escenas/Bala.tscn" id="3_ja685"]
+[ext_resource type="PackedScene" uid="uid://bceph3dbosd2c" path="res://Escenas/Bala_Escopeta.tscn" id="3_ux6uk"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_i1p6q")
 sprite = ExtResource("2_ux6uk")
-bullet_scene = ExtResource("3_ja685")
+bullet_scene = ExtResource("3_ux6uk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)

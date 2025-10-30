@@ -13,6 +13,7 @@ height = 92.0
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_p2sjk")
+tipo_disparo = 2
 bullet_scene = ExtResource("2_qws2e")
 municion_scene = ExtResource("3_id87n")
 

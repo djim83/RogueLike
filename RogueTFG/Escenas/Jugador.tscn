@@ -26,7 +26,6 @@ shape = SubResource("CapsuleShape2D_muoba")
 debug_color = Color(0.921843, 0.195963, 0.502031, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="jugador"]
-visible = false
 position = Vector2(-288, 50)
 
 [node name="Cañon" type="Marker2D" parent="jugador"]

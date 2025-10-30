@@ -8,7 +8,7 @@ var spawn_position: Vector2
 var current_direction := Vector2.ZERO
 var change_direction_timer := 0.0
 @export var direction_interval := 1.0  # Cambia cada 1 segundo
-
+@export var tipo_disparo: int
 @export var vision_range: float = 500.0
 var player: Node2D = null  # Se asignará desde fuera
 
@@ -78,9 +78,45 @@ func recibir_daño(amount: int = 1) -> void:
 func shoot_at_player():
 	if not player: 
 		return
-	var bullet = bullet_scene.instantiate()
+
 	var dir = (player.global_position - global_position).normalized()
+
+	match tipo_disparo:
+		0:
+			# Disparo normal (una sola bala hacia el jugador)
+			_spawn_bullet(dir)
+
+		1:
+			# Escopeta (varias balas en cono)
+			var spread = 15 # grados de apertura
+			var balas = 5
+			for i in range(balas):
+				var angle = deg_to_rad(-spread/2 + (spread/(balas-1)) * i)
+				var rotated_dir = dir.rotated(angle)
+				_spawn_bullet(rotated_dir)
+
+		2:
+			# Triple disparo (una recta + dos abiertas)
+			_spawn_bullet(dir)
+			_spawn_bullet(dir.rotated(deg_to_rad(10)))
+			_spawn_bullet(dir.rotated(deg_to_rad(-10)))
+
+		3:
+			# Disparo circular (todas direcciones alrededor del enemigo)
+			var balas = 12
+			for i in range(balas):
+				var angle = (TAU / balas) * i
+				var rotated_dir = Vector2.RIGHT.rotated(angle)
+				_spawn_bullet(rotated_dir)
+
+		_:
+			# fallback al disparo normal
+			_spawn_bullet(dir)
+
+
+# Método auxiliar para no repetir código
+func _spawn_bullet(dir: Vector2):
+	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.direction = dir
 	get_parent().add_child(bullet)
-	

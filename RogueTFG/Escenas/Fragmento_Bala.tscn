@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnj36syi55g8p"]
 
 [ext_resource type="Script" uid="uid://d0w50ouqpto8b" path="res://Scripts/fragmento_bala.gd" id="1_swfyj"]
-[ext_resource type="Texture2D" uid="uid://cadjgl7vv4rqw" path="res://Sprites/Balas/roja.png" id="2_t66wy"]
+[ext_resource type="Texture2D" uid="uid://ndmjp2x6w7f5" path="res://Sprites/Balas/azul.png" id="2_swfyj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rjqsx"]
 radius = 4.12311
@@ -14,4 +14,4 @@ shape = SubResource("CircleShape2D_rjqsx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_t66wy")
+texture = ExtResource("2_swfyj")

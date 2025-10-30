@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7gf7tqgkr2gi"]
+[gd_scene load_steps=3 format=3 uid="uid://b5eskaaxv5kd5"]
 
 [ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_5pt6q"]
+[ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="2_tqhfi"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" instance=ExtResource("1_5pt6q")]
 
-[node name="Node2D" parent="." instance=ExtResource("1_5pt6q")]
+[node name="TileMap" parent="." index="0"]
+target_coverage = 0.2
+enemy_scene = ExtResource("2_tqhfi")
+total_enemy_groups = 2
+group_size_range = Vector2i(4, 5)

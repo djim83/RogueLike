@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjw5h3aasn85e"]
+
+[ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_pvpah"]
+[ext_resource type="Texture2D" uid="uid://yy22jaixv7g7" path="res://Sprites/Enemigos/alienPink.png" id="2_7jiol"]
+
+[node name="CharacterBody2D" instance=ExtResource("1_pvpah")]
+speed = 100.0
+life = 8.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_7jiol")
