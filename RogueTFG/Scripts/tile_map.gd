@@ -4,9 +4,11 @@ extends TileMap
 @export var map_height := 162
 
 # Ahora podemos usar varios tiles para suelo y pared
-@export var floor_tiles := [0, 1]  # IDs de los suelos
+@export var floor_tiles := [0]  # IDs de los suelos
 @export var wall_tiles := [9]      # Tile genérico de pared
 @export var tile_source_id := 0
+@export var id_fondo: int
+@export var shadow_tile_id := 15  # Tile negro semitransparente para sombra
 
 @export var target_coverage := 0.6
 
@@ -29,8 +31,6 @@ var rng = RandomNumberGenerator.new()
 
 
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
-
-@export var shadow_tile_id := 15  # Tile negro semitransparente para sombra
 
 func _ready():
 	rng.randomize()
@@ -55,6 +55,7 @@ func generate_random_walk_with_coverage():
 		for y in range(map_height):
 			set_cell(0, Vector2i(x, y), wall_tiles[0], Vector2.ZERO, tile_source_id)
 
+	@warning_ignore("integer_division", "shadowed_variable_base_class")
 	var position = Vector2i(map_width / 2, map_height / 2)
 	var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 
@@ -168,7 +169,6 @@ func update_wall_tiles():
 		for y in range(map_height):
 			var pos = Vector2i(x, y)
 			if is_wall(pos):
-				print("xxx")
 				var wall_id = choose_wall_tile(pos)
 				set_cell(0, pos, wall_id, Vector2.ZERO, tile_source_id)
 
@@ -182,8 +182,7 @@ func choose_wall_tile(pos: Vector2i) -> int:
 	# Ejemplos: asigna según vecinos
 	# Cambia estos IDs según tu TileSet real
 	if not top and not left and bottom and right:
-		print("Premio")
-		return 11  # Esquina superior izquierda
+		return id_fondo  # Esquina superior izquierda
 	elif not top and not right and bottom and left:
 		return 11  # Esquina superior derecha
 	elif not bottom and not left and top and right:

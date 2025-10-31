@@ -269,11 +269,11 @@ cache/0/36/0/scale = 1.0
 tile_set = SubResource("TileSet_qtlnl")
 format = 2
 script = ExtResource("1_7yhko")
+id_fondo = 11
 enemy_scene = ExtResource("4_anah5")
 barril_scene = ExtResource("13_fnl5p")
 arma_scene = ExtResource("5_iv4k0")
 player = NodePath("../jugador")
-shadow_tile_id = 11
 
 [node name="jugador" type="CharacterBody2D" parent="."]
 position = Vector2(561, 304)
