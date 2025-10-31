@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bia704fmh4afq"]
+
+[ext_resource type="Script" uid="uid://cd0w55jdu2xa8" path="res://Escenas/barril.gd" id="1_810nb"]
+[ext_resource type="Texture2D" uid="uid://6hya2xe6gl1k" path="res://Sprites/Varios/Barril.png" id="2_k484g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wny3q"]
+size = Vector2(28, 30)
+
+[node name="Barril" type="Node2D"]
+script = ExtResource("1_810nb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_k484g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wny3q")
+
+[node name="Fuego" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fuego"]
