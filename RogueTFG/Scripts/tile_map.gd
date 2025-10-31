@@ -16,14 +16,18 @@ extends TileMap
 @export var group_size_range := Vector2i(2, 3)  # Entre 2 y 3 enemigos por grupo
 
 @export var arma_scene: PackedScene
-@export var max_armas: int = 10
-@export var barriles: int = 8
+
+# Número de elementos en pantalla
+var rng = RandomNumberGenerator.new()
+@export var armas = rng.randi_range(1, 3)
+@export var barriles = rng.randi_range(3, 5)
+@export var enemigos = randi_range(10, 15)
 
 @export var player: Node2D
 
 @onready var game_over_panel: Panel = $GameOverLayer/Panel
 
-var rng = RandomNumberGenerator.new()
+
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 @export var shadow_tile_id := 15  # Tile negro semitransparente para sombra
@@ -34,10 +38,9 @@ func _ready():
 	update_wall_tiles()
 	
 	@warning_ignore("unused_variable")
-	var numero_enemigos = randi_range(10, 15)
-	spawn_armas()
+	poner_armas(armas)
 	poner_barriles(barriles)
-	#poner_enemigos(numero_enemigos)  
+	poner_enemigos(enemigos)  
 
 
 func generate_random_walk_with_coverage():
@@ -133,30 +136,28 @@ func poner_barriles(count: int):
 			barril.global_position = map_to_local(pos)
 			add_child(barril)
 			spawned += 1
+			
+func poner_armas(count: int):
+	var spawned := 0
+	while spawned < count:
+		var pos = Vector2i(rng.randi_range(1, map_width - 2), rng.randi_range(1, map_height - 2))
+		if is_floor(pos):
+			var arma = arma_scene.instantiate()
+			arma.global_position = map_to_local(pos)
+			add_child(arma)
+			spawned += 1
 
 			
 			
 func is_floor(pos: Vector2i) -> bool:
-	var id = get_cell_atlas_coords(0, pos).x
+	var id = get_cell_source_id(0, pos)
 	return id in floor_tiles
 
 func is_wall(pos: Vector2i) -> bool:
-	var id = get_cell_atlas_coords(0, pos).x
+	var id = get_cell_source_id(0, pos)
 	return id in wall_tiles
 
-func spawn_armas():
-	for i in range(max_armas):
-		var arma = arma_scene.instantiate()
-		@warning_ignore("unused_variable")
-		var tile_size = get_tileset().tile_size
-		var used_rect = get_used_rect()
 
-		var pos_x = randi_range(used_rect.position.x, used_rect.position.x + used_rect.size.x)
-		var pos_y = randi_range(used_rect.position.y, used_rect.position.y + used_rect.size.y)
-
-		var world_pos = map_to_local(Vector2i(pos_x, pos_y))
-		arma.global_position = world_pos
-		add_child(arma)
 
 # -------------------------------
 # Postprocesado para bordes y esquinas
@@ -182,7 +183,7 @@ func choose_wall_tile(pos: Vector2i) -> int:
 	# Cambia estos IDs según tu TileSet real
 	if not top and not left and bottom and right:
 		print("Premio")
-		return 6  # Esquina superior izquierda
+		return 11  # Esquina superior izquierda
 	elif not top and not right and bottom and left:
 		return 11  # Esquina superior derecha
 	elif not bottom and not left and top and right:
