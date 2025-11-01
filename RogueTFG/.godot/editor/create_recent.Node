@@ -1,3 +1,5 @@
+GPUParticles2D
+CPUParticles2D
 StaticBody2D
 RigidBody2D
 Area2D
@@ -10,6 +12,3 @@ Label
 Panel
 CanvasLayer
 Line2D
-ColorRect
-Marker2D
-Node

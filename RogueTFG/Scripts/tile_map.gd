@@ -40,7 +40,7 @@ func _ready():
 	@warning_ignore("unused_variable")
 	poner_armas(armas)
 	poner_barriles(barriles)
-	#poner_enemigos(enemigos)  
+	poner_enemigos(enemigos)  
 
 
 func generate_random_walk_with_coverage():
@@ -180,7 +180,6 @@ func choose_wall_tile(pos: Vector2i) -> int:
 	var right = is_wall(pos + Vector2i(1, 0))
 
 	# Ejemplos: asigna según vecinos
-	# Cambia estos IDs según tu TileSet real
 	if not top and not left and bottom and right:
 		return id_fondo  # Esquina superior izquierda
 	elif not top and not right and bottom and left:

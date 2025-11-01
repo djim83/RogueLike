@@ -14,3 +14,5 @@ res://Scripts/tile_map.gd
 res://Scripts/bala.gd
 res://Scripts/bala_enemigo.gd
 res://Escenas/barril.gd
+res://explosion.tscn
+res://Escenas/explosion.tscn
