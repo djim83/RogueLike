@@ -279,6 +279,7 @@ player = NodePath("../jugador")
 position = Vector2(561, 304)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
+collision_mask = 129
 script = ExtResource("4_xftlc")
 bullet_scene = ExtResource("6_qtlnl")
 

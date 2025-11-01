@@ -1,4 +1,3 @@
-res://Escenas/nivel2.tscn
 res://Escenas/tile_map.tscn
 res://Escenas/Enemigo.tscn
 res://Escenas/Bala.tscn
@@ -8,6 +7,10 @@ res://Escenas/Municion.tscn
 res://Escenas/Jugador.tscn
 res://Escenas/arma_base.tscn
 res://Escenas/Bala_Escopeta.tscn
+res://Escenas/nivel2.tscn
 res://Escenas/Enemigo2.tscn
 res://Escenas/barril.tscn
 res://Scripts/tile_map.gd
+res://Scripts/bala.gd
+res://Scripts/bala_enemigo.gd
+res://Escenas/barril.gd

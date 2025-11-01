@@ -15,6 +15,7 @@ height = 124.0
 position = Vector2(561, 304)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
+collision_mask = 193
 script = ExtResource("1_ucnt4")
 bullet_scene = ExtResource("2_w2bje")
 

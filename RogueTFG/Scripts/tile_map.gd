@@ -22,7 +22,7 @@ extends TileMap
 # Número de elementos en pantalla
 var rng = RandomNumberGenerator.new()
 @export var armas = rng.randi_range(1, 3)
-@export var barriles = rng.randi_range(3, 5)
+@export var barriles = rng.randi_range(8, 12)
 @export var enemigos = randi_range(10, 15)
 
 @export var player: Node2D
@@ -40,7 +40,7 @@ func _ready():
 	@warning_ignore("unused_variable")
 	poner_armas(armas)
 	poner_barriles(barriles)
-	poner_enemigos(enemigos)  
+	#poner_enemigos(enemigos)  
 
 
 func generate_random_walk_with_coverage():

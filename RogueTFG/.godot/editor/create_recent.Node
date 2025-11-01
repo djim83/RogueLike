@@ -1,5 +1,7 @@
-CollisionShape2D
+StaticBody2D
+RigidBody2D
 Area2D
+CollisionShape2D
 Sprite2D
 TileMap
 Node2D
@@ -11,4 +13,3 @@ Line2D
 ColorRect
 Marker2D
 Node
-CharacterBody2D

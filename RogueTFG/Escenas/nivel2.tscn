@@ -8,9 +8,8 @@
 [node name="TileMap" parent="." index="0"]
 floor_tiles = [5]
 wall_tiles = [6]
-shadow_tile_id = 15
 target_coverage = 0.2
 enemy_scene = ExtResource("2_tqhfi")
 total_enemy_groups = 2
 group_size_range = Vector2i(4, 5)
-enemigos = 25
+enemigos = 8

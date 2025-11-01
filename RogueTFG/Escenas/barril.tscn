@@ -1,21 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://bia704fmh4afq"]
 
 [ext_resource type="Script" uid="uid://cd0w55jdu2xa8" path="res://Escenas/barril.gd" id="1_810nb"]
-[ext_resource type="Texture2D" uid="uid://6hya2xe6gl1k" path="res://Sprites/Varios/Barril.png" id="2_k484g"]
+[ext_resource type="Texture2D" uid="uid://bgna4yb4gfltv" path="res://Sprites/Varios/Objects.png" id="2_810nb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wny3q"]
-size = Vector2(28, 30)
+size = Vector2(61, 92)
 
-[node name="Barril" type="Node2D"]
+[node name="Barril" type="StaticBody2D" groups=["Barriles"]]
+collision_layer = 128
+collision_mask = 127
 script = ExtResource("1_810nb")
+life = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_k484g")
+scale = Vector2(4, 4)
+texture = ExtResource("2_810nb")
+region_enabled = true
+region_rect = Rect2(96.4779, 63.6505, 15.3249, 23.7056)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_wny3q")
-
-[node name="Fuego" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fuego"]
