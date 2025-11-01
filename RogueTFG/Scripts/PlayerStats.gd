@@ -1,3 +1,5 @@
+# Valores globales para los atributos del jugador
+
 extends Node
 
 var velocidad: float = 600.0

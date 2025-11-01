@@ -3,7 +3,6 @@ extends TileMap
 @export var map_width := 288
 @export var map_height := 162
 
-# Ahora podemos usar varios tiles para suelo y pared
 @export var floor_tiles := [0]  # IDs de los suelos
 @export var wall_tiles := [9]      # Tile genérico de pared
 @export var tile_source_id := 0
@@ -23,7 +22,9 @@ extends TileMap
 var rng = RandomNumberGenerator.new()
 @export var armas = rng.randi_range(1, 3)
 @export var barriles = rng.randi_range(8, 12)
-@export var enemigos = randi_range(1, 1)
+@export var enemigos_min: int = 15
+@export var enemigos_max: int = 25
+var enemigos: int = 0
 
 @export var player: Node2D
 
@@ -33,6 +34,9 @@ var rng = RandomNumberGenerator.new()
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 func _ready():
+	# Ocultar el puntero
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	rng.randomize()
 	generate_random_walk_with_coverage()
 	update_wall_tiles()
@@ -40,7 +44,8 @@ func _ready():
 	@warning_ignore("unused_variable")
 	poner_armas(armas)
 	poner_barriles(barriles)
-	poner_enemigos(enemigos)  
+	enemigos = randi_range(enemigos_min, enemigos_max)
+	poner_enemigos(enemigos)
 
 
 func generate_random_walk_with_coverage():

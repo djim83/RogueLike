@@ -12,4 +12,4 @@ target_coverage = 0.2
 enemy_scene = ExtResource("2_tqhfi")
 total_enemy_groups = 2
 group_size_range = Vector2i(4, 5)
-enemigos = 8
+enemigos_max = 2

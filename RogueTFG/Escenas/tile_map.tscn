@@ -276,6 +276,8 @@ id_fondo = 11
 enemy_scene = ExtResource("4_anah5")
 barril_scene = ExtResource("13_fnl5p")
 arma_scene = ExtResource("5_iv4k0")
+enemigos_min = 3
+enemigos_max = 5
 player = NodePath("../jugador")
 
 [node name="jugador" type="CharacterBody2D" parent="." groups=["Jugador"]]

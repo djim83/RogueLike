@@ -5,7 +5,8 @@
 
 [node name="CharacterBody2D" instance=ExtResource("1_pvpah")]
 speed = 100.0
-life = 8.0
+life = 2.0
+tipo_disparo = 4
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_7jiol")
