@@ -17,6 +17,8 @@ var player: Node2D = null  # Se asignará desde fuera
 @export var fire_rate: float = 1.5  # Disparo cada 1.5s aprox
 var time_since_last_shot: float = 0.0
 
+@export var puerta_scene: PackedScene
+
 var drop_chance = 0.3  # 30% de probabilidad
 
 func _ready() -> void:
@@ -73,7 +75,19 @@ func recibir_daño(amount: int = 1) -> void:
 			pickup.global_position = global_position
 			get_parent().add_child(pickup)
 
+		# --- Comprobar si es el último enemigo ---
+		var parent = get_parent()
+		if parent:
+			var enemies_left = get_tree().get_nodes_in_group("Enemigos")
+			if enemies_left.size() == 1: # este es el último (solo queda él mismo)
+				print("Era el último...")
+				if puerta_scene:
+					var puerta = puerta_scene.instantiate()
+					puerta.global_position = global_position
+					parent.add_child(puerta)
+
 		queue_free()
+
 	
 func shoot_at_player():
 	if not player: 

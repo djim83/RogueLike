@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dunntpqbcqum3"]
+[gd_scene load_steps=7 format=3 uid="uid://dunntpqbcqum3"]
 
 [ext_resource type="Script" uid="uid://brwiw6pkaysg6" path="res://Scripts/enemigo.gd" id="1_p2sjk"]
 [ext_resource type="Texture2D" uid="uid://bofghk280i761" path="res://Sprites/Enemigos/alienGreen.png" id="1_usilb"]
 [ext_resource type="PackedScene" uid="uid://bx6bfvfgm02v" path="res://Escenas/Bala_Enemigo.tscn" id="2_qws2e"]
 [ext_resource type="PackedScene" uid="uid://2lgax3weodrg" path="res://Escenas/Municion.tscn" id="3_id87n"]
+[ext_resource type="PackedScene" uid="uid://b65xw5eb4d8on" path="res://Escenas/puerta.tscn" id="4_c0vl1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usilb"]
 radius = 32.0
@@ -16,6 +17,7 @@ script = ExtResource("1_p2sjk")
 tipo_disparo = 2
 bullet_scene = ExtResource("2_qws2e")
 municion_scene = ExtResource("3_id87n")
+puerta_scene = ExtResource("4_c0vl1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_usilb")

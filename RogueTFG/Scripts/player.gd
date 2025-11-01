@@ -1,22 +1,22 @@
 extends CharacterBody2D
 
 var move_dir: Vector2
-@export var velocidad := 600.0
+var velocidad := PlayerStats.velocidad
 
 @export var bullet_scene: PackedScene
-@export var fire_rate: float = 0.1
+var fire_rate: float = PlayerStats.velocidad_disparo
 
 var time_since_last_shot: float = 0.0
 
 @onready var tilemap: TileMap = $"../TileMap"
 @onready var camera: Camera2D = $Camera2D
 
-@export var max_ammo: int = 100
+var max_ammo: int = PlayerStats.municion_pistola
 var current_ammo: int
-@export var life: int = 10
+var life: int = PlayerStats.vida
 
 @onready var mira_sprite: Sprite2D = $"MiraSprite"
-@export var mira_distance: float = 40.0  # distancia desde el jugador
+@export var mira_distance: float = 50.0  # distancia desde el jugador
 @onready var canon: Node2D = $Cañon  # Nodo que marca la salida de la bala
 
 @onready var game_over_panel: Panel = $"../GameOverLayer/Panel"
@@ -82,12 +82,12 @@ func _process(delta):
 	# Cambiar el sprite de la mira según el arma actual
 	if arma_actual == 0:
 		# Arma principal
-		mira_sprite.texture = preload("res://Sprites/Armas/pistola.jpg")
-		mira_sprite.scale = Vector2(1, 1)
+		mira_sprite.texture = preload("res://Sprites/Armas/mirilla.png")
+		#mira_sprite.scale = Vector2(1, 1)
 	else:
 		# Arma secundaria
 		mira_sprite.texture = preload("res://Sprites/Armas/pistola.jpg")
-		mira_sprite.scale = Vector2(1.5, 1.5)
+		#mira_sprite.scale = Vector2(1.5, 1.5)
 
 	# Posicionar la mira
 	mira_sprite.global_position = global_position + dir * mira_distance

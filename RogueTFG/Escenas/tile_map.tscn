@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://dx10iujc4170s" path="res://Tiles/tile_0019.png" id="7_xmllr"]
 [ext_resource type="Script" uid="uid://c2820ho8ga1fn" path="res://Scripts/canvas_layer.gd" id="8_2cfip"]
 [ext_resource type="Texture2D" uid="uid://cbax63rfr6tsj" path="res://Tiles/tile_0028.png" id="8_42gsk"]
-[ext_resource type="Texture2D" uid="uid://7os26esiwi7x" path="res://Sprites/Armas/pistola.jpg" id="8_iauu0"]
 [ext_resource type="Texture2D" uid="uid://cq8xtlkpo12sq" path="res://Tiles/tile_0015.png" id="10_3hpak"]
 [ext_resource type="PackedScene" uid="uid://bia704fmh4afq" path="res://Escenas/barril.tscn" id="13_fnl5p"]
+[ext_resource type="Texture2D" uid="uid://cf3ged68gvqev" path="res://Sprites/Armas/mirilla.png" id="18_fnl5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lda5"]
 texture = ExtResource("1_c0sgf")
@@ -87,6 +87,9 @@ radius = 56.0
 height = 124.0
 
 [sub_resource type="FontFile" id="FontFile_2cfip"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -275,11 +278,11 @@ barril_scene = ExtResource("13_fnl5p")
 arma_scene = ExtResource("5_iv4k0")
 player = NodePath("../jugador")
 
-[node name="jugador" type="CharacterBody2D" parent="."]
+[node name="jugador" type="CharacterBody2D" parent="." groups=["Jugador"]]
 position = Vector2(561, 304)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
-collision_mask = 129
+collision_mask = 209
 script = ExtResource("4_xftlc")
 bullet_scene = ExtResource("6_qtlnl")
 
@@ -297,7 +300,7 @@ position = Vector2(-288, 50)
 position = Vector2(62, 2)
 
 [node name="MiraSprite" type="Sprite2D" parent="jugador"]
-texture = ExtResource("8_iauu0")
+texture = ExtResource("18_fnl5p")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("8_2cfip")

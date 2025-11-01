@@ -23,7 +23,7 @@ extends TileMap
 var rng = RandomNumberGenerator.new()
 @export var armas = rng.randi_range(1, 3)
 @export var barriles = rng.randi_range(8, 12)
-@export var enemigos = randi_range(10, 15)
+@export var enemigos = randi_range(1, 1)
 
 @export var player: Node2D
 

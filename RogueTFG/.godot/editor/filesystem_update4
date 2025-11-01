@@ -16,3 +16,10 @@ res://Scripts/bala_enemigo.gd
 res://Escenas/barril.gd
 res://explosion.tscn
 res://Escenas/explosion.tscn
+res://Escenas/puerta.tscn
+res://Scripts/enemigo.gd
+res://puerta.gd
+res://Scripts/player.gd
+res://Escenas/mejoras.tscn
+res://Escenas/mejoras.gd
+res://Scripts/PlayerStats.gd
