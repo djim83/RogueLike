@@ -12,6 +12,7 @@ extends TileMap
 @export var target_coverage := 0.6
 
 @export var enemy_scene: PackedScene
+@export var enemy_scenes: Array[PackedScene]
 @export var barril_scene: PackedScene
 @export var total_enemy_groups := 4
 @export var group_size_range := Vector2i(2, 3)  # Entre 2 y 3 enemigos por grupo
@@ -126,6 +127,7 @@ func poner_enemigos(count: int):
 	while spawned < count:
 		var pos = Vector2i(rng.randi_range(1, map_width - 2), rng.randi_range(1, map_height - 2))
 		if is_floor(pos):
+			var enemy_scene = enemy_scenes.pick_random()
 			var enemy = enemy_scene.instantiate()
 			enemy.global_position = map_to_local(pos)
 			enemy.set_spawn(map_to_local(pos))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=36 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://ccw2xdbgh2867" path="res://Tiles/tile_0000.png" id="1_35kre"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://5ew1tkik17d5" path="res://Tiles/wall_tile.png" id="2_03na7"]
 [ext_resource type="Texture2D" uid="uid://2doautphew6e" path="res://Tiles/tile_0042.png" id="3_xekux"]
 [ext_resource type="Texture2D" uid="uid://dp0vsq0320b7u" path="res://Tiles/tile_0048.png" id="4_3hpak"]
-[ext_resource type="Texture2D" uid="uid://d2s61hvv0gyh3" path="res://Sprites/Player/Player_1.png" id="4_03na7"]
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="4_anah5"]
 [ext_resource type="Script" uid="uid://bsyp8xe08wda3" path="res://Scripts/player.gd" id="4_xftlc"]
 [ext_resource type="PackedScene" uid="uid://bbnp0oq8gjaqb" path="res://Escenas/Cofre_Arma.tscn" id="5_iv4k0"]
@@ -17,7 +16,10 @@
 [ext_resource type="Script" uid="uid://c2820ho8ga1fn" path="res://Scripts/canvas_layer.gd" id="8_2cfip"]
 [ext_resource type="Texture2D" uid="uid://cbax63rfr6tsj" path="res://Tiles/tile_0028.png" id="8_42gsk"]
 [ext_resource type="Texture2D" uid="uid://cq8xtlkpo12sq" path="res://Tiles/tile_0015.png" id="10_3hpak"]
+[ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="13_42gsk"]
 [ext_resource type="PackedScene" uid="uid://bia704fmh4afq" path="res://Escenas/barril.tscn" id="13_fnl5p"]
+[ext_resource type="PackedScene" uid="uid://c2to2ssaohudr" path="res://Escenas/Enemigo3.tscn" id="14_5lda5"]
+[ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="17_fnl5p"]
 [ext_resource type="Texture2D" uid="uid://cf3ged68gvqev" path="res://Sprites/Armas/mirilla.png" id="18_fnl5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lda5"]
@@ -274,6 +276,7 @@ format = 2
 script = ExtResource("1_7yhko")
 id_fondo = 11
 enemy_scene = ExtResource("4_anah5")
+enemy_scenes = Array[PackedScene]([ExtResource("13_42gsk"), ExtResource("14_5lda5"), ExtResource("4_anah5")])
 barril_scene = ExtResource("13_fnl5p")
 arma_scene = ExtResource("5_iv4k0")
 enemigos_min = 3
@@ -289,7 +292,10 @@ script = ExtResource("4_xftlc")
 bullet_scene = ExtResource("6_qtlnl")
 
 [node name="Sprite2D" type="Sprite2D" parent="jugador"]
-texture = ExtResource("4_03na7")
+scale = Vector2(4, 4)
+texture = ExtResource("17_fnl5p")
+region_enabled = true
+region_rect = Rect2(23, 341, 18, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jugador"]
 shape = SubResource("CapsuleShape2D_03na7")

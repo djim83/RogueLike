@@ -19,6 +19,8 @@ var time_since_last_shot: float = 0.0
 
 @export var puerta_scene: PackedScene
 
+@onready var anim = $Sprite2D
+
 var drop_chance = 0.3  # 30% de probabilidad
 
 func _ready() -> void:
@@ -34,6 +36,12 @@ func _process(delta):
 		# --- Perseguir al jugador ---
 		var dir_to_player = (player.global_position - global_position).normalized()
 		velocity = dir_to_player * speed
+
+		# --- Animación del enemigo ---
+		if velocity.length() > 0.1:
+			anim.play("Andar")
+		else:
+			anim.play("Quieto")
 
 		# --- Intentar disparar ---
 		time_since_last_shot += delta
