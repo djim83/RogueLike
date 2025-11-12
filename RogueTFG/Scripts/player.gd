@@ -78,35 +78,42 @@ func _physics_process(delta: float) -> void:
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
+	var angle = dir.angle()
 
-	# Cambiar el sprite de la mira según el arma actual
+	# --- Cambiar sprite del arma según el arma actual ---
 	if arma_actual == 0:
-		# Arma principal
-		mira_sprite.texture = preload("res://Sprites/Armas/mirilla.png")
-		#mira_sprite.scale = Vector2(1, 1)
+		mira_sprite.texture = preload("res://Sprites/Armas/Pistola.png")
+		mira_sprite.scale = Vector2(4, 4)
 	else:
-		# Arma secundaria
-		mira_sprite.texture = preload("res://Sprites/Armas/pistola.jpg")
-		#mira_sprite.scale = Vector2(1.5, 1.5)
+		mira_sprite.texture = preload("res://Sprites/Armas/Escopeta.png")
+		mira_sprite.scale = Vector2(4, 4)
 
-	# Posicionar la mira
-	mira_sprite.global_position = global_position + dir * mira_distance
-	mira_sprite.rotation = dir.angle()
+	# --- Controlar el flip según hacia dónde apunta el ratón ---
+	# Si el ratón está a la izquierda del jugador, volteamos el arma horizontalmente
+	mira_sprite.flip_v = false  # por seguridad, en caso de sprites mal rotados
+	mira_sprite.flip_h = (mouse_pos.x < global_position.x)
 
-	# Hacer que el cañon esté en la punta del arma y gire hacia el ratón
-	canon.global_position = global_position + dir * mira_distance  # o ajusta un offset
-	canon.rotation = dir.angle()
-	
-	# Cambio de arma con botón click 2 ratón
+	# --- Calcular posición del arma ---
+	# La anclamos al "PuntoArma", y extendemos hacia la dirección del ratón
+	var offset = Vector2.RIGHT.rotated(angle) * mira_distance
+	mira_sprite.global_position = global_position + offset
+
+	# --- Rotación visual ---
+	# Si está mirando a la derecha, apunta normalmente; si a la izquierda, añadimos 180° (PI radianes)
+	mira_sprite.rotation = angle if not mira_sprite.flip_h else angle + PI
+
+	# --- Cañón del arma ---
+	canon.global_position = mira_sprite.global_position + Vector2.RIGHT.rotated(angle) * (mira_distance * 0.4)
+	canon.rotation = angle
+
+	# --- Cambio de arma ---
 	if Input.is_action_just_pressed("cambio_arma") and tiene_secundaria:
 		if arma_actual == 0:
-			# Cambiar a secundaria
 			arma_actual = 1
 			bullet_scene = arma_secundaria.bullet_scene
 			fire_rate = 0.3
 			print("Arma actual: Secundaria (Escopeta)")
 		else:
-			# Volver a principal
 			arma_actual = 0
 			bullet_scene = arma_base_scene
 			fire_rate = arma_base_fire_rate
@@ -132,15 +139,22 @@ func shoot():
 	if current_ammo <= 0:
 		return
 	current_ammo -= 1
-	
+
+	# Instancia la bala
 	var bala = bullet_scene.instantiate()
-	var muzzle = canon.global_position
-	var mouse_pos = get_global_mouse_position()
-	var dir = (mouse_pos - muzzle).normalized()
 
-	bala.global_position = muzzle
+	# Punto de salida del disparo (el cañón del arma)
+	var muzzle := canon.global_position
+
+	# Dirección según la rotación del cañón (NO del ratón)
+	var dir := Vector2.RIGHT.rotated(canon.global_rotation).normalized()
+
+	# Posición inicial de la bala, ligeramente delante del cañón
+	bala.global_position = muzzle + dir * 10.0
 	bala.direction = dir
+	bala.rotation = dir.angle()
 
+	# Añadir la bala al árbol de la escena
 	get_parent().add_child(bala)
 
 

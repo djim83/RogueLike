@@ -29,6 +29,10 @@ var enemigos: int = 0
 
 @export var player: Node2D
 
+@export var torch_scene: PackedScene
+@export var num_torches: int = 12
+
+
 @onready var game_over_panel: Panel = $GameOverLayer/Panel
 
 
@@ -47,6 +51,7 @@ func _ready():
 	poner_barriles(barriles)
 	enemigos = randi_range(enemigos_min, enemigos_max)
 	poner_enemigos(enemigos)
+	poner_antorchas(12)
 
 
 func generate_random_walk_with_coverage():
@@ -205,3 +210,34 @@ func choose_wall_tile(pos: Vector2i) -> int:
 		return 17  # Borde derecho
 	else:
 		return wall_tiles[0]  # Centro / genérico
+
+
+func poner_antorchas(count: int) -> void:
+	if torch_scene == null:
+		return
+
+	var spawned: int = 0
+	var safety: int = count * 50  # evita bucles infinitos si hay pocos sitios válidos
+
+	while spawned < count and safety > 0:
+		safety -= 1
+
+		var x: int = rng.randi_range(1, map_width - 2)
+		var y: int = rng.randi_range(1, map_height - 2)
+		var pos: Vector2i = Vector2i(x, y)
+		var up: Vector2i = pos + Vector2i(0, -1)
+
+		# Condición: suelo con algo encima que no sea suelo (es decir, pared u otro tile)
+		if is_floor(pos) and not is_floor(up):
+			var torch: Node2D = torch_scene.instantiate() as Node2D
+			torch.global_position = map_to_local(pos)
+			add_child(torch)
+			spawned += 1
+			print("Antorcha colocada:", spawned)
+
+			# Animar antorcha
+			var anim_sprite: AnimatedSprite2D = torch.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+			if anim_sprite and anim_sprite.sprite_frames:
+				var anims: PackedStringArray = anim_sprite.sprite_frames.get_animation_names()
+				if anims.size() > 0:
+					anim_sprite.play(anims[0])  # Reproduce la primera animación disponible

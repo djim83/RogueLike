@@ -1,5 +1,4 @@
 res://Escenas/tile_map.tscn
-res://Escenas/Enemigo.tscn
 res://Escenas/Bala.tscn
 res://Escenas/Bala_Enemigo.tscn
 res://Escenas/Municion.tscn
@@ -9,6 +8,9 @@ res://Escenas/barril.tscn
 res://Escenas/explosion.tscn
 res://Escenas/puerta.tscn
 res://Escenas/mejoras.tscn
-res://Scripts/enemigo.gd
+res://Escenas/Enemigo.tscn
 res://Escenas/Enemigo3.tscn
-res://Scripts/tile_map.gd
+res://torch.tscn
+res://Escenas/arma_escopeta.tscn
+res://Escenas/arma_base.tscn
+res://Scripts/player.gd
