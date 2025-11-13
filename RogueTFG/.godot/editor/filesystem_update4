@@ -4,13 +4,12 @@ res://Escenas/Bala_Enemigo.tscn
 res://Escenas/Municion.tscn
 res://Escenas/nivel2.tscn
 res://Escenas/Enemigo2.tscn
-res://Escenas/barril.tscn
-res://Escenas/explosion.tscn
-res://Escenas/puerta.tscn
-res://Escenas/mejoras.tscn
 res://Escenas/Enemigo.tscn
 res://Escenas/Enemigo3.tscn
 res://torch.tscn
 res://Escenas/arma_escopeta.tscn
 res://Escenas/arma_base.tscn
-res://Scripts/player.gd
+res://Escenas/Mejoras.tscn
+res://Escenas/Mejoras.gd
+res://puerta.gd
+res://mejoras.gd

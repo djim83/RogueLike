@@ -1,34 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt01p8p1pdp7y"]
+[gd_scene load_steps=2 format=3 uid="uid://buxaoxibc6mp2"]
 
-[ext_resource type="Script" uid="uid://b01l1kyowwgf2" path="res://Escenas/mejoras.gd" id="1_1qbcq"]
+[ext_resource type="Script" uid="uid://dblru5dvxnnd3" path="res://mejoras.gd" id="1_01c73"]
 
-[node name="Control" type="Control"]
+[node name="Mejoras" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1502.0
-offset_bottom = 910.0
-script = ExtResource("1_1qbcq")
+offset_right = 1521.0
+offset_bottom = 894.0
+script = ExtResource("1_01c73")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1462.0
-offset_bottom = -870.0
+anchor_right = 37.539
+anchor_bottom = 22.301
+offset_left = -4.0
+offset_top = -9.0
+offset_right = -55588.8
+offset_bottom = -19030.1
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.992
+anchor_bottom = 1.006
+offset_left = 58.0
+offset_top = 250.0
+offset_right = -753.832
+offset_bottom = -496.364
+scale = Vector2(2, 2)
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button_Vida" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "AUMENTAR VIDA"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button_Municion" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "AUMENTAR MUNICIÓN"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button_Velocidad" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "AUMENTAR VELOCIDAD"
 
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button_Cadencia" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "AUMENTAR CADENCIA"

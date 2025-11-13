@@ -280,8 +280,8 @@ enemy_scene = ExtResource("4_anah5")
 enemy_scenes = Array[PackedScene]([ExtResource("13_42gsk"), ExtResource("14_5lda5"), ExtResource("4_anah5")])
 barril_scene = ExtResource("13_fnl5p")
 arma_scene = ExtResource("5_iv4k0")
-enemigos_min = 3
-enemigos_max = 50
+enemigos_min = 1
+enemigos_max = 1
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
 
