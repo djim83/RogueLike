@@ -6,3 +6,8 @@
 speed = 100.0
 life = 2.0
 tipo_disparo = 4
+vision_range = 250.0
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(20, 0)
+animation = &"Andar"

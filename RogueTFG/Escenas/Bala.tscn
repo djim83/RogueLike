@@ -11,7 +11,7 @@ radius = 12.0
 collision_layer = 8
 collision_mask = 213
 script = ExtResource("1_jql1f")
-speed = 800.0
+speed = 1500.0
 fragment_scene = ExtResource("2_taob5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

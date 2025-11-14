@@ -1,3 +1,6 @@
+AudioStreamPlayer2D
+AudioStreamPlayer
+AnimatedSprite2D
 Button
 VBoxContainer
 ColorRect
@@ -6,9 +9,7 @@ Label
 Sprite2D
 Node2D
 PointLight2D
-AnimatedSprite2D
 MarginContainer
 GPUParticles2D
 CPUParticles2D
 StaticBody2D
-RigidBody2D

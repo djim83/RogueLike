@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyvhf84ryrim5"]
+
+[ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_egtc4"]
+[ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="2_26rsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r67vn"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(368, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jema"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(384, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1svpn"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(400, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drmnx"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(416, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clbve"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(432, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf2lx"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(448, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfhhi"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(464, 84, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amdhy"]
+atlas = ExtResource("2_26rsr")
+region = Rect2(480, 84, 16, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ax4o8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r67vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jema")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1svpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drmnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clbve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf2lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfhhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amdhy")
+}],
+"loop": true,
+"name": &"Andar",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Quieto",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" instance=ExtResource("1_egtc4")]
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ax4o8")
+animation = &"Andar"
+frame_progress = 0.646224
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 8)

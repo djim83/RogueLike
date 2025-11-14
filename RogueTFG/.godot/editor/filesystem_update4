@@ -10,6 +10,6 @@ res://torch.tscn
 res://Escenas/arma_escopeta.tscn
 res://Escenas/arma_base.tscn
 res://Escenas/Mejoras.tscn
-res://Escenas/Mejoras.gd
-res://puerta.gd
-res://mejoras.gd
+res://Escenas/Enemigo4.tscn
+res://Scripts/player.gd
+res://Escenas/Cofre_Arma.tscn

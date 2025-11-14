@@ -23,6 +23,13 @@ var life: int = PlayerStats.vida
 @onready var btn_jugar: Button = $"../GameOverLayer/Panel/Jugar"
 @onready var btn_salir: Button = $"../GameOverLayer/Panel/Salir"
 
+@onready var anim_player: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var sonido_pistola: AudioStreamPlayer2D = $AudioDisparoPistola
+@onready var sonido_escopeta: AudioStreamPlayer2D = $AudioDisparoEscopeta
+
+
+
 var armas: Array[Arma] = []
 var arma_actual: int = 0
 var arma_secundaria: Arma = null
@@ -66,13 +73,24 @@ func _physics_process(delta: float) -> void:
 	velocity = move_dir * velocidad
 	time_since_last_shot += delta
 	move_and_slide()
-	
+
+	# --- Animación del jugador ---
+	if move_dir.length() > 0.1:
+		if anim_player.animation != "Andar":
+			anim_player.play("Andar")
+	else:
+		if anim_player.animation != "Quieto":
+			anim_player.play("Quieto")
+
 	if Input.is_action_pressed("disparo") and time_since_last_shot >= fire_rate:
 		shoot()
 		time_since_last_shot = 0.0	
 
 	if tiempo_invulnerable > 0:
 		tiempo_invulnerable -= delta
+		
+	anim_player.flip_h = mira_sprite.flip_h
+
 
 
 func _process(delta):
@@ -89,8 +107,8 @@ func _process(delta):
 		mira_sprite.scale = Vector2(4, 4)
 
 	# --- Controlar el flip según hacia dónde apunta el ratón ---
-	# Si el ratón está a la izquierda del jugador, volteamos el arma horizontalmente
-	mira_sprite.flip_v = false  # por seguridad, en caso de sprites mal rotados
+	# Si el ratón está a la izquierda del jugador, voltea el arma horizontalmente
+	mira_sprite.flip_v = false
 	mira_sprite.flip_h = (mouse_pos.x < global_position.x)
 
 	# --- Calcular posición del arma ---
@@ -139,6 +157,16 @@ func shoot():
 	if current_ammo <= 0:
 		return
 	current_ammo -= 1
+	
+# --- Sonido del disparo ---
+	if arma_actual == 0:
+	# Arma principal (pistola)
+		if sonido_pistola:
+			sonido_pistola.play()
+	else:
+	# Arma secundaria (escopeta)
+		if sonido_escopeta:
+			sonido_escopeta.play()
 
 	# Instancia la bala
 	var bala = bullet_scene.instantiate()
@@ -180,6 +208,6 @@ func _on_salir_pressed():
 func recoger_secundaria():
 	if not tiene_secundaria:
 		arma_secundaria = preload("res://Escenas/arma_escopeta.tscn").instantiate()
-		add_child(arma_secundaria)
+		#add_child(arma_secundaria)
 		tiene_secundaria = true
 		print("Secundaria recogida: Escopeta")
