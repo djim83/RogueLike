@@ -73,6 +73,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" instance=ExtResource("1_egtc4")]
+tipo_disparo = 0
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")

@@ -39,9 +39,6 @@ var enemigos: int = 0
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 func _ready():
-	# Ocultar el puntero
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
 	rng.randomize()
 	generate_random_walk_with_coverage()
 	update_wall_tiles()
@@ -71,8 +68,8 @@ func generate_random_walk_with_coverage():
 	var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 
 	while floor_tiles_count < target_floor_tiles:
-		for dx in range(-1, 4):
-			for dy in range(-1, 4):
+		for dx in range(-1, 5):
+			for dy in range(-1, 5):
 				var pos = position + Vector2i(dx, dy)
 				if pos.x >= 1 and pos.x < map_width - 1 and pos.y >= 1 and pos.y < map_height - 1:
 					if not visited.has(pos):
@@ -129,16 +126,33 @@ func generate_random_walk_with_coverage():
 
 func poner_enemigos(count: int):
 	var spawned := 0
-	while spawned < count:
+	var safety := count * 50  # evita bucles infinitos
+
+	while spawned < count and safety > 0:
+		safety -= 1
 		var pos = Vector2i(rng.randi_range(1, map_width - 2), rng.randi_range(1, map_height - 2))
-		if is_floor(pos):
+
+		# --- Validación de zona ---
+		if is_floor(pos) and es_zona_libre(pos):
 			var enemy_scene = enemy_scenes.pick_random()
 			var enemy = enemy_scene.instantiate()
-			enemy.global_position = map_to_local(pos)
-			enemy.set_spawn(map_to_local(pos))
+			var spawn_pos = map_to_local(pos)
+			enemy.global_position = spawn_pos
+			enemy.set_spawn(spawn_pos)
 			add_child(enemy)
 			spawned += 1
 			enemy.player = player
+
+
+func es_zona_libre(pos: Vector2i) -> bool:
+	# Comprueba que hay suelo en el centro y espacio alrededor (sin muros)
+	for x in range(-1, 2):
+		for y in range(-1, 2):
+			var check_pos = pos + Vector2i(x, y)
+			if not is_floor(check_pos):
+				return false
+	return true
+
 			
 func poner_barriles(count: int):
 	var spawned := 0

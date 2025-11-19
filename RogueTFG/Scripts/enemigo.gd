@@ -10,7 +10,7 @@ var change_direction_timer := 0.0
 @export var direction_interval := 1.0  # Cambia cada 1 segundo
 @export var tipo_disparo: int
 @export var vision_range: float = 500.0
-var player: Node2D = null  # Se asignará desde fuera
+var player: Node2D = null 
 
 @export var bullet_scene: PackedScene
 @export var municion_scene: PackedScene
@@ -129,16 +129,23 @@ func shoot_at_player():
 			for i in range(balas):
 				var angle = (TAU / balas) * i
 				var rotated_dir = Vector2.RIGHT.rotated(angle)
-				_spawn_bullet(rotated_dir)
+				_spawn_bullet(rotated_dir, 0.5, 3)
 
 		_:
 			# fallback al disparo normal
 			_spawn_bullet(dir)
 
 
-# Método auxiliar para no repetir código
-func _spawn_bullet(dir: Vector2):
+func _spawn_bullet(dir: Vector2, speed_multiplier: float = 1.0, lifeTime_multiplier: float = 1.0) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.direction = dir
+
+	var current_speed = bullet.get("speed")
+	if current_speed != null:
+		bullet.set("speed", float(current_speed) * float(speed_multiplier))
+	var current_lifeTime = bullet.get("lifetime")
+	if current_lifeTime != null:
+		bullet.set("lifetime", float(current_lifeTime) * float(lifeTime_multiplier))
+
 	get_parent().add_child(bullet)
