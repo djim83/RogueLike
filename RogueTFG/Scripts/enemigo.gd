@@ -36,6 +36,7 @@ func _process(delta):
 		# --- Perseguir al jugador ---
 		var dir_to_player = (player.global_position - global_position).normalized()
 		velocity = dir_to_player * speed
+		anim.flip_h = player.global_position.x < global_position.x
 
 		# --- Animación del enemigo ---
 		if velocity.length() > 0.1:
