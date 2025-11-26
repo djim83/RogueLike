@@ -10,6 +10,7 @@ var time_since_last_shot: float = 0.0
 
 @onready var tilemap: TileMap = $"../TileMap"
 @onready var camera: Camera2D = $Camera2D
+@onready var hud := $"../Hud"
 
 var max_ammo: int = PlayerStats.municion_pistola
 var current_ammo: int
@@ -44,6 +45,7 @@ var tiempo_invulnerable: float = 0.0
 
 func _ready():
 	current_ammo = max_ammo
+	actualizar_corazones()
 	
 	arma_base_scene = bullet_scene
 	arma_base_fire_rate = fire_rate
@@ -101,10 +103,10 @@ func _process(delta):
 	# --- Cambiar sprite del arma según el arma actual ---
 	if arma_actual == 0:
 		mira_sprite.texture = preload("res://Sprites/Armas/Pistola.png")
-		mira_sprite.scale = Vector2(4, 4)
+		mira_sprite.scale = Vector2(3, 3)
 	else:
 		mira_sprite.texture = preload("res://Sprites/Armas/Escopeta.png")
-		mira_sprite.scale = Vector2(4, 4)
+		mira_sprite.scale = Vector2(3, 3)
 
 	# --- Controlar el flip según hacia dónde apunta el ratón ---
 	# Si el ratón está a la izquierda del jugador, voltea el arma horizontalmente
@@ -143,6 +145,7 @@ func recibir_daño(amount: int = 1) -> void:
 		return  # Ignora daño mientras invulnerable
 
 	life = max(life - amount, 0)
+	actualizar_corazones()
 	print("Vida: ", life)
 
 	if life <= 0:
@@ -211,3 +214,20 @@ func recoger_secundaria():
 		#add_child(arma_secundaria)
 		tiene_secundaria = true
 		print("Secundaria recogida: Escopeta")
+
+func actualizar_corazones():
+	var contenedor: HBoxContainer = hud.get_node("ColorRect/Vida")
+
+	# Eliminar corazones previos
+	for c in contenedor.get_children():
+		c.queue_free()
+
+	var tex = preload("res://Sprites/Varios/vida.png")
+
+	for i in range(life):
+		var heart := TextureRect.new()
+		heart.texture = tex
+		heart.stretch_mode = TextureRect.STRETCH_SCALE
+		heart.custom_minimum_size = Vector2(64, 64)
+
+		contenedor.add_child(heart)

@@ -21,6 +21,9 @@ var time_since_last_shot: float = 0.0
 
 @onready var anim = $Sprite2D
 
+@export var laser_scene: PackedScene
+
+
 var drop_chance = 0.3  # 30% de probabilidad
 
 func _ready() -> void:
@@ -131,6 +134,9 @@ func shoot_at_player():
 				var angle = (TAU / balas) * i
 				var rotated_dir = Vector2.RIGHT.rotated(angle)
 				_spawn_bullet(rotated_dir, 0.5, 3)
+				
+		4:
+			_shoot_laser()
 
 		_:
 			# fallback al disparo normal
@@ -150,3 +156,16 @@ func _spawn_bullet(dir: Vector2, speed_multiplier: float = 1.0, lifeTime_multipl
 		bullet.set("lifetime", float(current_lifeTime) * float(lifeTime_multiplier))
 
 	get_parent().add_child(bullet)
+
+func _shoot_laser():
+	if not player:
+		return
+
+	var laser := laser_scene.instantiate()
+
+	var start := global_position
+	var end := player.global_position
+
+	laser.configure(start, end)
+
+	get_parent().add_child(laser)

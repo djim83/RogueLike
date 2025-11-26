@@ -8,4 +8,3 @@ extends CanvasLayer
 func _process(delta):
 	if player:
 		ammo_label.text = "Balas: %d" % player.current_ammo
-		vida_label.text = "Vida: %d" % player.life

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://sul02oqyi7vx"]
+
+[ext_resource type="Script" uid="uid://dkhhlule5ue4u" path="res://disparo_laser.gd" id="1_t1lty"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_t1lty")
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]

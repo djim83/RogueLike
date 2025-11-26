@@ -11,3 +11,4 @@ vision_range = 600.0
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(20, 0)
 animation = &"Andar"
+frame_progress = 0.42943

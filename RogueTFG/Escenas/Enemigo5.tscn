@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddai5ei6f2enq"]
+[gd_scene load_steps=16 format=3 uid="uid://ddai5ei6f2enq"]
 
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_vya0u"]
 [ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="2_4p8p0"]
+[ext_resource type="PackedScene" uid="uid://bf51ajv6qm3o2" path="res://Escenas/balaEnemigoGrande.tscn" id="2_epa1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epa1u"]
 atlas = ExtResource("2_4p8p0")
@@ -94,6 +95,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" instance=ExtResource("1_vya0u")]
+bullet_scene = ExtResource("2_epa1u")
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_yhjd1")

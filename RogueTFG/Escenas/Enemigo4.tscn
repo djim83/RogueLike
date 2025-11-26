@@ -78,7 +78,6 @@ tipo_disparo = 0
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")
 animation = &"Andar"
-frame_progress = 0.646224
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 8)

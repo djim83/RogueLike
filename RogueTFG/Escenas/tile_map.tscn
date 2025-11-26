@@ -339,8 +339,8 @@ enemy_scenes = Array[PackedScene]([ExtResource("13_42gsk"), ExtResource("14_5lda
 barril_scene = ExtResource("13_fnl5p")
 arma_scene = ExtResource("5_iv4k0")
 barriles = 3
-enemigos_min = 10
-enemigos_max = 10
+enemigos_min = 1
+enemigos_max = 2
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
 
@@ -353,10 +353,9 @@ script = ExtResource("4_xftlc")
 bullet_scene = ExtResource("6_qtlnl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="jugador"]
-scale = Vector2(6, 6)
+scale = Vector2(5.25, 5.25)
 sprite_frames = SubResource("SpriteFrames_j56ew")
-animation = &"Quieto"
-frame_progress = 0.835449
+animation = &"Andar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jugador"]
 shape = SubResource("CapsuleShape2D_03na7")
@@ -389,6 +388,7 @@ script = ExtResource("8_2cfip")
 [node name="ColorRect" type="ColorRect" parent="Hud"]
 offset_right = 250.0
 offset_bottom = 68.0
+color = Color(1, 1, 1, 0)
 
 [node name="Municion" type="Label" parent="Hud/ColorRect"]
 layout_mode = 1
@@ -405,20 +405,16 @@ theme_override_colors/font_color = Color(0.898261, 0.193037, 0.53193, 1)
 theme_override_fonts/font = SubResource("FontFile_2cfip")
 theme_override_font_sizes/font_size = 36
 
-[node name="Vida" type="Label" parent="Hud/ColorRect"]
+[node name="Vida" type="HBoxContainer" parent="Hud/ColorRect"]
+custom_minimum_size = Vector2(150, 32)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 39.0
-offset_right = -30.0
-offset_bottom = -1.0
+offset_right = 1256.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.898261, 0.193037, 0.53193, 1)
-theme_override_fonts/font = SubResource("FontFile_2cfip")
-theme_override_font_sizes/font_size = 36
+theme_override_constants/separation = 8
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 
