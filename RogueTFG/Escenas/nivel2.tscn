@@ -15,3 +15,4 @@ enemy_scene = ExtResource("2_tqhfi")
 enemy_scenes = Array[PackedScene]([ExtResource("2_tqhfi"), ExtResource("3_sd78f"), ExtResource("4_uu4ua")])
 total_enemy_groups = 2
 group_size_range = Vector2i(4, 5)
+current_biome = "fuego"

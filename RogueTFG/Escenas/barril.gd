@@ -3,6 +3,7 @@ extends Node2D
 var spawn_position: Vector2
 @export var life:int = 0
 @export var explosion_scene: PackedScene
+@onready var sonido_barril: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var current_direction := Vector2.ZERO
 
@@ -20,8 +21,8 @@ func set_spawn(pos: Vector2):
 func recibir_daño(amount: int = 1) -> void:
 	life -= amount
 	if life <= 0:
+		sonido_barril.play()
 		if explosion_scene:
-			queue_free()
 			var explosion = explosion_scene.instantiate()
 			explosion.global_position = global_position
 			get_parent().add_child(explosion)

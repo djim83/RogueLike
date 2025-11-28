@@ -23,6 +23,8 @@ var time_since_last_shot: float = 0.0
 
 @export var laser_scene: PackedScene
 
+@onready var sonido_muerte: AudioStreamPlayer2D = $SonidoMuerte
+
 
 var drop_chance = 0.3  # 30% de probabilidad
 
@@ -65,8 +67,7 @@ func _process(delta):
 			velocity = current_direction * speed
 
 	move_and_slide()
-	if life <= 0:
-		queue_free()
+	
 
 func get_random_direction() -> Vector2:
 	var angle = randf_range(0, TAU)
@@ -81,6 +82,7 @@ func _on_body_entered(body):
 func recibir_daño(amount: int = 1) -> void:
 	life -= amount
 	if life <= 0:
+		_play_death_sound()
 		# --- Intento de soltar munición ---
 		if municion_scene and randf() < drop_chance:
 			var pickup = municion_scene.instantiate()
@@ -97,7 +99,6 @@ func recibir_daño(amount: int = 1) -> void:
 					var puerta = puerta_scene.instantiate()
 					puerta.global_position = global_position
 					parent.add_child(puerta)
-
 		queue_free()
 
 	
@@ -169,3 +170,20 @@ func _shoot_laser():
 	laser.configure(start, end)
 
 	get_parent().add_child(laser)
+
+func _play_death_sound():
+	if not sonido_muerte or not sonido_muerte.stream:
+		return
+
+	var s = AudioStreamPlayer2D.new()
+	s.stream = sonido_muerte.stream
+	s.global_position = global_position
+	s.volume_db = sonido_muerte.volume_db
+	s.pitch_scale = sonido_muerte.pitch_scale
+
+	get_tree().current_scene.add_child(s)
+	s.play()
+
+	s.finished.connect(func():
+		s.queue_free()
+	)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2to2ssaohudr"]
+[gd_scene load_steps=8 format=3 uid="uid://c2to2ssaohudr"]
 
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_hxo5r"]
 [ext_resource type="Texture2D" uid="uid://b7oye4lav6c5y" path="res://Sprites/Enemigos/skull/v2/skull_v2_1.png" id="2_g8fjc"]
 [ext_resource type="Texture2D" uid="uid://c003c860co7ra" path="res://Sprites/Enemigos/skull/v2/skull_v2_2.png" id="3_a6mrs"]
 [ext_resource type="Texture2D" uid="uid://bbhf7a4injc2p" path="res://Sprites/Enemigos/skull/v2/skull_v2_3.png" id="4_cbs3e"]
 [ext_resource type="Texture2D" uid="uid://dlwshh4af34gx" path="res://Sprites/Enemigos/skull/v2/skull_v2_4.png" id="5_2johd"]
+[ext_resource type="AudioStream" uid="uid://b815re8ddrraw" path="res://Sounds/Muerte2.wav" id="6_a6mrs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ax4o8"]
 animations = [{
@@ -36,5 +37,7 @@ tipo_disparo = 1
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")
-animation = &"Andar"
 frame_progress = 0.605377
+
+[node name="SonidoMuerte" parent="." index="3"]
+stream = ExtResource("6_a6mrs")

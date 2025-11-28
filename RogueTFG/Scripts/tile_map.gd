@@ -3,10 +3,10 @@ extends TileMap
 @export var map_width := 288
 @export var map_height := 162
 
-@export var floor_tiles := [0]  # IDs de los suelos
-@export var wall_tiles := [9]      # Tile genérico de pared
+@export var floor_tiles := []  # IDs de los suelos
+@export var wall_tiles := []      # Tile genérico de pared
 @export var tile_source_id := 0
-@export var id_fondo: int
+@export var id_fondo: Array[int] = [11,8]
 @export var shadow_tile_id := 15  # Tile negro semitransparente para sombra
 
 @export var target_coverage := 0.6
@@ -35,11 +35,35 @@ var enemigos: int = 0
 
 @onready var game_over_panel: Panel = $GameOverLayer/Panel
 
+@export var biomas := {
+	"bosque": {
+		"floor": [31, 32, 33, 34, 35],     
+		"wall":  [21, 22, 23, 24, 25]     
+	},
+	"fuego": {
+		"floor": [26, 27, 28, 29, 30],  
+		"wall":  [17, 18, 19, 20]       
+	},
+	"agua": {
+		"floor": [0, 1, 2, 3],      
+		"wall":  [8, 12, 13, 14, 16]       
+	}
+}
+
+@export var current_biome: String = "bosque"
+
+
 
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 func _ready():
 	rng.randomize()
+	
+	# Aplicar automáticamente el bioma elegido
+	if biomas.has(current_biome):
+		floor_tiles = biomas[current_biome]["floor"]
+		wall_tiles = biomas[current_biome]["wall"]
+	
 	generate_random_walk_with_coverage()
 	update_wall_tiles()
 	
@@ -205,25 +229,16 @@ func choose_wall_tile(pos: Vector2i) -> int:
 	var left = is_wall(pos + Vector2i(-1, 0))
 	var right = is_wall(pos + Vector2i(1, 0))
 
-	# Ejemplos: asigna según vecinos
 	if not top and not left and bottom and right:
-		return id_fondo  # Esquina superior izquierda
+		return wall_tiles.pick_random()  # Esquina superior izquierda
 	elif not top and not right and bottom and left:
-		return 11  # Esquina superior derecha
+		return 111  # Esquina superior derecha
 	elif not bottom and not left and top and right:
-		return 12  # Esquina inferior izquierda
+		return 111  # Esquina inferior izquierda
 	elif not bottom and not right and top and left:
-		return 13  # Esquina inferior derecha
-	elif not top:
-		return 14  # Borde superior
-	elif not bottom:
-		return 15  # Borde inferior
-	elif not left:
-		return 16  # Borde izquierdo
-	elif not right:
-		return 17  # Borde derecho
+		return 111  # Esquina inferior derecha
 	else:
-		return wall_tiles[0]  # Centro / genérico
+		return wall_tiles.pick_random()  # Centro / genérico
 
 
 func poner_antorchas(count: int) -> void:

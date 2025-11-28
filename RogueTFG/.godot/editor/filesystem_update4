@@ -16,4 +16,11 @@ res://Escenas/Enemigo5.tscn
 res://menu_principal.tscn
 res://Escenas/balaEnemigoGrande.tscn
 res://Escenas/laser.tscn
-res://Scripts/player.gd
+res://Scripts/tile_map.gd
+res://mejoras.gd
+res://puerta.gd
+res://Escenas/nivel3.tscn
+res://Scripts/canvas_layer.gd
+res://Scripts/enemigo.gd
+res://Escenas/barril.tscn
+res://Escenas/barril.gd

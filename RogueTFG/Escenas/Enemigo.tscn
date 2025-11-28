@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dunntpqbcqum3"]
+[gd_scene load_steps=18 format=3 uid="uid://dunntpqbcqum3"]
 
 [ext_resource type="Script" uid="uid://brwiw6pkaysg6" path="res://Scripts/enemigo.gd" id="1_p2sjk"]
 [ext_resource type="PackedScene" uid="uid://bx6bfvfgm02v" path="res://Escenas/Bala_Enemigo.tscn" id="2_qws2e"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b65xw5eb4d8on" path="res://Escenas/puerta.tscn" id="4_c0vl1"]
 [ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="5_c0vl1"]
 [ext_resource type="PackedScene" uid="uid://sul02oqyi7vx" path="res://Escenas/laser.tscn" id="5_qxddr"]
+[ext_resource type="AudioStream" uid="uid://5auknfcghfie" path="res://Sounds/Muerte1.wav" id="7_r7vpg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0vl1"]
 atlas = ExtResource("5_c0vl1")
@@ -96,9 +97,12 @@ laser_scene = ExtResource("5_qxddr")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5tj7q")
-animation = &"Quieto"
+animation = &"Andar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_usilb")
 
 [node name="Node" type="Node" parent="."]
+
+[node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_r7vpg")

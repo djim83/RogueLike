@@ -7,6 +7,8 @@ extends Control
 @onready var btn_velocidad: Button = $VBoxContainer/Button_Velocidad
 @onready var btn_cadencia: Button = $VBoxContainer/Button_Cadencia
 
+static var previous_scene_path := ""
+
 func _ready() -> void:
 	btn_vida.pressed.connect(_on_btn_vida)
 	btn_municion.pressed.connect(_on_btn_municion)
@@ -42,10 +44,18 @@ func _on_btn_cadencia() -> void:
 	print("Mejora: Cadencia. Velocidad de disparo pasa de %f a %f" % [antes, despues])
 	_go_next()
 
-func _go_next() -> void:
-	# Cargamos siguiente escena (Nivel2)
-	if next_scene_path != "":
-		print("Cargando siguiente escena:", next_scene_path)
-		get_tree().change_scene_to_file(next_scene_path)
+func _go_next():
+	var next := ""
+
+	if previous_scene_path.ends_with("tile_map.tscn"):
+		next = "res://Escenas/Nivel2.tscn"
+	elif previous_scene_path.ends_with("Nivel2.tscn"):
+		next = "res://Escenas/Nivel3.tscn"
+	elif previous_scene_path.ends_with("Nivel3.tscn"):
+		next = "res://Escenas/Nivel4.tscn"
 	else:
-		queue_free()
+		# Si venimos de un nivel desconocido volvemos al menú
+		next = "res://Escenas/MenuPrincipal.tscn"
+
+	print("Cargando siguiente nivel:", next)
+	get_tree().change_scene_to_file(next)

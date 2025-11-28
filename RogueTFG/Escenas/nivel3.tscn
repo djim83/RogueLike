@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3spcguw7gipn"]
+
+[ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_y4k8w"]
+
+[node name="Node2D" instance=ExtResource("1_y4k8w")]
+
+[node name="TileMap" parent="." index="0"]
+current_biome = "bosque"
