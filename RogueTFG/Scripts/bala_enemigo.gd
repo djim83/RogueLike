@@ -7,7 +7,16 @@ var direction: Vector2 = Vector2.ZERO
 @export var fragment_scene: PackedScene  # referencia a la escena fragmento
 @export var fragments_count: int = 6  # cuántos fragmentos se crean
 
+@export var sprite_texture: Texture2D
+@onready var sprite := $Sprite2D
+@export var sprite_scale: Vector2 = Vector2.ONE
+
 func _ready():
+	if sprite_texture:
+		sprite.texture = sprite_texture
+	
+	sprite.scale = sprite_scale
+	
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	# Cuando pase "lifetime" segundos, se autodestruye
 	await get_tree().create_timer(lifetime).timeout
@@ -30,6 +39,13 @@ func _spawn_fragments():
 	for i in range(fragments_count):
 		var frag = fragment_scene.instantiate()
 		frag.global_position = global_position
-		var angle = randf_range(0, TAU)  # ángulo aleatorio
+
+		# Pasar el sprite al fragmento
+		frag.sprite_texture = sprite_texture
+		frag.sprite_scale = sprite_scale
+
+		# Dirección aleatoria
+		var angle = randf_range(0, TAU)
 		frag.direction = Vector2(cos(angle), sin(angle))
+
 		get_parent().add_child(frag)

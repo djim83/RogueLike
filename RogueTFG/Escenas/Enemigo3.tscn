@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2to2ssaohudr"]
+[gd_scene load_steps=9 format=3 uid="uid://c2to2ssaohudr"]
 
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_hxo5r"]
+[ext_resource type="Texture2D" uid="uid://ndmjp2x6w7f5" path="res://Sprites/Balas/azul.png" id="2_cbs3e"]
 [ext_resource type="Texture2D" uid="uid://b7oye4lav6c5y" path="res://Sprites/Enemigos/skull/v2/skull_v2_1.png" id="2_g8fjc"]
 [ext_resource type="Texture2D" uid="uid://c003c860co7ra" path="res://Sprites/Enemigos/skull/v2/skull_v2_2.png" id="3_a6mrs"]
 [ext_resource type="Texture2D" uid="uid://bbhf7a4injc2p" path="res://Sprites/Enemigos/skull/v2/skull_v2_3.png" id="4_cbs3e"]
@@ -26,7 +27,19 @@ animations = [{
 "name": &"Andar",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g8fjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a6mrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cbs3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2johd")
+}],
 "loop": true,
 "name": &"Quieto",
 "speed": 5.0
@@ -34,10 +47,14 @@ animations = [{
 
 [node name="CharacterBody2D" instance=ExtResource("1_hxo5r")]
 tipo_disparo = 1
+bullet_texture = ExtResource("2_cbs3e")
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")
-frame_progress = 0.605377
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, 0)
 
 [node name="SonidoMuerte" parent="." index="3"]
 stream = ExtResource("6_a6mrs")

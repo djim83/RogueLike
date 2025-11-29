@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyvhf84ryrim5"]
+[gd_scene load_steps=13 format=3 uid="uid://dyvhf84ryrim5"]
 
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_egtc4"]
 [ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="2_26rsr"]
+[ext_resource type="Texture2D" uid="uid://dbj17fvx28gou" path="res://Sprites/Balas/9.png" id="2_r67vn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r67vn"]
 atlas = ExtResource("2_26rsr")
@@ -66,7 +67,31 @@ animations = [{
 "name": &"Andar",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r67vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jema")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1svpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drmnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clbve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf2lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfhhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amdhy")
+}],
 "loop": true,
 "name": &"Quieto",
 "speed": 5.0
@@ -74,10 +99,12 @@ animations = [{
 
 [node name="CharacterBody2D" instance=ExtResource("1_egtc4")]
 tipo_disparo = 0
+bullet_texture = ExtResource("2_r67vn")
+bullet_scale = Vector2(4, 4)
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")
-animation = &"Andar"
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 8)

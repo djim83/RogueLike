@@ -24,6 +24,8 @@ var time_since_last_shot: float = 0.0
 @export var laser_scene: PackedScene
 
 @onready var sonido_muerte: AudioStreamPlayer2D = $SonidoMuerte
+@export var bullet_texture: Texture2D
+@export var bullet_scale: Vector2 = Vector2(2, 2) 
 
 
 var drop_chance = 0.3  # 30% de probabilidad
@@ -149,14 +151,24 @@ func _spawn_bullet(dir: Vector2, speed_multiplier: float = 1.0, lifeTime_multipl
 	bullet.global_position = global_position
 	bullet.direction = dir
 
+	# --- Asignar sprite según el enemigo ---
+	if bullet_texture:
+		bullet.sprite_texture = bullet_texture
+
+	# --- Asignar escala de bala según enemigo ---
+	bullet.sprite_scale = bullet_scale
+
+	# --- Ajustar velocidad si hace falta ---
 	var current_speed = bullet.get("speed")
 	if current_speed != null:
-		bullet.set("speed", float(current_speed) * float(speed_multiplier))
-	var current_lifeTime = bullet.get("lifetime")
-	if current_lifeTime != null:
-		bullet.set("lifetime", float(current_lifeTime) * float(lifeTime_multiplier))
+		bullet.speed = current_speed * speed_multiplier
+
+	var current_life = bullet.get("lifetime")
+	if current_life != null:
+		bullet.lifetime = current_life * lifeTime_multiplier
 
 	get_parent().add_child(bullet)
+
 
 func _shoot_laser():
 	if not player:

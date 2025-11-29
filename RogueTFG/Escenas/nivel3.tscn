@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3spcguw7gipn"]
+[gd_scene load_steps=7 format=3 uid="uid://d3spcguw7gipn"]
 
 [ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_y4k8w"]
+[ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="2_lie3y"]
+[ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="3_ffwoi"]
+[ext_resource type="PackedScene" uid="uid://c2to2ssaohudr" path="res://Escenas/Enemigo3.tscn" id="4_r7m2j"]
+[ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="5_aqt5w"]
+[ext_resource type="PackedScene" uid="uid://ddai5ei6f2enq" path="res://Escenas/Enemigo5.tscn" id="6_f7gwh"]
 
 [node name="Node2D" instance=ExtResource("1_y4k8w")]
 
 [node name="TileMap" parent="." index="0"]
+enemy_scenes = Array[PackedScene]([ExtResource("2_lie3y"), ExtResource("3_ffwoi"), ExtResource("4_r7m2j"), ExtResource("5_aqt5w"), ExtResource("6_f7gwh")])
 current_biome = "bosque"

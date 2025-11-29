@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=91 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://d26fihe1otd71" path="res://Tiles/Map_tile_99.png" id="10_6eva3"]
 [ext_resource type="Texture2D" uid="uid://bniwadwt4mp44" path="res://Tiles/agua.png" id="11_xsyxt"]
 [ext_resource type="Texture2D" uid="uid://gvc5372smwtf" path="res://Tiles/Map_tile_100.png" id="12_5k8b3"]
-[ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="13_42gsk"]
 [ext_resource type="Texture2D" uid="uid://cubdupe1lbc5d" path="res://Tiles/Map_tile_43.png" id="13_72o1c"]
 [ext_resource type="PackedScene" uid="uid://bia704fmh4afq" path="res://Escenas/barril.tscn" id="13_fnl5p"]
 [ext_resource type="PackedScene" uid="uid://c2to2ssaohudr" path="res://Escenas/Enemigo3.tscn" id="14_5lda5"]
@@ -47,6 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://cytfnsnqy2hb3" path="res://Tiles/Map_tile_47.png" id="26_00qfw"]
 [ext_resource type="Texture2D" uid="uid://ch07l3th3koh0" path="res://Tiles/Map_tile_60.png" id="27_pe2cy"]
 [ext_resource type="Texture2D" uid="uid://fg8b4r2cq12q" path="res://Tiles/Map_tile_64.png" id="28_2rrmj"]
+[ext_resource type="PackedScene" uid="uid://ox71vs3dspko" path="res://Escenas/Enemigo6.tscn" id="37_rt48k"]
+[ext_resource type="PackedScene" uid="uid://cecj3sdjv2xhb" path="res://Escenas/EnemigoSlime.tscn" id="38_5bk3m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lda5"]
 texture = ExtResource("1_c0sgf")
@@ -519,9 +520,9 @@ script = ExtResource("1_7yhko")
 floor_tiles = [2]
 wall_tiles = [11]
 enemy_scene = ExtResource("4_anah5")
-enemy_scenes = Array[PackedScene]([ExtResource("13_42gsk"), ExtResource("14_5lda5"), ExtResource("15_6g4xr")])
+enemy_scenes = Array[PackedScene]([ExtResource("14_5lda5"), ExtResource("15_6g4xr"), ExtResource("37_rt48k"), ExtResource("38_5bk3m")])
 barril_scene = ExtResource("13_fnl5p")
-min_enemy_distance_from_player = 1000.0
+min_enemy_distance_from_player = 500.0
 arma_scene = ExtResource("5_iv4k0")
 barriles = 3
 enemigos_min = 12

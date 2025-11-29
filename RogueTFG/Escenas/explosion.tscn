@@ -15,7 +15,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 8.0
 scale_curve = SubResource("CurveTexture_q7epf")
-color = Color(0.1924, 0.74, 0.648733, 1)
+color = Color(0.84, 0.5306, 0.126, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
 scale = Vector2(4, 4)

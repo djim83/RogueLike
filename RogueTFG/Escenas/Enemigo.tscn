@@ -1,57 +1,56 @@
-[gd_scene load_steps=18 format=3 uid="uid://dunntpqbcqum3"]
+[gd_scene load_steps=20 format=3 uid="uid://dunntpqbcqum3"]
 
 [ext_resource type="Script" uid="uid://brwiw6pkaysg6" path="res://Scripts/enemigo.gd" id="1_p2sjk"]
 [ext_resource type="PackedScene" uid="uid://bx6bfvfgm02v" path="res://Escenas/Bala_Enemigo.tscn" id="2_qws2e"]
 [ext_resource type="PackedScene" uid="uid://2lgax3weodrg" path="res://Escenas/Municion.tscn" id="3_id87n"]
 [ext_resource type="PackedScene" uid="uid://b65xw5eb4d8on" path="res://Escenas/puerta.tscn" id="4_c0vl1"]
-[ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="5_c0vl1"]
 [ext_resource type="PackedScene" uid="uid://sul02oqyi7vx" path="res://Escenas/laser.tscn" id="5_qxddr"]
+[ext_resource type="Texture2D" uid="uid://csg7klwcelfh3" path="res://Sprites/Enemigos/EnemigoRojo.png" id="6_r7vpg"]
 [ext_resource type="AudioStream" uid="uid://5auknfcghfie" path="res://Sounds/Muerte1.wav" id="7_r7vpg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0vl1"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(22, 430, 30, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qxddr"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(52, 430, 30, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r7vpg"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(82, 430, 30, 38)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1228h"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(112, 430, 30, 38)
+atlas = ExtResource("6_r7vpg")
+region = Rect2(1, 0, 32, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4phj"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(142, 430, 30, 38)
+atlas = ExtResource("6_r7vpg")
+region = Rect2(33, 0, 32, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tssr"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(172, 430, 30, 38)
+atlas = ExtResource("6_r7vpg")
+region = Rect2(65, 0, 32, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfo2i"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(202, 430, 30, 38)
+atlas = ExtResource("6_r7vpg")
+region = Rect2(97, 0, 32, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tj7q"]
-atlas = ExtResource("5_c0vl1")
-region = Rect2(112, 430, 30, 38)
+atlas = ExtResource("6_r7vpg")
+region = Rect2(129, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eojuk"]
+atlas = ExtResource("6_r7vpg")
+region = Rect2(161, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3e3a"]
+atlas = ExtResource("6_r7vpg")
+region = Rect2(193, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6m2h"]
+atlas = ExtResource("6_r7vpg")
+region = Rect2(225, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rwb1"]
+atlas = ExtResource("6_r7vpg")
+region = Rect2(97, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eacvh"]
+atlas = ExtResource("6_r7vpg")
+region = Rect2(225, 0, 32, 49)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5tj7q"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c0vl1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qxddr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r7vpg")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1228h")
 }, {
@@ -65,7 +64,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_bfo2i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1228h")
+"texture": SubResource("AtlasTexture_5tj7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eojuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3e3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6m2h")
 }],
 "loop": true,
 "name": &"Andar",
@@ -73,7 +81,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5tj7q")
+"texture": SubResource("AtlasTexture_0rwb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eacvh")
 }],
 "loop": true,
 "name": &"Quieto",
@@ -81,8 +92,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usilb"]
-radius = 35.0
-height = 110.0
+radius = 28.0
+height = 56.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Enemigos"]]
 collision_layer = 4
@@ -93,13 +104,16 @@ bullet_scene = ExtResource("2_qws2e")
 municion_scene = ExtResource("3_id87n")
 puerta_scene = ExtResource("4_c0vl1")
 laser_scene = ExtResource("5_qxddr")
+bullet_scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5tj7q")
-animation = &"Andar"
+animation = &"Quieto"
+frame_progress = 0.396462
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 10)
 shape = SubResource("CapsuleShape2D_usilb")
 
 [node name="Node" type="Node" parent="."]

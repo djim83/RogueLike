@@ -27,3 +27,11 @@ res://Escenas/barril.gd
 res://Scripts/player.gd
 res://Escenas/Bala_Escopeta.tscn
 res://Scripts/PlayerStats.gd
+res://Escenas/Enemigo6.tscn
+res://Shader/agua.gdshader
+res://Escenas/EnemigoAbeja.tscn
+res://Scripts/bala_enemigo.gd
+res://Scripts/fragmento_bala.gd
+res://Escenas/Fragmento_Bala.tscn
+res://Escenas/explosion.tscn
+res://Escenas/EnemigoSlime.tscn

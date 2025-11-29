@@ -4,7 +4,7 @@ extends TileMap
 @export var map_height := 162
 
 @export var floor_tiles := []  # IDs de los suelos
-@export var wall_tiles := []      # Tile genérico de pared
+@export var wall_tiles := []      
 @export var tile_source_id := 0
 @export var id_fondo: Array[int] = [11,8]
 @export var shadow_tile_id := 15  # Tile negro semitransparente para sombra
