@@ -16,6 +16,8 @@ extends TileMap
 @export var barril_scene: PackedScene
 @export var total_enemy_groups := 4
 @export var group_size_range := Vector2i(2, 3)  # Entre 2 y 3 enemigos por grupo
+@export var min_enemy_distance_from_player := 300.0
+
 
 @export var arma_scene: PackedScene
 
@@ -71,6 +73,7 @@ func _ready():
 	poner_armas(armas)
 	poner_barriles(barriles)
 	enemigos = randi_range(enemigos_min, enemigos_max)
+	await get_tree().process_frame
 	poner_enemigos(enemigos)
 	poner_antorchas(12)
 
@@ -150,22 +153,30 @@ func generate_random_walk_with_coverage():
 
 func poner_enemigos(count: int):
 	var spawned := 0
-	var safety := count * 50  # evita bucles infinitos
+	var safety := count * 50
 
 	while spawned < count and safety > 0:
 		safety -= 1
 		var pos = Vector2i(rng.randi_range(1, map_width - 2), rng.randi_range(1, map_height - 2))
 
-		# --- Validación de zona ---
+		var world_pos = map_to_local(pos)
+
+		# Distancia mínima con el jugador
+		if player and world_pos.distance_to(player.global_position) < min_enemy_distance_from_player:
+			continue
+
+		# Validación de zona
 		if is_floor(pos) and es_zona_libre(pos):
 			var enemy_scene = enemy_scenes.pick_random()
 			var enemy = enemy_scene.instantiate()
-			var spawn_pos = map_to_local(pos)
-			enemy.global_position = spawn_pos
-			enemy.set_spawn(spawn_pos)
+
+			enemy.global_position = world_pos
+			enemy.set_spawn(world_pos)
 			add_child(enemy)
-			spawned += 1
 			enemy.player = player
+
+			spawned += 1
+
 
 
 func es_zona_libre(pos: Vector2i) -> bool:

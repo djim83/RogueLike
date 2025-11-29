@@ -103,10 +103,10 @@ func _process(delta):
 	# --- Cambiar sprite del arma según el arma actual ---
 	if arma_actual == 0:
 		mira_sprite.texture = preload("res://Sprites/Armas/Pistola.png")
-		mira_sprite.scale = Vector2(3, 3)
+		mira_sprite.scale = Vector2(4, 4)
 	else:
 		mira_sprite.texture = preload("res://Sprites/Armas/Escopeta.png")
-		mira_sprite.scale = Vector2(3, 3)
+		mira_sprite.scale = Vector2(4, 4)
 
 	# --- Controlar el flip según hacia dónde apunta el ratón ---
 	# Si el ratón está a la izquierda del jugador, voltea el arma horizontalmente
@@ -161,7 +161,7 @@ func shoot():
 		return
 	current_ammo -= 1
 	
-# --- Sonido del disparo ---
+	# Sonido del disparo ---
 	if arma_actual == 0:
 	# Arma principal (pistola)
 		if sonido_pistola:
@@ -181,7 +181,7 @@ func shoot():
 	var dir := Vector2.RIGHT.rotated(canon.global_rotation).normalized()
 
 	# Posición inicial de la bala, ligeramente delante del cañón
-	bala.global_position = muzzle + dir * 10.0
+	bala.global_position = muzzle + dir * 20.0
 	bala.direction = dir
 	bala.rotation = dir.angle()
 

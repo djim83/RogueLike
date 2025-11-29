@@ -24,3 +24,6 @@ res://Scripts/canvas_layer.gd
 res://Scripts/enemigo.gd
 res://Escenas/barril.tscn
 res://Escenas/barril.gd
+res://Scripts/player.gd
+res://Escenas/Bala_Escopeta.tscn
+res://Scripts/PlayerStats.gd

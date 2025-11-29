@@ -327,8 +327,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03na7"]
-radius = 30.0
-height = 100.0
+radius = 22.8571
+height = 85.7143
 
 [sub_resource type="FontFile" id="FontFile_2cfip"]
 subpixel_positioning = 0
@@ -521,10 +521,11 @@ wall_tiles = [11]
 enemy_scene = ExtResource("4_anah5")
 enemy_scenes = Array[PackedScene]([ExtResource("13_42gsk"), ExtResource("14_5lda5"), ExtResource("15_6g4xr")])
 barril_scene = ExtResource("13_fnl5p")
+min_enemy_distance_from_player = 1000.0
 arma_scene = ExtResource("5_iv4k0")
 barriles = 3
-enemigos_min = 2
-enemigos_max = 3
+enemigos_min = 12
+enemigos_max = 12
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
 current_biome = "agua"

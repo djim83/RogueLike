@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqyxwnpk8638p"]
 
 [ext_resource type="Script" uid="uid://dqdg6xhsqlqw5" path="res://Scripts/bala.gd" id="1_jql1f"]
-[ext_resource type="Texture2D" uid="uid://cadjgl7vv4rqw" path="res://Sprites/Balas/roja.png" id="1_pu3jq"]
 [ext_resource type="PackedScene" uid="uid://cnj36syi55g8p" path="res://Escenas/Fragmento_Bala.tscn" id="2_taob5"]
+[ext_resource type="Texture2D" uid="uid://dn1mpppbrxa72" path="res://Sprites/Balas/3.png" id="3_whhc3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jql1f"]
 radius = 12.0
@@ -15,7 +15,8 @@ speed = 1500.0
 fragment_scene = ExtResource("2_taob5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_pu3jq")
+scale = Vector2(8, 8)
+texture = ExtResource("3_whhc3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jql1f")
