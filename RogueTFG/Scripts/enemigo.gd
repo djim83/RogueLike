@@ -91,7 +91,7 @@ func recibir_daño(amount: int = 1) -> void:
 			pickup.global_position = global_position
 			get_parent().add_child(pickup)
 
-		# --- Comprobar si es el último enemigo ---
+		# Comprobar si es el último enemigo 
 		var parent = get_parent()
 		if parent:
 			var enemies_left = get_tree().get_nodes_in_group("Enemigos")
@@ -151,14 +151,14 @@ func _spawn_bullet(dir: Vector2, speed_multiplier: float = 1.0, lifeTime_multipl
 	bullet.global_position = global_position
 	bullet.direction = dir
 
-	# --- Asignar sprite según el enemigo ---
+	# Asignar sprite según el enemigo 
 	if bullet_texture:
 		bullet.sprite_texture = bullet_texture
 
-	# --- Asignar escala de bala según enemigo ---
+	# Asignar escala de bala según enemigo 
 	bullet.sprite_scale = bullet_scale
 
-	# --- Ajustar velocidad si hace falta ---
+	# Ajustar velocidad
 	var current_speed = bullet.get("speed")
 	if current_speed != null:
 		bullet.speed = current_speed * speed_multiplier

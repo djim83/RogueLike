@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqdg6xhsqlqw5" path="res://Scripts/bala.gd" id="1_eo72e"]
 [ext_resource type="PackedScene" uid="uid://bqae3dkdrgyom" path="res://Escenas/Fragmento_Escopeta.tscn" id="2_eo72e"]
-[ext_resource type="Texture2D" uid="uid://dfa36rofc5nao" path="res://Sprites/Balas/1.png" id="3_eo72e"]
+[ext_resource type="Texture2D" uid="uid://6h1yjo4jehhp" path="res://Sprites/Balas/10.png" id="3_eo72e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jql1f"]
 radius = 12.0
@@ -15,7 +15,7 @@ fragment_scene = ExtResource("2_eo72e")
 fragments_count = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(4, 4)
 texture = ExtResource("3_eo72e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -105,8 +105,10 @@ func _process(delta):
 		mira_sprite.texture = preload("res://Sprites/Armas/Pistola.png")
 		mira_sprite.scale = Vector2(4, 4)
 	else:
-		mira_sprite.texture = preload("res://Sprites/Armas/Escopeta.png")
-		mira_sprite.scale = Vector2(4, 4)
+		if arma_secundaria:
+			mira_sprite.texture = arma_secundaria.sprite
+			mira_sprite.scale = Vector2(4, 4)
+
 
 	# --- Controlar el flip según hacia dónde apunta el ratón ---
 	# Si el ratón está a la izquierda del jugador, voltea el arma horizontalmente
@@ -131,7 +133,7 @@ func _process(delta):
 		if arma_actual == 0:
 			arma_actual = 1
 			bullet_scene = arma_secundaria.bullet_scene
-			fire_rate = 0.3
+			fire_rate = arma_secundaria.fire_rate
 			print("Arma actual: Secundaria (Escopeta)")
 		else:
 			arma_actual = 0
@@ -160,33 +162,37 @@ func shoot():
 	if current_ammo <= 0:
 		return
 	current_ammo -= 1
-	
-	# Sonido del disparo ---
+
+	# --- Sonido del disparo ---
 	if arma_actual == 0:
-	# Arma principal (pistola)
+		# Arma principal — pistola
 		if sonido_pistola:
 			sonido_pistola.play()
 	else:
-	# Arma secundaria (escopeta)
-		if sonido_escopeta:
-			sonido_escopeta.play()
+		# Arma secundaria — sonido definido por el arma
+		if arma_secundaria and arma_secundaria.sonido_disparo:
+			var s := AudioStreamPlayer.new()
+			s.stream = arma_secundaria.sonido_disparo
+			add_child(s)
+			s.play()
 
-	# Instancia la bala
+			s.finished.connect(func():
+				await get_tree().process_frame
+				s.queue_free()
+			)
+
+	# --- Instanciar bala ---
 	var bala = bullet_scene.instantiate()
 
-	# Punto de salida del disparo (el cañón del arma)
 	var muzzle := canon.global_position
-
-	# Dirección según la rotación del cañón (NO del ratón)
 	var dir := Vector2.RIGHT.rotated(canon.global_rotation).normalized()
 
-	# Posición inicial de la bala, ligeramente delante del cañón
 	bala.global_position = muzzle + dir * 20.0
 	bala.direction = dir
 	bala.rotation = dir.angle()
 
-	# Añadir la bala al árbol de la escena
 	get_parent().add_child(bala)
+
 
 
 func sumar_municion(amount: int):
@@ -208,12 +214,27 @@ func _on_salir_pressed():
 	print("Cerrar")
 
 
-func recoger_secundaria():
-	if not tiene_secundaria:
-		arma_secundaria = preload("res://Escenas/arma_escopeta.tscn").instantiate()
-		#add_child(arma_secundaria)
-		tiene_secundaria = true
-		print("Secundaria recogida: Escopeta")
+func recoger_secundaria(arma_packed: PackedScene) -> void:
+	if not arma_packed:
+		return
+
+	# Si ya tienes una secundaria previa, la borramos
+	if arma_secundaria and arma_secundaria.is_inside_tree():
+		arma_secundaria.queue_free()
+		arma_secundaria = null
+		tiene_secundaria = false
+
+	# Instanciamos la arma secundaria pero NO la equipamos automáticamente
+	var nueva_arma = arma_packed.instantiate()
+	arma_secundaria = nueva_arma
+	tiene_secundaria = true
+
+	add_child(arma_secundaria)
+
+	print("Secundaria recogida:", arma_secundaria.nombre)
+
+
+
 
 func actualizar_corazones():
 	var contenedor: HBoxContainer = hud.get_node("ColorRect/Vida")

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjw5h3aasn85e"]
+[gd_scene load_steps=4 format=3 uid="uid://cjw5h3aasn85e"]
 
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_pvpah"]
 [ext_resource type="Texture2D" uid="uid://dhcesdcl1iusg" path="res://Sprites/Balas/8.png" id="2_7jiol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jiol"]
+size = Vector2(66, 108)
 
 [node name="CharacterBody2D" instance=ExtResource("1_pvpah")]
 speed = 100.0
@@ -13,7 +16,9 @@ bullet_scale = Vector2(6, 6)
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(20, 0)
-frame_progress = 0.0
+animation = &"Andar"
+frame_progress = 0.726883
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 3)
+position = Vector2(23, 0)
+shape = SubResource("RectangleShape2D_7jiol")

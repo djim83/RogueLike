@@ -51,6 +51,7 @@ bullet_texture = ExtResource("2_cbs3e")
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")
+animation = &"Andar"
 frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]

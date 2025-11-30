@@ -524,6 +524,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("14_5lda5"), ExtResource("15_6g4x
 barril_scene = ExtResource("13_fnl5p")
 min_enemy_distance_from_player = 500.0
 arma_scene = ExtResource("5_iv4k0")
+armas = 8
 barriles = 3
 enemigos_min = 12
 enemigos_max = 12

@@ -13,7 +13,7 @@ func _ready():
 	# Asignar sprite si viene desde la bala
 	if sprite_texture:
 		sprite.texture = sprite_texture
-		sprite.scale = sprite_scale
+		sprite.scale = sprite_scale / 4
 
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://02al1xwhqxty"]
+
+[ext_resource type="Script" uid="uid://b2puul8ostev1" path="res://arma.gd" id="1_vokty"]
+[ext_resource type="Texture2D" uid="uid://dhvarnbo2y0ru" path="res://Sprites/Armas/10_1.png" id="2_vokty"]
+[ext_resource type="PackedScene" uid="uid://n23cgahi6p3q" path="res://Escenas/Bala_Agua.tscn" id="3_s73t1"]
+[ext_resource type="AudioStream" uid="uid://bdk08refuddec" path="res://Sounds/Retro.wav" id="4_ttu0w"]
+
+[node name="ArmaPistola" type="Node2D"]
+script = ExtResource("1_vokty")
+nombre = "Pistola"
+sprite = ExtResource("2_vokty")
+bullet_scene = ExtResource("3_s73t1")
+fire_rate = 0.2
+fire_sound = ExtResource("4_ttu0w")
+bullet_scale = Vector2(3, 3)
+sonido_disparo = ExtResource("4_ttu0w")

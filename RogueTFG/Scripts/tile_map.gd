@@ -199,15 +199,26 @@ func poner_barriles(count: int):
 			add_child(barril)
 			spawned += 1
 			
+# armas_disponibles: array de PackedScene
+var armas_disponibles := [
+	preload("res://Escenas/arma_agua.tscn"),
+	preload("res://Escenas/arma_pistola.tscn")
+]
+
 func poner_armas(count: int):
 	var spawned := 0
 	while spawned < count:
 		var pos = Vector2i(rng.randi_range(1, map_width - 2), rng.randi_range(1, map_height - 2))
+
 		if is_floor(pos):
-			var arma = arma_scene.instantiate()
-			arma.global_position = map_to_local(pos)
-			add_child(arma)
+			var pickup = arma_scene.instantiate() 
+
+			pickup.arma_scene = armas_disponibles.pick_random()
+			pickup.global_position = map_to_local(pos)
+
+			add_child(pickup)
 			spawned += 1
+
 
 			
 			
