@@ -16,11 +16,7 @@ func _ready() -> void:
 	btn_cadencia.pressed.connect(_on_btn_cadencia)
 
 func _on_btn_vida() -> void:
-	var antes = PlayerStats.max_vida
-	PlayerStats.max_vida += 1
-	PlayerStats.vida = PlayerStats.max_vida
-	var despues = PlayerStats.max_vida
-	print("Mejora: Vida. Vida máxima pasa de %d a %d" % [antes, despues])
+	PlayerStats.vida += 1
 	_go_next()
 
 func _on_btn_municion() -> void:

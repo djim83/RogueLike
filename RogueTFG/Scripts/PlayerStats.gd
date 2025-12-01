@@ -7,3 +7,5 @@ var vida: int = 5
 var max_vida: int = 3
 var velocidad_disparo: float = 0.1
 var municion_pistola: float = 500
+var secondary_weapon_scene: PackedScene = null
+var has_secondary_weapon: bool = false

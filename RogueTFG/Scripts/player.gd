@@ -49,6 +49,7 @@ func _ready():
 	
 	arma_base_scene = bullet_scene
 	arma_base_fire_rate = fire_rate
+
 	
 	var tile_pos = tilemap.player_spawn_tile
 	var world_pos = tilemap.map_to_local(tile_pos)
@@ -147,6 +148,7 @@ func recibir_daño(amount: int = 1) -> void:
 		return  # Ignora daño mientras invulnerable
 
 	life = max(life - amount, 0)
+	PlayerStats.vida = life
 	actualizar_corazones()
 	print("Vida: ", life)
 
@@ -162,7 +164,8 @@ func shoot():
 	if current_ammo <= 0:
 		return
 	current_ammo -= 1
-
+	PlayerStats.municion_pistola = current_ammo
+	
 	# --- Sonido del disparo ---
 	if arma_actual == 0:
 		# Arma principal — pistola
@@ -197,6 +200,7 @@ func shoot():
 
 func sumar_municion(amount: int):
 	current_ammo += amount
+	PlayerStats.municion_pistola = current_ammo
 	
 
 func game_over():
@@ -218,21 +222,25 @@ func recoger_secundaria(arma_packed: PackedScene) -> void:
 	if not arma_packed:
 		return
 
-	# Si ya tienes una secundaria previa, la borramos
+	# Eliminar la antigua
 	if arma_secundaria and arma_secundaria.is_inside_tree():
 		arma_secundaria.queue_free()
-		arma_secundaria = null
-		tiene_secundaria = false
 
-	# Instanciamos la arma secundaria pero NO la equipamos automáticamente
-	var nueva_arma = arma_packed.instantiate()
-	arma_secundaria = nueva_arma
+	# Instanciar nueva arma secundaria
+	arma_secundaria = arma_packed.instantiate()
 	tiene_secundaria = true
-
 	add_child(arma_secundaria)
+	
+	PlayerStats.secondary_weapon_scene = arma_packed
+	PlayerStats.has_secondary_weapon = true
 
 	print("Secundaria recogida:", arma_secundaria.nombre)
 
+	# Si el jugador está usando la secundaria ahora mismo
+	# hay que actualizar inmediatamente bullet_scene y fire_rate
+	if arma_actual == 1:
+		bullet_scene = arma_secundaria.bullet_scene
+		fire_rate = arma_secundaria.fire_rate
 
 
 
