@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05d1kuxwt8qg"
-path="res://.godot/imported/vida.png-493fd81ba4f2f2e797dad29b26c6489f.ctex"
+uid="uid://dk4luaxpab1b8"
+path="res://.godot/imported/MenuFondo.png-70e3d8d92b4993e9e13231312085c4cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Varios/vida.png"
-dest_files=["res://.godot/imported/vida.png-493fd81ba4f2f2e797dad29b26c6489f.ctex"]
+source_file="res://Sprites/Varios/MenuFondo.png"
+dest_files=["res://.godot/imported/MenuFondo.png-70e3d8d92b4993e9e13231312085c4cc.ctex"]
 
 [params]
 

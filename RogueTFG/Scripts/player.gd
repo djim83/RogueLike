@@ -50,6 +50,13 @@ func _ready():
 	arma_base_scene = bullet_scene
 	arma_base_fire_rate = fire_rate
 
+	if PlayerStats.has_secondary_weapon and PlayerStats.secondary_weapon_scene:
+		arma_secundaria = PlayerStats.secondary_weapon_scene.instantiate()
+		tiene_secundaria = true
+		add_child(arma_secundaria)
+
+		print("Secundaria restaurada:", arma_secundaria.nombre)
+
 	
 	var tile_pos = tilemap.player_spawn_tile
 	var world_pos = tilemap.map_to_local(tile_pos)
@@ -247,16 +254,17 @@ func recoger_secundaria(arma_packed: PackedScene) -> void:
 func actualizar_corazones():
 	var contenedor: HBoxContainer = hud.get_node("ColorRect/Vida")
 
-	# Eliminar corazones previos
 	for c in contenedor.get_children():
 		c.queue_free()
 
 	var tex = preload("res://Sprites/Varios/vida.png")
-
+	
 	for i in range(life):
 		var heart := TextureRect.new()
 		heart.texture = tex
-		heart.stretch_mode = TextureRect.STRETCH_SCALE
-		heart.custom_minimum_size = Vector2(64, 64)
+		heart.custom_minimum_size = Vector2(32, 32)
+		heart.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		heart.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		heart.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
 		contenedor.add_child(heart)

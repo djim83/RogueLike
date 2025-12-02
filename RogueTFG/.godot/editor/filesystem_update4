@@ -13,3 +13,4 @@ res://Escenas/Bala_Agua.tscn
 res://Scripts/PlayerStats.gd
 res://Scripts/player.gd
 res://mejoras.gd
+res://menu_principal.tscn

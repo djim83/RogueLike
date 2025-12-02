@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c306fc06nw342"]
 
-[ext_resource type="Texture2D" uid="uid://dt61xpn7spyfc" path="res://Sprites/Menu/FondoMenu.png" id="1_bj1uy"]
 [ext_resource type="Script" uid="uid://diblhvyywyu2r" path="res://menu_principal.gd" id="1_gmcsc"]
+[ext_resource type="Texture2D" uid="uid://dk4luaxpab1b8" path="res://Sprites/Varios/MenuFondo.png" id="2_gmcsc"]
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -12,17 +12,17 @@ script = ExtResource("1_gmcsc")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_top = -41.0
+offset_top = -102.0
 offset_right = 1536.0
-offset_bottom = 983.0
-texture = ExtResource("1_bj1uy")
+offset_bottom = 922.0
+texture = ExtResource("2_gmcsc")
 
 [node name="Botonera" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 943.0
-offset_top = 510.0
-offset_right = 1403.0
-offset_bottom = 827.0
+offset_left = 934.0
+offset_top = 149.0
+offset_right = 1394.0
+offset_bottom = 466.0
 
 [node name="BtnIniciar" type="Button" parent="Botonera"]
 layout_mode = 2
