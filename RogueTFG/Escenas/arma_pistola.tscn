@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b2puul8ostev1" path="res://arma.gd" id="1_1b8na"]
 [ext_resource type="Texture2D" uid="uid://bfuluhngby7gk" path="res://Sprites/Armas/9_1.png" id="2_hwwxo"]
-[ext_resource type="PackedScene" uid="uid://dqyxwnpk8638p" path="res://Escenas/Bala.tscn" id="3_65y6a"]
-[ext_resource type="AudioStream" uid="uid://b815re8ddrraw" path="res://Sounds/Muerte2.wav" id="4_hwwxo"]
+[ext_resource type="PackedScene" uid="uid://wdtiyrwqsb0l" path="res://Escenas/Bala_pistola.tscn" id="3_hwwxo"]
+[ext_resource type="AudioStream" uid="uid://djb4yneyyjcvr" path="res://Sounds/bubble.mp3" id="4_hwwxo"]
 
 [node name="ArmaPistola" type="Node2D"]
 script = ExtResource("1_1b8na")
 nombre = "Pistola"
 sprite = ExtResource("2_hwwxo")
-bullet_scene = ExtResource("3_65y6a")
+bullet_scene = ExtResource("3_hwwxo")
 fire_rate = 0.1
 bullet_scale = Vector2(3, 3)
 sonido_disparo = ExtResource("4_hwwxo")

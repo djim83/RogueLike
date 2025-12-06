@@ -1,6 +1,6 @@
 extends Control
 
-@export var next_scene_path: String = "res://Escenas/Nivel2.tscn"
+@export var next_scene_path: String = "res://Escenas/nivel2.tscn"
 
 @onready var btn_vida: Button = $VBoxContainer/Button_Vida
 @onready var btn_municion: Button = $VBoxContainer/Button_Municion
@@ -44,14 +44,14 @@ func _go_next():
 	var next := ""
 
 	if previous_scene_path.ends_with("tile_map.tscn"):
-		next = "res://Escenas/Nivel2.tscn"
-	elif previous_scene_path.ends_with("Nivel2.tscn"):
-		next = "res://Escenas/Nivel3.tscn"
-	elif previous_scene_path.ends_with("Nivel3.tscn"):
-		next = "res://Escenas/Nivel4.tscn"
+		next = "res://Escenas/nivel2.tscn"
+	elif previous_scene_path.ends_with("nivel2.tscn"):
+		next = "res://Escenas/nivel3.tscn"
+	elif previous_scene_path.ends_with("nivel3.tscn"):
+		next = "res://Escenas/nivel4.tscn"
 	else:
 		# Si venimos de un nivel desconocido volvemos al menú
-		next = "res://Escenas/MenuPrincipal.tscn"
+		next = "res://Escenas/menu_principal"
 
 	print("Cargando siguiente nivel:", next)
 	get_tree().change_scene_to_file(next)

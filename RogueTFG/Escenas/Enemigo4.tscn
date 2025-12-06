@@ -104,7 +104,7 @@ bullet_scale = Vector2(4, 4)
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ax4o8")
-frame_progress = 0.0
+frame_progress = 0.504174
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 8)
+position = Vector2(-1, 7)

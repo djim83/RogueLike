@@ -28,7 +28,7 @@ var time_since_last_shot: float = 0.0
 @export var bullet_scale: Vector2 = Vector2(2, 2) 
 
 
-var drop_chance = 0.3  # 30% de probabilidad
+var drop_chance = 0.4  # 40% de probabilidad
 
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))

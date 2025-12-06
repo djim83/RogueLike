@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TFG"
-run/main_scene="uid://cvheuf6g8f1ee"
+run/main_scene="uid://c306fc06nw342"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -60,5 +60,7 @@ cambio_arma={
 
 [rendering]
 
+textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
