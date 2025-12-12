@@ -7,6 +7,7 @@
 [node name="Node2D" instance=ExtResource("1_jfe0r")]
 
 [node name="TileMap" parent="." index="0"]
+target_coverage = 0.4
 enemy_scenes = Array[PackedScene]([ExtResource("5_sqbcj"), ExtResource("2_vaoqd")])
 total_enemy_groups = 5
 group_size_range = Vector2i(4, 5)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://buxaoxibc6mp2"]
+[gd_scene load_steps=3 format=3 uid="uid://buxaoxibc6mp2"]
 
 [ext_resource type="Script" uid="uid://dblru5dvxnnd3" path="res://mejoras.gd" id="1_01c73"]
+[ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_76a6x"]
 
 [node name="Mejoras" type="Control"]
 layout_mode = 3
@@ -8,6 +9,22 @@ anchors_preset = 0
 offset_right = 1521.0
 offset_bottom = 894.0
 script = ExtResource("1_01c73")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 101.0
+offset_top = 15.0
+offset_right = 1381.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(1, 0.823529, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_76a6x")
+theme_override_font_sizes/font_size = 80
+text = "ELIGE UNA MEJORA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -32,19 +49,3 @@ offset_top = 250.0
 offset_right = -753.832
 offset_bottom = -496.364
 scale = Vector2(2, 2)
-
-[node name="Button_Vida" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "AUMENTAR VIDA"
-
-[node name="Button_Municion" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "AUMENTAR MUNICIÓN"
-
-[node name="Button_Velocidad" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "AUMENTAR VELOCIDAD"
-
-[node name="Button_Cadencia" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "AUMENTAR CADENCIA"

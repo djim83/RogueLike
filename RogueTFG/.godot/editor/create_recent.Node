@@ -1,3 +1,6 @@
+Label
+TextureRect
+AnimatedSprite2D
 AudioStreamPlayer2D
 HBoxContainer
 Area2D
@@ -6,9 +9,6 @@ Node2D
 Node
 Button
 VBoxContainer
-TextureRect
 Control
 AudioStreamPlayer
-AnimatedSprite2D
 ColorRect
-Label

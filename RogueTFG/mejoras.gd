@@ -2,43 +2,91 @@ extends Control
 
 @export var next_scene_path: String = "res://Escenas/nivel2.tscn"
 
-@onready var btn_vida: Button = $VBoxContainer/Button_Vida
-@onready var btn_municion: Button = $VBoxContainer/Button_Municion
-@onready var btn_velocidad: Button = $VBoxContainer/Button_Velocidad
-@onready var btn_cadencia: Button = $VBoxContainer/Button_Cadencia
-
 static var previous_scene_path := ""
 
-func _ready() -> void:
-	btn_vida.pressed.connect(_on_btn_vida)
-	btn_municion.pressed.connect(_on_btn_municion)
-	btn_velocidad.pressed.connect(_on_btn_velocidad)
-	btn_cadencia.pressed.connect(_on_btn_cadencia)
+@onready var contenedor := $VBoxContainer
+@onready var titulo: Label = $Label
 
-func _on_btn_vida() -> void:
+var mejoras := [
+	{
+	"texto": "Vida +1",
+	"accion": func():
 	PlayerStats.vida += 1
-	_go_next()
+	},
 
-func _on_btn_municion() -> void:
-	var antes = PlayerStats.municion_pistola
-	PlayerStats.municion_pistola += 50
-	var despues = PlayerStats.municion_pistola
-	print("Mejora: Munición. Munición pasa de %d a %d" % [antes, despues])
-	_go_next()
+	{
+	"texto": "Vida +2",
+	"accion": func():
+	PlayerStats.vida += 2
+	},
 
-func _on_btn_velocidad() -> void:
-	var antes = PlayerStats.velocidad
+	{
+	"texto": "Munición +100",
+	"accion": func():
+	PlayerStats.municion_pistola += 100
+	},
+
+	{
+	"texto": "Munición +200",
+	"accion": func():
+	PlayerStats.municion_pistola += 200
+	},
+
+	{
+	"texto": "Velocidad +10%",
+	"accion": func():
+	PlayerStats.velocidad *= 1.10
+	},
+
+	{
+	"texto": "Velocidad +20%",
+	"accion": func():
 	PlayerStats.velocidad *= 1.20
-	var despues = PlayerStats.velocidad
-	print("Mejora: Velocidad. Velocidad pasa de %f a %f" % [antes, despues])
-	_go_next()
+	},
 
-func _on_btn_cadencia() -> void:
-	var antes = PlayerStats.velocidad_disparo
+	{
+	"texto": "Cadencia +10%",
+	"accion": func():
+	PlayerStats.velocidad_disparo = max(0.02, PlayerStats.velocidad_disparo * 0.9)
+	},
+
+	{
+	"texto": "Cadencia +20%",
+	"accion": func():
 	PlayerStats.velocidad_disparo = max(0.02, PlayerStats.velocidad_disparo * 0.8)
-	var despues = PlayerStats.velocidad_disparo
-	print("Mejora: Cadencia. Velocidad de disparo pasa de %f a %f" % [antes, despues])
-	_go_next()
+	},
+]
+
+
+
+# Seleccionamos 4 mejoras aleatorias y generamos los botones
+func _ready() -> void:
+
+	# Poner un color aleatorio al label
+	_set_random_title_color()
+	
+	# Mezclar la lista
+	var lista = mejoras
+	lista.shuffle()
+
+	# Elegir las primeras 4
+	var seleccion = lista.slice(0, 4)
+
+	# Crear un botón para cada mejora seleccionada
+	for mejora in seleccion:
+		var b := Button.new()
+		b.text = mejora["texto"]
+		b.custom_minimum_size = Vector2(0, 60)
+
+		# Conectar la acción
+		b.pressed.connect(func():
+			mejora["accion"].call()
+			_go_next()
+		)
+
+		contenedor.add_child(b)
+
+
 
 func _go_next():
 	var next := ""
@@ -52,8 +100,21 @@ func _go_next():
 	elif previous_scene_path.ends_with("nivel4.tscn"):
 		next = "res://Escenas/nivel5.tscn"
 	else:
-		# Si venimos de un nivel desconocido volvemos al menú
 		next = "res://Escenas/menu_principal"
 
 	print("Cargando siguiente nivel:", next)
 	get_tree().change_scene_to_file(next)
+
+func _set_random_title_color() -> void:
+	# Colores estilo pixel interesantes:
+	var colores := [
+		Color(1, 1, 0),        # Amarillo
+		Color(1, 0.5, 0),      # Naranja
+		Color(0, 1, 1),        # Turquesa
+		Color(1, 0, 0),        # Rojo
+		Color(0.6, 1, 0.2),    # Verde lima
+		Color(1, 0.2, 0.7),    # Rosa
+		Color(1, 1, 1),        # Blanco brillante
+	]
+
+	titulo.modulate = colores.pick_random()

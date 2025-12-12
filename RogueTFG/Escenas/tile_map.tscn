@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=108 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://scs2vmdq2vlm" path="res://Tiles/Floor2.png" id="37_lgdig"]
 [ext_resource type="PackedScene" uid="uid://ox71vs3dspko" path="res://Escenas/Enemigo6.tscn" id="37_rt48k"]
 [ext_resource type="PackedScene" uid="uid://cecj3sdjv2xhb" path="res://Escenas/EnemigoSlime.tscn" id="38_5bk3m"]
+[ext_resource type="Texture2D" uid="uid://b1vi282t15pwk" path="res://Sprites/Varios/GameOver.png" id="57_lgdig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lda5"]
 texture = ExtResource("1_c0sgf")
@@ -8229,6 +8230,7 @@ format = 2
 script = ExtResource("1_7yhko")
 floor_tiles = [2]
 wall_tiles = [11]
+target_coverage = 0.45
 enemy_scene = ExtResource("4_anah5")
 enemy_scenes = Array[PackedScene]([ExtResource("14_5lda5"), ExtResource("15_6g4xr"), ExtResource("37_rt48k"), ExtResource("38_5bk3m")])
 barril_scene = ExtResource("13_fnl5p")
@@ -8236,8 +8238,8 @@ min_enemy_distance_from_player = 500.0
 arma_scene = ExtResource("5_iv4k0")
 armas = 3
 barriles = 3
-enemigos_min = 8
-enemigos_max = 12
+enemigos_min = 1
+enemigos_max = 2
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
 current_biome = "agua"
@@ -8319,29 +8321,27 @@ theme_override_constants/separation = 8
 
 [node name="Panel" type="Panel" parent="GameOverLayer"]
 visible = false
-offset_right = 1499.0
-offset_bottom = 901.0
+offset_right = 1534.0
+offset_bottom = 1022.0
 
-[node name="Label" type="Label" parent="GameOverLayer/Panel"]
+[node name="TextureRect" type="TextureRect" parent="GameOverLayer/Panel"]
 layout_mode = 0
-offset_left = 436.0
-offset_top = 303.0
-offset_right = 1051.0
-offset_bottom = 409.0
-text = "GAME OVER"
+offset_right = 1536.0
+offset_bottom = 1024.0
+texture = ExtResource("57_lgdig")
 
 [node name="Jugar" type="Button" parent="GameOverLayer/Panel"]
 layout_mode = 0
-offset_left = 264.0
-offset_top = 479.0
-offset_right = 653.0
-offset_bottom = 653.0
-text = "Jugar"
+offset_left = 653.0
+offset_top = 553.0
+offset_right = 941.0
+offset_bottom = 678.0
+text = "MENÚ PRINCIPAL"
 
 [node name="Salir" type="Button" parent="GameOverLayer/Panel"]
 layout_mode = 0
-offset_left = 821.0
-offset_top = 485.0
-offset_right = 1212.0
-offset_bottom = 656.0
-text = "Salir"
+offset_left = 651.0
+offset_top = 682.0
+offset_right = 941.0
+offset_bottom = 802.0
+text = "SALIR"

@@ -226,8 +226,8 @@ func game_over():
 
 
 func _on_jugar_pressed():
-	get_tree().reload_current_scene()
-	print("Jugar...")
+	get_tree().change_scene_to_file("res://menu_principal.tscn")
+	print("Volviendo al menú principal...")
 
 
 func _on_salir_pressed():

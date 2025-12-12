@@ -35,3 +35,6 @@ res://Escenas/Cofre_Arma.tscn
 res://Escenas/Municion.tscn
 res://Escenas/Vida.tscn
 res://Escenas/vida.gd
+res://puerta.gd
+res://Escenas/puerta.tscn
+res://Escenas/Mejoras.tscn

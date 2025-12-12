@@ -83,31 +83,38 @@ func recibir_daño(amount: int = 1) -> void:
 	life -= amount
 	if life <= 0:
 		_play_death_sound()
-		# --- Intento de soltar munición ---
-		if randf() < drop_chance:
+
+		var parent = get_parent()
+		var is_last := false
+
+		# Comprobar si es el último enemigo 
+		if parent:
+			var enemies_left = get_tree().get_nodes_in_group("Enemigos")
+			if enemies_left.size() == 1: # solo queda él mismo
+				is_last = true
+
+		# Si NO es el último enemigo, puede soltar objetos 
+		if not is_last and randf() < drop_chance:
 			var r = randf()
 			if r < 0.8:
 				if municion_scene:
 					var pick = municion_scene.instantiate()
 					pick.global_position = global_position
-					get_parent().add_child(pick)
+					parent.add_child(pick)
 			else:
 				if vida_scene:
 					var pick = vida_scene.instantiate()
 					pick.global_position = global_position
-					get_parent().add_child(pick)
+					parent.add_child(pick)
 
-		# Comprobar si es el último enemigo 
-		var parent = get_parent()
-		if parent:
-			var enemies_left = get_tree().get_nodes_in_group("Enemigos")
-			if enemies_left.size() == 1: # este es el último (solo queda él mismo)
-				print("Era el último...")
-				if puerta_scene:
-					var puerta = puerta_scene.instantiate()
-					puerta.global_position = global_position
-					parent.add_child(puerta)
+		# Si ES el último, generar la puerta
+		if is_last and puerta_scene:
+			var puerta = puerta_scene.instantiate()
+			puerta.global_position = global_position
+			parent.add_child(puerta)
+
 		queue_free()
+
 
 	
 func shoot_at_player():
