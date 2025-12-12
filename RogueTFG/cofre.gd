@@ -11,18 +11,35 @@ func _ready():
 
 func _on_body_entered(body):
 	if !body.is_in_group("Enemigos"):
+
+		# Evitar dobles activaciones
+		if not $CollisionShape2D.disabled:
+			$CollisionShape2D.disabled = true
+			monitoring = false
+			monitorable = false
+			disconnect("body_entered", Callable(self, "_on_body_entered"))
+		else:
+			return 
+
+		# Sumar balas
 		if body.has_method("sumar_municion"):
 			body.sumar_municion(numero_balas)
 
+		# Sonido pickup
 		if sonido_pickup:
 			sonido_pickup.play()
 
 		# Texto flotante
-		_spawn_floating_text("+%s" % numero_balas)
+		_spawn_floating_text("+%d" % numero_balas)
 
-		# Esperar a que termine el sonido antes de borrar el nodo
-		await get_tree().create_timer(0.1).timeout
+		# Ocultar sprite para que desaparezca visualmente
+		$Sprite2D.visible = false
+
+		# Esperar al sonido
+		await get_tree().create_timer(1.0).timeout
+
 		queue_free()
+
 
 
 func _spawn_floating_text(text: String):

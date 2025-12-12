@@ -38,3 +38,4 @@ res://Escenas/vida.gd
 res://puerta.gd
 res://Escenas/puerta.tscn
 res://Escenas/Mejoras.tscn
+res://Scripts/canvas_layer.gd

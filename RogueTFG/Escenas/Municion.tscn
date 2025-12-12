@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5bfw2ec48vjq" path="res://cofre.gd" id="1_gcwpr"]
 [ext_resource type="Texture2D" uid="uid://bkclj1nuxsdgo" path="res://Sprites/Varios/Municion.png" id="2_lb8dx"]
-[ext_resource type="AudioStream" uid="uid://bdk08refuddec" path="res://Sounds/Retro.wav" id="3_lb8dx"]
+[ext_resource type="AudioStream" uid="uid://d2lyybolqgfkc" path="res://Sounds/MasBalas.wav" id="3_lb8dx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6wxn"]
 size = Vector2(64, 57)

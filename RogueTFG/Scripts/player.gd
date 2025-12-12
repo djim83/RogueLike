@@ -28,7 +28,7 @@ var life: int = PlayerStats.vida
 
 @onready var sonido_pistola: AudioStreamPlayer2D = $AudioDisparoPistola
 @onready var sonido_escopeta: AudioStreamPlayer2D = $AudioDisparoEscopeta
-
+@onready var sonido_muerte: AudioStreamPlayer2D = $SonidoMuerte
 
 
 var armas: Array[Arma] = []
@@ -168,6 +168,8 @@ func recibir_daño(amount: int = 1) -> void:
 		game_over()
 		set_physics_process(false)
 		hide()
+		if sonido_muerte:
+			sonido_muerte.play()
 
 	tiempo_invulnerable = invulnerable_time
 
@@ -207,7 +209,6 @@ func shoot():
 	bala.rotation = dir.angle()
 
 	get_parent().add_child(bala)
-
 
 
 func sumar_municion(amount: int):

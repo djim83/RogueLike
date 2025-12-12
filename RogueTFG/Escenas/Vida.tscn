@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6o0yblrdoo0w" path="res://Escenas/vida.gd" id="1_u6vlm"]
 [ext_resource type="Texture2D" uid="uid://c05d1kuxwt8qg" path="res://Sprites/Varios/vida.png" id="2_u6vlm"]
-[ext_resource type="AudioStream" uid="uid://bdk08refuddec" path="res://Sounds/Retro.wav" id="3_73fon"]
+[ext_resource type="AudioStream" uid="uid://cwda86iocpam" path="res://Sounds/VidaMas.wav" id="3_u6vlm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6wxn"]
 size = Vector2(64, 57)
@@ -21,4 +21,5 @@ position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_r6wxn")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_73fon")
+stream = ExtResource("3_u6vlm")
+volume_db = 5.0

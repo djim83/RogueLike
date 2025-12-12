@@ -1,7 +1,7 @@
+AudioStreamPlayer2D
 Label
 TextureRect
 AnimatedSprite2D
-AudioStreamPlayer2D
 HBoxContainer
 Area2D
 Line2D
