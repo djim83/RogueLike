@@ -92,8 +92,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usilb"]
-radius = 47.0
-height = 94.0
+radius = 29.0
+height = 58.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Enemigos"]]
 collision_layer = 4

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b84ca5bg0ndto"]
+
+[ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_2fcb2"]
+[ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="2_8tj7d"]
+[ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="3_oa2pq"]
+
+[node name="Node2D" instance=ExtResource("1_2fcb2")]
+
+[node name="TileMap" parent="." index="0"]
+enemy_scenes = Array[PackedScene]([ExtResource("2_8tj7d"), ExtResource("3_oa2pq")])
+total_enemy_groups = 5
+group_size_range = Vector2i(4, 5)
+armas = 2
+enemigos_min = 20
+enemigos_max = 25
+current_biome = "hielo"

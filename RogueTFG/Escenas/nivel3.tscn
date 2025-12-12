@@ -11,7 +11,6 @@
 
 [node name="TileMap" parent="." index="0"]
 enemy_scenes = Array[PackedScene]([ExtResource("2_lie3y"), ExtResource("3_ffwoi"), ExtResource("4_r7m2j"), ExtResource("5_aqt5w"), ExtResource("6_f7gwh")])
-armas = 3
 enemigos_min = 10
 enemigos_max = 14
 current_biome = "bosque"

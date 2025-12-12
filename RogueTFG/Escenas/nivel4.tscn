@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwjfmqrcsunk"]
+
+[ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_jfe0r"]
+[ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="2_vaoqd"]
+[ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="5_sqbcj"]
+
+[node name="Node2D" instance=ExtResource("1_jfe0r")]
+
+[node name="TileMap" parent="." index="0"]
+enemy_scenes = Array[PackedScene]([ExtResource("5_sqbcj"), ExtResource("2_vaoqd")])
+total_enemy_groups = 5
+group_size_range = Vector2i(4, 5)
+enemigos_min = 20
+enemigos_max = 25
+current_biome = "casa"

@@ -112,10 +112,13 @@ func _process(delta):
 	if arma_actual == 0:
 		mira_sprite.texture = preload("res://Sprites/Armas/Pistola.png")
 		mira_sprite.scale = Vector2(4, 4)
+		mira_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
 	else:
 		if arma_secundaria:
 			mira_sprite.texture = arma_secundaria.sprite
 			mira_sprite.scale = Vector2(4, 4)
+			mira_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+
 
 
 	# --- Controlar el flip según hacia dónde apunta el ratón ---

@@ -49,6 +49,14 @@ var enemigos: int = 0
 	"agua": {
 		"floor": [0, 1, 2, 3],      
 		"wall":  [8, 12, 13, 14, 16]       
+	},
+	"casa": {
+		"floor": [9, 10, 11],      
+		"wall":  [7, 36]       
+	},
+	"hielo": {
+		"floor": [38, 39],      
+		"wall":  [37]       
 	}
 }
 

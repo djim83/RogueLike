@@ -49,6 +49,8 @@ func _go_next():
 		next = "res://Escenas/nivel3.tscn"
 	elif previous_scene_path.ends_with("nivel3.tscn"):
 		next = "res://Escenas/nivel4.tscn"
+	elif previous_scene_path.ends_with("nivel4.tscn"):
+		next = "res://Escenas/nivel5.tscn"
 	else:
 		# Si venimos de un nivel desconocido volvemos al menú
 		next = "res://Escenas/menu_principal"
