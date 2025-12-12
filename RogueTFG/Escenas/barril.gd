@@ -4,9 +4,12 @@ var spawn_position: Vector2
 @export var life: int = 0
 @export var explosion_scene: PackedScene
 @onready var sonido_barril: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var sprite: Sprite2D = $Sprite2D
 
 var is_dead = false
 
+func _ready() -> void:
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
 
 func recibir_daño(amount: int = 1) -> void:
 	if is_dead:

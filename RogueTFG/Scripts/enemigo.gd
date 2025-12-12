@@ -14,6 +14,7 @@ var player: Node2D = null
 
 @export var bullet_scene: PackedScene
 @export var municion_scene: PackedScene
+@export var vida_scene: PackedScene
 @export var fire_rate: float = 1.5  # Disparo cada 1.5s aprox
 var time_since_last_shot: float = 0.0
 
@@ -28,10 +29,11 @@ var time_since_last_shot: float = 0.0
 @export var bullet_scale: Vector2 = Vector2(2, 2) 
 
 
-var drop_chance = 0.4  # 40% de probabilidad
+var drop_chance = 1  # 40% de probabilidad
 
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 func set_spawn(pos: Vector2):
 	spawn_position = pos
@@ -45,11 +47,7 @@ func _process(delta):
 		velocity = dir_to_player * speed
 		anim.flip_h = player.global_position.x < global_position.x
 
-		# --- Animación del enemigo ---
-		if velocity.length() > 0.1:
-			anim.play("Andar")
-		else:
-			anim.play("Quieto")
+		anim.play("Andar")
 
 		# --- Intentar disparar ---
 		time_since_last_shot += delta
@@ -86,10 +84,18 @@ func recibir_daño(amount: int = 1) -> void:
 	if life <= 0:
 		_play_death_sound()
 		# --- Intento de soltar munición ---
-		if municion_scene and randf() < drop_chance:
-			var pickup = municion_scene.instantiate()
-			pickup.global_position = global_position
-			get_parent().add_child(pickup)
+		if randf() < drop_chance:
+			var r = randf()
+			if r < 0.8:
+				if municion_scene:
+					var pick = municion_scene.instantiate()
+					pick.global_position = global_position
+					get_parent().add_child(pick)
+			else:
+				if vida_scene:
+					var pick = vida_scene.instantiate()
+					pick.global_position = global_position
+					get_parent().add_child(pick)
 
 		# Comprobar si es el último enemigo 
 		var parent = get_parent()

@@ -76,6 +76,8 @@ func _ready():
 	# Añadimos el arma por defecto al iniciar
 	var arma_base = preload("res://Escenas/arma_base.tscn").instantiate()
 	add_child(arma_base)
+	
+	anim_player.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 
 func _physics_process(delta: float) -> void:
@@ -211,6 +213,11 @@ func shoot():
 func sumar_municion(amount: int):
 	current_ammo += amount
 	PlayerStats.municion_pistola = current_ammo
+	
+func sumar_vida(amount: int):
+	life += amount
+	PlayerStats.vida = life
+	actualizar_corazones()
 	
 
 func game_over():

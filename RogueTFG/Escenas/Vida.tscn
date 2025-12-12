@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqihjpt8c7m3n"]
+
+[ext_resource type="Script" uid="uid://6o0yblrdoo0w" path="res://Escenas/vida.gd" id="1_u6vlm"]
+[ext_resource type="Texture2D" uid="uid://c05d1kuxwt8qg" path="res://Sprites/Varios/vida.png" id="2_u6vlm"]
+[ext_resource type="AudioStream" uid="uid://bdk08refuddec" path="res://Sounds/Retro.wav" id="3_73fon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6wxn"]
+size = Vector2(64, 57)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_u6vlm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_u6vlm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_r6wxn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_73fon")

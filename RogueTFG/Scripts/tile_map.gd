@@ -292,11 +292,11 @@ func poner_antorchas(count: int) -> void:
 			torch.global_position = map_to_local(pos)
 			add_child(torch)
 			spawned += 1
-			print("Antorcha colocada:", spawned)
 
 			# Animar antorcha
 			var anim_sprite: AnimatedSprite2D = torch.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
 			if anim_sprite and anim_sprite.sprite_frames:
+				anim_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 				var anims: PackedStringArray = anim_sprite.sprite_frames.get_animation_names()
 				if anims.size() > 0:
 					anim_sprite.play(anims[0])  # Reproduce la primera animación disponible

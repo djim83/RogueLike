@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://2lgax3weodrg"]
+[gd_scene load_steps=5 format=3 uid="uid://2lgax3weodrg"]
 
 [ext_resource type="Script" uid="uid://c5bfw2ec48vjq" path="res://cofre.gd" id="1_gcwpr"]
 [ext_resource type="Texture2D" uid="uid://bkclj1nuxsdgo" path="res://Sprites/Varios/Municion.png" id="2_lb8dx"]
+[ext_resource type="AudioStream" uid="uid://bdk08refuddec" path="res://Sounds/Retro.wav" id="3_lb8dx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6wxn"]
 size = Vector2(64, 57)
@@ -18,3 +19,6 @@ texture = ExtResource("2_lb8dx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_r6wxn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lb8dx")

@@ -1,5 +1,5 @@
-HBoxContainer
 AudioStreamPlayer2D
+HBoxContainer
 Area2D
 Line2D
 Node2D

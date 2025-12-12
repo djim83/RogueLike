@@ -24,3 +24,14 @@ res://Escenas/arma_escopeta.tscn
 res://Scripts/bala_enemigo.gd
 res://Escenas/Bala_Enemigo.tscn
 res://Scripts/player.gd
+res://Scripts/enemigo.gd
+res://Escenas/barril.gd
+res://Escenas/barril.tscn
+res://torch.tscn
+res://Escenas/cofre_arma.gd
+res://Escenas/EnemigoSlime.tscn
+res://cofre.gd
+res://Escenas/Cofre_Arma.tscn
+res://Escenas/Municion.tscn
+res://Escenas/Vida.tscn
+res://Escenas/vida.gd

@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dunntpqbcqum3"]
+[gd_scene load_steps=21 format=3 uid="uid://dunntpqbcqum3"]
 
 [ext_resource type="Script" uid="uid://brwiw6pkaysg6" path="res://Scripts/enemigo.gd" id="1_p2sjk"]
 [ext_resource type="PackedScene" uid="uid://bx6bfvfgm02v" path="res://Escenas/Bala_Enemigo.tscn" id="2_qws2e"]
 [ext_resource type="PackedScene" uid="uid://2lgax3weodrg" path="res://Escenas/Municion.tscn" id="3_id87n"]
+[ext_resource type="PackedScene" uid="uid://dqihjpt8c7m3n" path="res://Escenas/Vida.tscn" id="3_r7vpg"]
 [ext_resource type="PackedScene" uid="uid://b65xw5eb4d8on" path="res://Escenas/puerta.tscn" id="4_c0vl1"]
 [ext_resource type="PackedScene" uid="uid://sul02oqyi7vx" path="res://Escenas/laser.tscn" id="5_qxddr"]
 [ext_resource type="Texture2D" uid="uid://csg7klwcelfh3" path="res://Sprites/Enemigos/EnemigoRojo.png" id="6_r7vpg"]
@@ -102,6 +103,7 @@ script = ExtResource("1_p2sjk")
 tipo_disparo = 2
 bullet_scene = ExtResource("2_qws2e")
 municion_scene = ExtResource("3_id87n")
+vida_scene = ExtResource("3_r7vpg")
 puerta_scene = ExtResource("4_c0vl1")
 laser_scene = ExtResource("5_qxddr")
 bullet_scale = Vector2(1, 1)

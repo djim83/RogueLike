@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var numero_balas: int = 25
+@export var numero_vida: int = 1
 @onready var Sprite2d: Sprite2D = $Sprite2D
 @onready var sonido_pickup: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -12,13 +12,13 @@ func _ready():
 func _on_body_entered(body):
 	if !body.is_in_group("Enemigos"):
 		if body.has_method("sumar_municion"):
-			body.sumar_municion(numero_balas)
+			body.sumar_vida(numero_vida)
 
 		if sonido_pickup:
 			sonido_pickup.play()
 
 		# Texto flotante
-		_spawn_floating_text("+%s" % numero_balas)
+		_spawn_floating_text("+%s" % numero_vida)
 
 		# Esperar a que termine el sonido antes de borrar el nodo
 		await get_tree().create_timer(0.1).timeout
@@ -42,6 +42,5 @@ func _spawn_floating_text(text: String):
 	tween.tween_property(label, "modulate:a", 0.0, 0.5)
 
 	tween.finished.connect(func():
-		if is_instance_valid(label):
-			label.queue_free()
+		label.queue_free()
 	)

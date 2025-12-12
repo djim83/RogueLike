@@ -24,6 +24,9 @@ func _actualizar_sprite():
 		var arma_sprite = arma_temp.get_node_or_null("Sprite2D")
 		if arma_sprite:
 			sprite.texture = arma_sprite.texture
+			
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	sprite.scale = Vector2(4,4)
 
 	arma_temp.queue_free()
 
