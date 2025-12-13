@@ -1,0 +1,177 @@
+[gd_scene load_steps=29 format=3 uid="uid://biu6s3cvit4c8"]
+
+[ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_752u4"]
+[ext_resource type="Script" uid="uid://cbc3co61ag3qf" path="res://Escenas/final_boss.gd" id="2_jqv3j"]
+[ext_resource type="PackedScene" uid="uid://bf51ajv6qm3o2" path="res://Escenas/balaEnemigoGrande.tscn" id="3_61rft"]
+[ext_resource type="PackedScene" uid="uid://c80nenseoepp" path="res://Escenas/arma_escopeta.tscn" id="4_enidy"]
+[ext_resource type="Texture2D" uid="uid://bgrg0rakku74b" path="res://Sprites/Enemigos/FinalBoss/FBQuieto.png" id="4_v7a0i"]
+[ext_resource type="Texture2D" uid="uid://cqt1jqanm4g3i" path="res://Sprites/Enemigos/FinalBoss/FBHerido.png" id="5_airfo"]
+[ext_resource type="Texture2D" uid="uid://dhcesdcl1iusg" path="res://Sprites/Balas/8.png" id="5_h6pbi"]
+[ext_resource type="Texture2D" uid="uid://5lcqvaxo76oh" path="res://Sprites/Enemigos/FinalBoss/FBAtaque.png" id="6_61rft"]
+[ext_resource type="AudioStream" uid="uid://bt3aq73wqp8h2" path="res://Sounds/Herido.wav" id="9_enidy"]
+[ext_resource type="AudioStream" uid="uid://dxxg7xhe0jdx5" path="res://Sounds/BossAtaque.mp3" id="10_h6pbi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61rft"]
+atlas = ExtResource("4_v7a0i")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enidy"]
+atlas = ExtResource("4_v7a0i")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6pbi"]
+atlas = ExtResource("4_v7a0i")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bedtv"]
+atlas = ExtResource("4_v7a0i")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf6ro"]
+atlas = ExtResource("5_airfo")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iulbs"]
+atlas = ExtResource("5_airfo")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7n0g"]
+atlas = ExtResource("5_airfo")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10jsw"]
+atlas = ExtResource("5_airfo")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x302h"]
+atlas = ExtResource("5_airfo")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pii3u"]
+atlas = ExtResource("6_61rft")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4281s"]
+atlas = ExtResource("6_61rft")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn3fd"]
+atlas = ExtResource("6_61rft")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5hcc"]
+atlas = ExtResource("6_61rft")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uebeb"]
+atlas = ExtResource("6_61rft")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uil7q"]
+atlas = ExtResource("6_61rft")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh7wn"]
+atlas = ExtResource("6_61rft")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhjd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61rft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enidy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6pbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bedtv")
+}],
+"loop": true,
+"name": &"Andar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf6ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iulbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7n0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10jsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x302h")
+}],
+"loop": true,
+"name": &"Herido",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pii3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4281s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn3fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5hcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uebeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uil7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh7wn")
+}],
+"loop": true,
+"name": &"Mordisco",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61rft"]
+radius = 92.0
+height = 184.0
+
+[node name="CharacterBody2D" instance=ExtResource("1_752u4")]
+scale = Vector2(2, 2)
+collision_mask = 143
+script = ExtResource("2_jqv3j")
+life_max = 200.0
+tipo_disparo = 3
+vision_range = 750.0
+bullet_scene = ExtResource("3_61rft")
+municion_scene = ExtResource("4_enidy")
+laser_scene = null
+bullet_texture = ExtResource("5_h6pbi")
+bullet_scale = Vector2(5, 5)
+circular_offset_radius = 64.0
+circular_offset_speed = 3.0
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_yhjd1")
+animation = &"Mordisco"
+frame_progress = 0.0170447
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(9.5, 9.5)
+shape = SubResource("CapsuleShape2D_61rft")
+
+[node name="SonidoHerido" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("9_enidy")
+
+[node name="SonidoGrito" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("10_h6pbi")

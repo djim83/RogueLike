@@ -28,6 +28,12 @@ var time_since_last_shot: float = 0.0
 @export var bullet_texture: Texture2D
 @export var bullet_scale: Vector2 = Vector2(2, 2) 
 
+@export var contacto_damage := 1
+@export var contacto_cooldown := 1.0
+
+var puede_dañar_por_contacto := true
+
+
 
 var drop_chance = 0.4  # 40% de probabilidad
 
@@ -68,6 +74,24 @@ func _process(delta):
 
 	move_and_slide()
 	
+	
+func _physics_process(delta):
+	if player and global_position.distance_to(player.global_position) <= vision_range:
+		var dir_to_player = (player.global_position - global_position).normalized()
+		velocity = dir_to_player * speed
+	else:
+		velocity = Vector2.ZERO
+
+
+	move_and_slide()
+	
+	for i in range(get_slide_collision_count()):
+		var col = get_slide_collision(i)
+		var body = col.get_collider()
+
+		if body.is_in_group("Jugador"):
+			_dañar_jugador_por_contacto(body)
+
 
 func get_random_direction() -> Vector2:
 	var angle = randf_range(0, TAU)
@@ -212,3 +236,14 @@ func _play_death_sound():
 	s.finished.connect(func():
 		s.queue_free()
 	)
+
+func _dañar_jugador_por_contacto(jugador: Node) -> void:
+	if not puede_dañar_por_contacto:
+		return
+
+	if jugador.has_method("recibir_daño"):
+		jugador.recibir_daño(contacto_damage)
+
+	puede_dañar_por_contacto = false
+	await get_tree().create_timer(contacto_cooldown).timeout
+	puede_dañar_por_contacto = true

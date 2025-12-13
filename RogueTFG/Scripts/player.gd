@@ -29,6 +29,7 @@ var life: int = PlayerStats.vida
 @onready var sonido_pistola: AudioStreamPlayer2D = $AudioDisparoPistola
 @onready var sonido_escopeta: AudioStreamPlayer2D = $AudioDisparoEscopeta
 @onready var sonido_muerte: AudioStreamPlayer2D = $SonidoMuerte
+@onready var sonido_herido: AudioStreamPlayer2D = $SonidoHerido
 
 
 var armas: Array[Arma] = []
@@ -158,6 +159,9 @@ func _process(delta):
 func recibir_daño(amount: int = 1) -> void:
 	if tiempo_invulnerable > 0:
 		return  # Ignora daño mientras invulnerable
+
+	if sonido_herido:
+			sonido_herido.play()
 
 	life = max(life - amount, 0)
 	PlayerStats.vida = life

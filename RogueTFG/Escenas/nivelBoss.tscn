@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://uhuthgllvlx8"]
+
+[ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_juf5d"]
+
+[node name="Node2D" instance=ExtResource("1_juf5d")]
+
+[node name="TileMap" parent="." index="0"]
+floor_tiles = [5]
+wall_tiles = [6]
+target_coverage = 0.8
+current_biome = "fuego"

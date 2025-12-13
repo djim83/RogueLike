@@ -13,7 +13,4 @@ wall_tiles = [6]
 target_coverage = 0.2
 enemy_scene = ExtResource("2_tqhfi")
 enemy_scenes = Array[PackedScene]([ExtResource("2_tqhfi"), ExtResource("3_sd78f"), ExtResource("5_uu4ua")])
-group_size_range = Vector2i(3, 5)
-enemigos_min = 10
-enemigos_max = 15
 current_biome = "fuego"

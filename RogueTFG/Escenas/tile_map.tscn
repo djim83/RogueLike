@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=109 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -27,9 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://gvc5372smwtf" path="res://Tiles/Map_tile_100.png" id="12_5k8b3"]
 [ext_resource type="Texture2D" uid="uid://cubdupe1lbc5d" path="res://Tiles/Map_tile_43.png" id="13_72o1c"]
 [ext_resource type="PackedScene" uid="uid://bia704fmh4afq" path="res://Escenas/barril.tscn" id="13_fnl5p"]
-[ext_resource type="PackedScene" uid="uid://c2to2ssaohudr" path="res://Escenas/Enemigo3.tscn" id="14_5lda5"]
 [ext_resource type="Texture2D" uid="uid://daa3oc0dptiow" path="res://Tiles/Map_tile_44.png" id="14_mvs0f"]
-[ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="15_6g4xr"]
 [ext_resource type="Texture2D" uid="uid://bgtmj3vnvko2s" path="res://Tiles/Map_tile_55.png" id="15_j5qfr"]
 [ext_resource type="Texture2D" uid="uid://cra2ommc4m145" path="res://Tiles/Map_tile_56.png" id="16_8evve"]
 [ext_resource type="PackedScene" uid="uid://iqnp5nsmx65l" path="res://torch.tscn" id="17_5lda5"]
@@ -54,8 +52,9 @@
 [ext_resource type="Texture2D" uid="uid://k8grjk5ljoh6" path="res://Tiles/xePVA0.png" id="34_03n5p"]
 [ext_resource type="Texture2D" uid="uid://bagqkruk2au7h" path="res://Tiles/Floor1.png" id="35_do24f"]
 [ext_resource type="Texture2D" uid="uid://scs2vmdq2vlm" path="res://Tiles/Floor2.png" id="37_lgdig"]
-[ext_resource type="PackedScene" uid="uid://ox71vs3dspko" path="res://Escenas/Enemigo6.tscn" id="37_rt48k"]
-[ext_resource type="PackedScene" uid="uid://cecj3sdjv2xhb" path="res://Escenas/EnemigoSlime.tscn" id="38_5bk3m"]
+[ext_resource type="PackedScene" uid="uid://biu6s3cvit4c8" path="res://Escenas/FinalBoss.tscn" id="43_do24f"]
+[ext_resource type="AudioStream" uid="uid://ckko0ptut0sqy" path="res://Sounds/Muerto.wav" id="53_03n5p"]
+[ext_resource type="AudioStream" uid="uid://bt3aq73wqp8h2" path="res://Sounds/Herido.wav" id="54_vwhtd"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="57_03n5p"]
 [ext_resource type="Texture2D" uid="uid://b1vi282t15pwk" path="res://Sprites/Varios/GameOver.png" id="57_lgdig"]
 [ext_resource type="Texture2D" uid="uid://ckpon1u8i77bu" path="res://Sprites/Balas/2.png" id="58_vwhtd"]
@@ -8058,15 +8057,16 @@ floor_tiles = [2]
 wall_tiles = [11]
 target_coverage = 0.45
 enemy_scene = ExtResource("4_anah5")
-enemy_scenes = Array[PackedScene]([ExtResource("14_5lda5"), ExtResource("15_6g4xr"), ExtResource("37_rt48k"), ExtResource("38_5bk3m")])
+enemy_scenes = Array[PackedScene]([ExtResource("43_do24f")])
 barril_scene = ExtResource("13_fnl5p")
-group_size_range = Vector2i(3, 5)
+total_enemy_groups = 1
+group_size_range = Vector2i(1, 1)
 min_enemy_distance_from_player = 500.0
 arma_scene = ExtResource("5_iv4k0")
 armas = 2
 barriles = 4
-enemigos_min = 10
-enemigos_max = 15
+enemigos_min = 1
+enemigos_max = 1
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
 current_biome = "agua"
@@ -8110,6 +8110,10 @@ stream = ExtResource("23_c287f")
 stream = ExtResource("24_c287f")
 
 [node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="jugador"]
+stream = ExtResource("53_03n5p")
+
+[node name="SonidoHerido" type="AudioStreamPlayer2D" parent="jugador"]
+stream = ExtResource("54_vwhtd")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("8_2cfip")
