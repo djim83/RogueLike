@@ -168,4 +168,4 @@ collision_mask = 143
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_383ig")
 animation = &"Andar"
-frame_progress = 0.146958
+frame_progress = 0.665722

@@ -6,6 +6,7 @@ static var previous_scene_path := ""
 
 @onready var contenedor := $VBoxContainer
 @onready var titulo: Label = $Label
+@onready var final_panel: Panel = $"../FinalOverLayer/Panel"
 
 var mejoras := [
 	{
@@ -99,6 +100,10 @@ func _go_next():
 		next = "res://Escenas/nivel4.tscn"
 	elif previous_scene_path.ends_with("nivel4.tscn"):
 		next = "res://Escenas/nivel5.tscn"
+	elif previous_scene_path.ends_with("nivel5.tscn"):
+		next = "res://Escenas/nivelBoss.tscn"
+	elif previous_scene_path.ends_with("nivelBoss.tscn"):
+		next = "res://Escenas/escenaFinal.tscn"
 	else:
 		next = "res://Escenas/menu_principal"
 

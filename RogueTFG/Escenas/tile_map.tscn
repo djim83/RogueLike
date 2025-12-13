@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=113 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -27,7 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://gvc5372smwtf" path="res://Tiles/Map_tile_100.png" id="12_5k8b3"]
 [ext_resource type="Texture2D" uid="uid://cubdupe1lbc5d" path="res://Tiles/Map_tile_43.png" id="13_72o1c"]
 [ext_resource type="PackedScene" uid="uid://bia704fmh4afq" path="res://Escenas/barril.tscn" id="13_fnl5p"]
+[ext_resource type="PackedScene" uid="uid://c2to2ssaohudr" path="res://Escenas/Enemigo3.tscn" id="14_5lda5"]
 [ext_resource type="Texture2D" uid="uid://daa3oc0dptiow" path="res://Tiles/Map_tile_44.png" id="14_mvs0f"]
+[ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="15_6g4xr"]
 [ext_resource type="Texture2D" uid="uid://bgtmj3vnvko2s" path="res://Tiles/Map_tile_55.png" id="15_j5qfr"]
 [ext_resource type="Texture2D" uid="uid://cra2ommc4m145" path="res://Tiles/Map_tile_56.png" id="16_8evve"]
 [ext_resource type="PackedScene" uid="uid://iqnp5nsmx65l" path="res://torch.tscn" id="17_5lda5"]
@@ -52,12 +54,14 @@
 [ext_resource type="Texture2D" uid="uid://k8grjk5ljoh6" path="res://Tiles/xePVA0.png" id="34_03n5p"]
 [ext_resource type="Texture2D" uid="uid://bagqkruk2au7h" path="res://Tiles/Floor1.png" id="35_do24f"]
 [ext_resource type="Texture2D" uid="uid://scs2vmdq2vlm" path="res://Tiles/Floor2.png" id="37_lgdig"]
-[ext_resource type="PackedScene" uid="uid://biu6s3cvit4c8" path="res://Escenas/FinalBoss.tscn" id="43_do24f"]
+[ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="43_cv0gp"]
+[ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="46_shhuy"]
 [ext_resource type="AudioStream" uid="uid://ckko0ptut0sqy" path="res://Sounds/Muerto.wav" id="53_03n5p"]
 [ext_resource type="AudioStream" uid="uid://bt3aq73wqp8h2" path="res://Sounds/Herido.wav" id="54_vwhtd"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="57_03n5p"]
 [ext_resource type="Texture2D" uid="uid://b1vi282t15pwk" path="res://Sprites/Varios/GameOver.png" id="57_lgdig"]
 [ext_resource type="Texture2D" uid="uid://ckpon1u8i77bu" path="res://Sprites/Balas/2.png" id="58_vwhtd"]
+[ext_resource type="Texture2D" uid="uid://b0rjiuuk4gcdp" path="res://Sprites/Varios/theEnd.png" id="59_vwhtd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lda5"]
 texture = ExtResource("1_c0sgf")
@@ -8057,16 +8061,15 @@ floor_tiles = [2]
 wall_tiles = [11]
 target_coverage = 0.45
 enemy_scene = ExtResource("4_anah5")
-enemy_scenes = Array[PackedScene]([ExtResource("43_do24f")])
+enemy_scenes = Array[PackedScene]([ExtResource("43_cv0gp"), ExtResource("14_5lda5"), ExtResource("15_6g4xr"), ExtResource("46_shhuy")])
 barril_scene = ExtResource("13_fnl5p")
-total_enemy_groups = 1
-group_size_range = Vector2i(1, 1)
+group_size_range = Vector2i(3, 5)
 min_enemy_distance_from_player = 500.0
 arma_scene = ExtResource("5_iv4k0")
 armas = 2
 barriles = 4
-enemigos_min = 1
-enemigos_max = 1
+enemigos_min = 14
+enemigos_max = 18
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
 current_biome = "agua"
@@ -8184,3 +8187,63 @@ offset_top = 682.0
 offset_right = 941.0
 offset_bottom = 802.0
 text = "SALIR"
+
+[node name="FinalOverLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="FinalOverLayer"]
+visible = false
+offset_right = 1534.0
+offset_bottom = 1022.0
+
+[node name="TextureRect" type="TextureRect" parent="FinalOverLayer/Panel"]
+layout_mode = 0
+offset_right = 1515.0
+offset_bottom = 909.0
+texture = ExtResource("59_vwhtd")
+expand_mode = 1
+
+[node name="Jugar" type="Button" parent="FinalOverLayer/Panel"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 296.0
+offset_right = 746.0
+offset_bottom = 421.0
+text = "MENÚ PRINCIPAL"
+
+[node name="Salir" type="Button" parent="FinalOverLayer/Panel"]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 299.0
+offset_right = 1076.0
+offset_bottom = 419.0
+text = "SALIR"
+
+[node name="Label2" type="Label" parent="FinalOverLayer/Panel"]
+z_index = 1
+offset_left = 117.0
+offset_top = 88.0
+offset_right = 1397.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0.823529, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("57_03n5p")
+theme_override_font_sizes/font_size = 120
+text = "THE END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="FinalOverLayer/Panel"]
+z_index = 1
+offset_left = 115.0
+offset_top = 799.0
+offset_right = 1395.0
+offset_bottom = 919.0
+theme_override_colors/font_color = Color(1, 0.823529, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("57_03n5p")
+theme_override_font_sizes/font_size = 20
+text = "GRACIAS POR JUGAR"
+horizontal_alignment = 1
+vertical_alignment = 1

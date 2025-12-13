@@ -98,6 +98,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" instance=ExtResource("1_egtc4")]
+speed = 100.0
 bullet_texture = ExtResource("2_r67vn")
 bullet_scale = Vector2(4, 4)
 

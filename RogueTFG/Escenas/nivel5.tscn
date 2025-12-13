@@ -10,6 +10,20 @@
 enemy_scenes = Array[PackedScene]([ExtResource("2_8tj7d"), ExtResource("3_oa2pq")])
 total_enemy_groups = 5
 group_size_range = Vector2i(4, 5)
-enemigos_min = 20
-enemigos_max = 25
+enemigos_min = 4
+enemigos_max = 5
 current_biome = "hielo"
+
+[node name="Label2" parent="FinalOverLayer/Panel" index="3"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1280.0
+offset_bottom = 120.0
+
+[node name="Label3" parent="FinalOverLayer/Panel" index="4"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1280.0
+offset_bottom = 120.0

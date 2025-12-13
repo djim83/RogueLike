@@ -4,18 +4,25 @@ extends Area2D
 
 func _ready():
 	add_to_group("Puerta")
-	anim.play()  # reproduce la animación en loop
-	connect("body_entered", Callable(self, "_on_body_entered"))
+	anim.play() 
+	body_entered.connect(_on_body_entered)
 
 
 func _on_body_entered(body):
-	if body.is_in_group("Jugador"):
-		print("Vamos a la fase siguiente")
+	if not body.is_in_group("Jugador"):
+		return
 
-		var mejoras_scene = load("res://Escenas/Mejoras.tscn").instantiate()
-		mejoras_scene.previous_scene_path = get_tree().current_scene.scene_file_path
+	print("Entrando por la puerta")
 
-		get_tree().root.add_child(mejoras_scene)
-		
-		get_tree().current_scene.queue_free()
-		get_tree().current_scene = mejoras_scene
+	var escena_actual := get_tree().current_scene.scene_file_path
+	var siguiente_escena: Node
+
+	if escena_actual.ends_with("nivelBoss.tscn"):
+		siguiente_escena = load("res://Escenas/escenaFinal.tscn").instantiate()
+	else:
+		siguiente_escena = load("res://Escenas/Mejoras.tscn").instantiate()
+		siguiente_escena.previous_scene_path = escena_actual
+
+	get_tree().root.add_child(siguiente_escena)
+	get_tree().current_scene.queue_free()
+	get_tree().current_scene = siguiente_escena

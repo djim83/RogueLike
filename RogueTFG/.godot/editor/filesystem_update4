@@ -34,3 +34,7 @@ res://Escenas/Boss.tscn
 res://Scripts/enemigo.gd
 res://Scripts/player.gd
 res://Escenas/nivelBoss.tscn
+res://mejoras.gd
+res://puerta.gd
+res://Escenas/escenaFinal.tscn
+res://Escenas/escena_final.gd
