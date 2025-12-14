@@ -8,7 +8,7 @@
 [node name="TileMap" parent="." index="0"]
 floor_tiles = [5]
 wall_tiles = [6]
-target_coverage = 0.8
+target_coverage = 0.9
 enemy_scenes = Array[PackedScene]([ExtResource("2_p78lp")])
 total_enemy_groups = 1
 group_size_range = Vector2i(1, 1)
