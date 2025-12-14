@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dpcory2l3ht0k" path="res://Escenas/escena_final.gd" id="1_v6cfp"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_v6cfp"]
 
-[node name="Node2D" type="Control"]
+[node name="Node2D2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_v6cfp")

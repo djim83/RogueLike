@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="2_8tj7d"]
 [ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="3_oa2pq"]
 
-[node name="Node2D" instance=ExtResource("1_2fcb2")]
+[node name="Node2D2" instance=ExtResource("1_2fcb2")]
 
 [node name="TileMap" parent="." index="0"]
 enemy_scenes = Array[PackedScene]([ExtResource("2_8tj7d"), ExtResource("3_oa2pq")])

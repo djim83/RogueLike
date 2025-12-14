@@ -8051,7 +8051,7 @@ height = 85.7143
 bg_color = Color(0, 0, 0, 1)
 corner_detail = 20
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
 tile_set = SubResource("TileSet_qtlnl")
