@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddai5ei6f2enq"]
+[gd_scene load_steps=14 format=3 uid="uid://ddai5ei6f2enq"]
 
 [ext_resource type="PackedScene" uid="uid://dunntpqbcqum3" path="res://Escenas/Enemigo.tscn" id="1_vya0u"]
 [ext_resource type="Texture2D" uid="uid://bbxixix0v8nsn" path="res://Sprites/SpriteGeneral.png" id="2_4p8p0"]
@@ -37,18 +37,6 @@ region = Rect2(464, 181, 16, 25)
 atlas = ExtResource("2_4p8p0")
 region = Rect2(480, 181, 16, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4p8p0"]
-atlas = ExtResource("2_4p8p0")
-region = Rect2(368, 181, 16, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhjd1"]
-atlas = ExtResource("2_4p8p0")
-region = Rect2(384, 181, 16, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hehiw"]
-atlas = ExtResource("2_4p8p0")
-region = Rect2(400, 181, 16, 25)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhjd1"]
 animations = [{
 "frames": [{
@@ -81,14 +69,29 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_4p8p0")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epa1u")
 }, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_yhjd1")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85lak")
 }, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_hehiw")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yhli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fg7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcvfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5box")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2ock")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awpbn")
 }],
 "loop": true,
 "name": &"Quieto",
@@ -103,8 +106,6 @@ bullet_scale = Vector2(4, 4)
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_yhjd1")
-animation = &"Andar"
-frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(3, -8)

@@ -1,6 +1,12 @@
 extends Node2D
 class_name Arma
 
+enum TipoDisparo {
+	SIMPLE,
+	ABANICO_3,
+	RAFAGA_3
+}
+
 @export var nombre: String = "Arma Base"
 @export var sprite: Texture2D            
 @export var bullet_scene: PackedScene
@@ -8,6 +14,8 @@ class_name Arma
 @export var fire_sound: AudioStream = null
 @export var bullet_scale: Vector2 = Vector2.ONE  
 @export var sonido_disparo: AudioStream
+@export var tipo_disparo: TipoDisparo = TipoDisparo.SIMPLE
+
 
 var tiempo_disparo := 0.0
 

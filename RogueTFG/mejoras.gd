@@ -2,7 +2,7 @@ extends Control
 
 @export var next_scene_path: String = "res://Escenas/nivel2.tscn"
 
-static var previous_scene_path := ""
+var previous_scene_path: String = ""
 
 @onready var contenedor := $VBoxContainer
 @onready var titulo: Label = $Label

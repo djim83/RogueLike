@@ -12,6 +12,12 @@ func _ready() -> void:
 func _on_btn_menu_pressed() -> void:
 	print("Volver al menú principal")
 	get_tree().change_scene_to_file("res://menu_principal.tscn")
+	PlayerStats.municion_pistola = 500
+	PlayerStats.vida = 5
+	PlayerStats.velocidad = 600
+	PlayerStats.velocidad_disparo = 0.1
+	PlayerStats.secondary_weapon_scene = null
+	
 
 
 func _on_btn_salir_pressed() -> void:

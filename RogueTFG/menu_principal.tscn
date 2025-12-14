@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c306fc06nw342"]
+[gd_scene load_steps=5 format=3 uid="uid://c306fc06nw342"]
 
 [ext_resource type="Script" uid="uid://diblhvyywyu2r" path="res://menu_principal.gd" id="1_gmcsc"]
 [ext_resource type="Texture2D" uid="uid://dk4luaxpab1b8" path="res://Sprites/Varios/MenuFondo.png" id="2_gmcsc"]
+[ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_ns3he"]
 [ext_resource type="Texture2D" uid="uid://fad7ycpkaosh" path="res://Sprites/Menu/logo.png" id="3_ul6ys"]
 
 [node name="MenuPrincipal" type="Control"]
@@ -10,6 +11,58 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_gmcsc")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 448.0
+offset_top = 22.0
+offset_right = 1198.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(0.898039, 0.65098, 0.203922, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 150
+text = "PIXEL
+"
+
+[node name="Label3" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 611.0
+offset_top = 187.0
+offset_right = 971.0
+offset_bottom = 310.0
+theme_override_colors/font_color = Color(0.898039, 0.611765, 0.203922, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 60
+text = "IN THE
+"
+
+[node name="Label4" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 872.0
+offset_right = 1490.0
+offset_bottom = 995.0
+theme_override_colors/font_color = Color(0.898039, 0.611765, 0.203922, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 20
+text = "@2026 David Jiménez
+"
+
+[node name="Label2" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 284.0
+offset_top = 263.0
+offset_right = 1334.0
+offset_bottom = 566.0
+theme_override_colors/font_color = Color(0.898039, 0.588235, 0.203922, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 150
+text = "DUNGEON
+"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -45,6 +98,7 @@ size_flags_vertical = 3
 text = "SALIR"
 
 [node name="Logo" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(783, 234)
 scale = Vector2(0.649414, 0.507812)
 texture = ExtResource("3_ul6ys")

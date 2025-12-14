@@ -101,10 +101,10 @@ radius = 28.0
 height = 94.0
 
 [node name="CharacterBody2D" instance=ExtResource("1_sj5s6")]
+speed = 125.0
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_dengx")
-frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(3, 5)

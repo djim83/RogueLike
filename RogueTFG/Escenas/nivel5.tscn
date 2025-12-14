@@ -15,14 +15,12 @@ enemigos_max = 5
 current_biome = "hielo"
 
 [node name="Label2" parent="FinalOverLayer/Panel" index="3"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 1280.0
 offset_bottom = 120.0
 
 [node name="Label3" parent="FinalOverLayer/Panel" index="4"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 1280.0

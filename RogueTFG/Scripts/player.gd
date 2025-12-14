@@ -31,6 +31,9 @@ var life: int = PlayerStats.vida
 @onready var sonido_muerte: AudioStreamPlayer2D = $SonidoMuerte
 @onready var sonido_herido: AudioStreamPlayer2D = $SonidoHerido
 
+@export var aim_radius := 80.0
+
+
 
 var armas: Array[Arma] = []
 var arma_actual: int = 0
@@ -110,6 +113,14 @@ func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
 	var angle = dir.angle()
+	
+	# --- Fire rate según arma ---
+	if arma_actual == 0:
+	# Arma principal
+		fire_rate = PlayerStats.velocidad_disparo
+	else:
+		if arma_secundaria:
+			fire_rate = arma_secundaria.fire_rate
 
 	# --- Cambiar sprite del arma según el arma actual ---
 	if arma_actual == 0:
@@ -163,6 +174,9 @@ func recibir_daño(amount: int = 1) -> void:
 	if sonido_herido:
 			sonido_herido.play()
 
+	# Texto flotante
+	_spawn_floating_text("-1")
+
 	life = max(life - amount, 0)
 	PlayerStats.vida = life
 	actualizar_corazones()
@@ -179,40 +193,79 @@ func recibir_daño(amount: int = 1) -> void:
 
 
 func shoot():
-	if current_ammo <= 0:
-		return
-	current_ammo -= 1
-	PlayerStats.municion_pistola = current_ammo
-	
-	# --- Sonido del disparo ---
 	if arma_actual == 0:
-		# Arma principal — pistola
+		# Arma principal
+		if current_ammo <= 0:
+			return
+
+		current_ammo -= 1
+		PlayerStats.municion_pistola = current_ammo
+
 		if sonido_pistola:
 			sonido_pistola.play()
-	else:
-		# Arma secundaria — sonido definido por el arma
-		if arma_secundaria and arma_secundaria.sonido_disparo:
-			var s := AudioStreamPlayer.new()
-			s.stream = arma_secundaria.sonido_disparo
-			add_child(s)
-			s.play()
 
-			s.finished.connect(func():
-				await get_tree().process_frame
-				s.queue_free()
-			)
+		var muzzle := canon.global_position
+		var dir := Vector2.RIGHT.rotated(canon.global_rotation).normalized()
+		var speed_mul := 1.0  # velocidad normal
+		_spawn_bullet(muzzle, dir, speed_mul)
+		return
 
-	# --- Instanciar bala ---
-	var bala = bullet_scene.instantiate()
+
+	# Arma secundaria
+	if not arma_secundaria:
+		return
 
 	var muzzle := canon.global_position
 	var dir := Vector2.RIGHT.rotated(canon.global_rotation).normalized()
 
-	bala.global_position = muzzle + dir * 20.0
-	bala.direction = dir
-	bala.rotation = dir.angle()
+	# Sonido
+	if arma_secundaria.sonido_disparo:
+		var s := AudioStreamPlayer.new()
+		s.stream = arma_secundaria.sonido_disparo
+		add_child(s)
+		s.play()
+		s.finished.connect(func():
+			s.queue_free()
+		)
 
-	get_parent().add_child(bala)
+	match arma_secundaria.tipo_disparo:
+
+		Arma.TipoDisparo.ABANICO_3:
+			# Necesita 3 balas
+			if current_ammo < 3:
+				return
+
+			current_ammo -= 3
+			PlayerStats.municion_pistola = current_ammo
+			
+			var speed_mul := 0.9
+
+			var spread := deg_to_rad(12)
+			_spawn_bullet(muzzle, dir, speed_mul)
+			_spawn_bullet(muzzle, dir.rotated(spread), speed_mul)
+			_spawn_bullet(muzzle, dir.rotated(-spread), speed_mul)
+
+
+		Arma.TipoDisparo.RAFAGA_3:
+			# Necesita 3 balas
+			if current_ammo < 3:
+				return
+
+			current_ammo -= 3
+			PlayerStats.municion_pistola = current_ammo
+
+			_fire_rafaga(muzzle, dir)
+
+
+		_:
+			if current_ammo <= 0:
+				return
+
+			current_ammo -= 1
+			PlayerStats.municion_pistola = current_ammo
+			_spawn_bullet(muzzle, dir)
+
+
 
 
 func sumar_municion(amount: int):
@@ -227,7 +280,11 @@ func sumar_vida(amount: int):
 
 func game_over():
 	game_over_panel.visible = true
-	#get_tree().paused = true  # pausa el juego
+	PlayerStats.municion_pistola = 500
+	PlayerStats.vida = 5
+	PlayerStats.velocidad = 600
+	PlayerStats.velocidad_disparo = 0.1
+	PlayerStats.secondary_weapon_scene = null
 
 
 func _on_jugar_pressed():
@@ -283,3 +340,37 @@ func actualizar_corazones():
 		heart.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
 		contenedor.add_child(heart)
+
+func _spawn_floating_text(text: String):
+	var label := Label.new()
+	label.text = text
+	label.scale = Vector2(4, 4)
+	label.modulate = Color(1, 0, 0)  # rojo
+
+	# Situarlo justo encima del cofre
+	label.global_position = global_position + Vector2(0, -20)
+
+	get_tree().current_scene.add_child(label)
+
+	# Animación sencilla: subir y desaparecer
+	var tween = get_tree().create_tween()
+	tween.tween_property(label, "global_position", label.global_position + Vector2(0, -40), 0.5)
+	tween.tween_property(label, "modulate:a", 0.0, 0.5)
+
+	tween.finished.connect(func():
+		if is_instance_valid(label):
+			label.queue_free()
+	)
+
+func _spawn_bullet(pos: Vector2, dir: Vector2, speed_mul: float = 1.0) -> void:
+	var bala = bullet_scene.instantiate()
+	bala.global_position = pos + dir * 20.0
+	bala.direction = dir
+	bala.rotation = dir.angle()
+	bala.speed *= speed_mul
+	get_parent().add_child(bala)
+
+func _fire_rafaga(muzzle: Vector2, dir: Vector2) -> void:
+	for i in range(3):
+		_spawn_bullet(muzzle, dir, 2)
+		#await get_tree().create_timer(0.08).timeout

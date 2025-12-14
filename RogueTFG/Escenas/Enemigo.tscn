@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dunntpqbcqum3"]
+[gd_scene load_steps=19 format=3 uid="uid://dunntpqbcqum3"]
 
 [ext_resource type="Script" uid="uid://brwiw6pkaysg6" path="res://Scripts/enemigo.gd" id="1_p2sjk"]
 [ext_resource type="PackedScene" uid="uid://bx6bfvfgm02v" path="res://Escenas/Bala_Enemigo.tscn" id="2_qws2e"]
@@ -41,14 +41,6 @@ region = Rect2(193, 0, 32, 49)
 atlas = ExtResource("6_r7vpg")
 region = Rect2(225, 0, 32, 49)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rwb1"]
-atlas = ExtResource("6_r7vpg")
-region = Rect2(97, 0, 32, 49)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eacvh"]
-atlas = ExtResource("6_r7vpg")
-region = Rect2(225, 0, 32, 49)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_5tj7q"]
 animations = [{
 "frames": [{
@@ -82,10 +74,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0rwb1")
+"texture": SubResource("AtlasTexture_1228h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eacvh")
+"texture": SubResource("AtlasTexture_c4phj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tssr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfo2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tj7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eojuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3e3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6m2h")
 }],
 "loop": true,
 "name": &"Quieto",
@@ -112,7 +122,6 @@ bullet_scale = Vector2(1, 1)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5tj7q")
 animation = &"Quieto"
-frame_progress = 0.396462
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 10)

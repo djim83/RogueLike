@@ -8220,6 +8220,7 @@ text = "SALIR"
 
 [node name="Label2" type="Label" parent="FinalOverLayer/Panel"]
 z_index = 1
+layout_mode = 0
 offset_left = 117.0
 offset_top = 88.0
 offset_right = 1397.0
@@ -8235,6 +8236,7 @@ vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="FinalOverLayer/Panel"]
 z_index = 1
+layout_mode = 0
 offset_left = 115.0
 offset_top = 799.0
 offset_right = 1395.0

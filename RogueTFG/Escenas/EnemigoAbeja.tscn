@@ -97,10 +97,10 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" instance=ExtResource("1_6mh2g")]
+speed = 125.0
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_moo8r")
-frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(5, 3)

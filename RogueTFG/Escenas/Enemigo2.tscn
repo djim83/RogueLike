@@ -8,7 +8,7 @@ size = Vector2(66, 108)
 
 [node name="CharacterBody2D" instance=ExtResource("1_pvpah")]
 speed = 100.0
-life = 2.0
+life = 5.0
 tipo_disparo = 3
 vision_range = 600.0
 bullet_texture = ExtResource("2_7jiol")
@@ -17,7 +17,6 @@ bullet_scale = Vector2(6, 6)
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(20, 0)
 animation = &"Andar"
-frame_progress = 0.726883
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(23, 0)
