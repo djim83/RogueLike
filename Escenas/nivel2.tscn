@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5eskaaxv5kd5"]
+
+[ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_5pt6q"]
+[ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="2_tqhfi"]
+[ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="3_sd78f"]
+[ext_resource type="PackedScene" uid="uid://ox71vs3dspko" path="res://Escenas/Enemigo6.tscn" id="5_uu4ua"]
+
+[node name="Node2D" instance=ExtResource("1_5pt6q")]
+
+[node name="TileMap" parent="." index="0"]
+floor_tiles = [5]
+wall_tiles = [6]
+target_coverage = 0.2
+enemy_scene = ExtResource("2_tqhfi")
+enemy_scenes = Array[PackedScene]([ExtResource("2_tqhfi"), ExtResource("3_sd78f"), ExtResource("5_uu4ua")])
+current_biome = "fuego"

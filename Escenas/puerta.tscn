@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://b65xw5eb4d8on"]
+
+[ext_resource type="Script" uid="uid://bhfu467ng2ixk" path="res://puerta.gd" id="1_cydqo"]
+[ext_resource type="Texture2D" uid="uid://b4wdm1i0l88ja" path="res://Sprites/Puerta/portal5_spritesheet.png" id="2_ylh6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgxfh"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imcla"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbcj5"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su2wy"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u6f8"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tospp"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u488"]
+atlas = ExtResource("2_ylh6m")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmxwf"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Abrir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_hgxfh")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_imcla")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_rbcj5")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_su2wy")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7u6f8")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_tospp")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4u488")
+}],
+"loop": true,
+"name": &"Quieto",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgxfh"]
+size = Vector2(50, 86)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_cydqo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qmxwf")
+animation = &"Quieto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_hgxfh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

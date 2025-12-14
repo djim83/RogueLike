@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://wdtiyrwqsb0l"]
+
+[ext_resource type="Script" uid="uid://dqdg6xhsqlqw5" path="res://Scripts/bala.gd" id="1_q3a34"]
+[ext_resource type="PackedScene" uid="uid://bqae3dkdrgyom" path="res://Escenas/Fragmento_Escopeta.tscn" id="2_i2q3r"]
+[ext_resource type="Texture2D" uid="uid://dhcesdcl1iusg" path="res://Sprites/Balas/8.png" id="3_q3a34"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jql1f"]
+radius = 12.0
+
+[node name="Area2D" type="Area2D" groups=["Proyectiles"]]
+collision_layer = 8
+collision_mask = 213
+script = ExtResource("1_q3a34")
+speed = 800.0
+lifetime = 0.5
+fragment_scene = ExtResource("2_i2q3r")
+fragments_count = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("3_q3a34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jql1f")

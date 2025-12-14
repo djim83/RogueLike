@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyhdvrhctaydu"]
+
+[ext_resource type="Script" uid="uid://b2puul8ostev1" path="res://arma.gd" id="1_m0tgw"]
+[ext_resource type="Texture2D" uid="uid://dwpxsmj0annwb" path="res://icon.svg" id="2_8nrq0"]
+[ext_resource type="PackedScene" uid="uid://dqyxwnpk8638p" path="res://Escenas/Bala.tscn" id="3_of2bn"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_m0tgw")
+sprite = ExtResource("2_8nrq0")
+bullet_scene = ExtResource("3_of2bn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

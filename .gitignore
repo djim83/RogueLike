@@ -1,0 +1,12 @@
+# Godot
+.import/
+.export/
+godot.lock
+
+# Sistema
+.DS_Store
+
+# Builds
+*.exe
+*.pck
+*.zip
