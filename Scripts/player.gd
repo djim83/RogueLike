@@ -373,4 +373,4 @@ func _spawn_bullet(pos: Vector2, dir: Vector2, speed_mul: float = 1.0) -> void:
 func _fire_rafaga(muzzle: Vector2, dir: Vector2) -> void:
 	for i in range(3):
 		_spawn_bullet(muzzle, dir, 2)
-		#await get_tree().create_timer(0.08).timeout
+		await get_tree().create_timer(0.08).timeout

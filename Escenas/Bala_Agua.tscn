@@ -14,9 +14,9 @@ script = ExtResource("1_x5sx6")
 fragment_scene = ExtResource("2_g30a1")
 fragments_count = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Proyectiles"]]
 scale = Vector2(6, 6)
 texture = ExtResource("3_x5sx6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Proyectiles"]]
 shape = SubResource("RectangleShape2D_x5sx6")

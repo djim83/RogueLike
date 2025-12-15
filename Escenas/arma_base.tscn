@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwpxsmj0annwb" path="res://icon.svg" id="2_8nrq0"]
 [ext_resource type="PackedScene" uid="uid://dqyxwnpk8638p" path="res://Escenas/Bala.tscn" id="3_of2bn"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D2" type="Node2D" groups=["Armas"]]
 script = ExtResource("1_m0tgw")
 sprite = ExtResource("2_8nrq0")
 bullet_scene = ExtResource("3_of2bn")

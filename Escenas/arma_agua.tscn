@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://n23cgahi6p3q" path="res://Escenas/Bala_Agua.tscn" id="3_s73t1"]
 [ext_resource type="AudioStream" uid="uid://bdk08refuddec" path="res://Sounds/Retro.wav" id="4_ttu0w"]
 
-[node name="ArmaPistola" type="Node2D"]
+[node name="ArmaPistola" type="Node2D" groups=["Armas"]]
 script = ExtResource("1_vokty")
 nombre = "Pistola"
 sprite = ExtResource("2_vokty")

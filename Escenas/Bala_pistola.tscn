@@ -16,9 +16,9 @@ lifetime = 0.5
 fragment_scene = ExtResource("2_i2q3r")
 fragments_count = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Proyectiles"]]
 scale = Vector2(6, 6)
 texture = ExtResource("3_q3a34")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Proyectiles"]]
 shape = SubResource("CircleShape2D_jql1f")

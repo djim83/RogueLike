@@ -6,7 +6,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ska4"]
 load_path = "res://.godot/imported/Escopeta.png-c6e7e8998da0ccb5c7ab11225ef7e63f.ctex"
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["Armas"]]
 script = ExtResource("1_i1p6q")
 bullet_scene = ExtResource("3_ux6uk")
 

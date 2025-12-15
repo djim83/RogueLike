@@ -10,51 +10,24 @@ func _ready():
 	add_to_group("Puerta")
 	anim.play()
 	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body):
 	if usada:
-		print("Usadaaaaa")
 		return
 
-	# Ignorar enemigos y balas
-	if body.is_in_group("Enemigos") or body.is_in_group("BalasEnemigas"):
-		print("Choca con enemigo o bala")
-		return
-
-	if body.is_in_group("Proyectiles"):
-		print("Choca con bala")
-		return
-
-	# Entrada válida (jugador)
-	print("Choca con jugador")
-	entradas_validas += 1
-
-	if evaluando:
-		return
-
-	evaluando = true
-	call_deferred("_evaluar_entrada")
-
-func _on_body_exited(body):
+	# SOLO el jugador puede activar la puerta
 	if not body.is_in_group("Jugador"):
 		return
+	if body.is_in_group("Proyectiles"):
+		return
 
-	entradas_validas = max(entradas_validas - 1, 0)
+	usada = true
+	monitoring = false
 
-func _evaluar_entrada():
-	# Esperamos un frame para que se registren todas las colisiones
-	await get_tree().process_frame
-	evaluando = false
+	
+	print("Entrada válida del jugador")
+	call_deferred("_cambiar_escena")
 
-	# SOLO si hay exactamente una entrada válida
-	if entradas_validas == 1:
-		print("Entrada limpia. Cambiando escena")
-		usada = true
-		monitoring = false
-		_cambiar_escena()
-	else:
-		print("Entrada múltiple. Ojooooo")
 
 func _cambiar_escena():
 	var escena_actual := get_tree().current_scene.scene_file_path
