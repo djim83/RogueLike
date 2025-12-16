@@ -15,18 +15,12 @@ func _on_body_entered(body):
 	if usada:
 		return
 
-	# SOLO el jugador puede activar la puerta
-	if not body.is_in_group("Jugador"):
-		return
-	if body.is_in_group("Proyectiles"):
-		return
+	if body is CharacterBody2D and body.is_in_group("Jugador"):
+		usada = true
+		monitoring = false
+		call_deferred("_cambiar_escena")
+		print("Entrada válida del jugador")
 
-	usada = true
-	monitoring = false
-
-	
-	print("Entrada válida del jugador")
-	call_deferred("_cambiar_escena")
 
 
 func _cambiar_escena():

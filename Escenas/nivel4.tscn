@@ -15,6 +15,10 @@ enemigos_min = 1
 enemigos_max = 1
 current_biome = "casa"
 
+[node name="AnimatedSprite2D" parent="jugador" index="0" groups=["Jugador"]]
+
+[node name="CollisionShape2D" parent="jugador" index="1" groups=["Jugador"]]
+
 [node name="Label2" parent="FinalOverLayer/Panel" index="3"]
 offset_left = 0.0
 offset_top = 0.0
