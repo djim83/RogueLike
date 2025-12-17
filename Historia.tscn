@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://pon2p2hr2ju7"]
+[gd_scene load_steps=14 format=3 uid="uid://pon2p2hr2ju7"]
 
 [ext_resource type="Script" uid="uid://ycc3rbrwet02" path="res://IntroJuego.gd" id="1_m865l"]
 [ext_resource type="Texture2D" uid="uid://b4wdm1i0l88ja" path="res://Sprites/Puerta/portal5_spritesheet.png" id="2_c5k72"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_ky6sj"]
 [ext_resource type="Texture2D" uid="uid://w340xxj1yd24" path="res://Sprites/Varios/imagenHisto.png" id="2_sx523"]
+[ext_resource type="AudioStream" uid="uid://cq5xrcrysvd4e" path="res://Sounds/Melodias/intro.wav" id="5_5rev2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rev2"]
 atlas = ExtResource("2_c5k72")
@@ -75,7 +76,7 @@ position = Vector2(1305, 437)
 scale = Vector2(10.1562, 11.7813)
 sprite_frames = SubResource("SpriteFrames_om6oy")
 animation = &"Normal"
-frame_progress = 0.0157463
+frame_progress = 0.491574
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -113,3 +114,6 @@ theme_override_font_sizes/font_size = 28
 text = "Pulsa para continuar"
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5rev2")

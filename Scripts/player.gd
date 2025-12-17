@@ -23,6 +23,7 @@ var life: int = PlayerStats.vida
 @onready var game_over_panel: Panel = $"../GameOverLayer/Panel"
 @onready var btn_jugar: Button = $"../GameOverLayer/Panel/Jugar"
 @onready var btn_salir: Button = $"../GameOverLayer/Panel/Salir"
+@onready var melodia: AudioStreamPlayer = $"../Melodia"
 
 @onready var anim_player: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -48,6 +49,7 @@ var tiempo_invulnerable: float = 0.0
 
 
 func _ready():
+	add_to_group("Juador")
 	current_ammo = max_ammo
 	actualizar_corazones()
 	
@@ -286,6 +288,7 @@ func sumar_vida(amount: int):
 
 func game_over():
 	game_over_panel.visible = true
+	melodia.stop()
 	PlayerStats.municion_pistola = 500
 	PlayerStats.vida = 5
 	PlayerStats.velocidad = 600

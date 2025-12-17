@@ -36,6 +36,7 @@ var enemigos: int = 0
 
 
 @onready var game_over_panel: Panel = $GameOverLayer/Panel
+@onready var melodia: AudioStreamPlayer = $Melodia
 
 @export var biomas := {
 	"bosque": {
@@ -67,6 +68,10 @@ var enemigos: int = 0
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 func _ready():
+	if melodia and melodia.stream:
+		melodia.finished.connect(_on_melodia_finished)
+		melodia.play()
+	
 	rng.randomize()
 	# Almacenar nombre de la pantalla
 	PlayerStats.push(get_tree().current_scene.scene_file_path)
@@ -302,3 +307,5 @@ func poner_antorchas(count: int) -> void:
 				var anims: PackedStringArray = anim_sprite.sprite_frames.get_animation_names()
 				if anims.size() > 0:
 					anim_sprite.play(anims[0])  # Reproduce la primera animación disponible
+func _on_melodia_finished():
+	melodia.play()

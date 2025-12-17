@@ -1,6 +1,13 @@
 extends Control
 
+
+@onready var melodia: AudioStreamPlayer = $AudioStreamPlayer
+
+
 func _ready():
+	if melodia and melodia.stream:
+		melodia.play()
+		
 	$Botonera/BtnIniciar.pressed.connect(_on_iniciar_pressed)
 	$Botonera/BtnTutorial.pressed.connect(_on_tutorial_pressed)
 	$Botonera/BtnSalir.pressed.connect(_on_salir_pressed)

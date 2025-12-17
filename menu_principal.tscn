@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c306fc06nw342"]
+[gd_scene load_steps=6 format=3 uid="uid://c306fc06nw342"]
 
 [ext_resource type="Script" uid="uid://diblhvyywyu2r" path="res://menu_principal.gd" id="1_gmcsc"]
 [ext_resource type="Texture2D" uid="uid://dk4luaxpab1b8" path="res://Sprites/Varios/MenuFondo.png" id="2_gmcsc"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_ns3he"]
 [ext_resource type="Texture2D" uid="uid://fad7ycpkaosh" path="res://Sprites/Menu/logo.png" id="3_ul6ys"]
+[ext_resource type="AudioStream" uid="uid://cmx1uxw61spg2" path="res://Sounds/Melodias/menu.wav" id="5_fa1tu"]
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -114,3 +115,6 @@ visible = false
 position = Vector2(783, 234)
 scale = Vector2(0.649414, 0.507812)
 texture = ExtResource("3_ul6ys")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fa1tu")

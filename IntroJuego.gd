@@ -3,6 +3,7 @@ extends Control
 @onready var label: Label = $Label
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label_continue: Label = $Label2
+@onready var melodia: AudioStreamPlayer = $AudioStreamPlayer
 
 # Texto completo de la historia
 var full_text := """
@@ -35,6 +36,8 @@ var finished := false
 var timer := 0.0
 
 func _ready() -> void:
+	if melodia and melodia.stream:
+		melodia.play()
 	label.text = ""
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

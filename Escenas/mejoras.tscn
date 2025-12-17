@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://buxaoxibc6mp2"]
+[gd_scene load_steps=5 format=3 uid="uid://buxaoxibc6mp2"]
 
 [ext_resource type="Script" uid="uid://dblru5dvxnnd3" path="res://mejoras.gd" id="1_01c73"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_76a6x"]
 [ext_resource type="Texture2D" uid="uid://b0rjiuuk4gcdp" path="res://Sprites/Varios/theEnd.png" id="3_4ox8d"]
+[ext_resource type="AudioStream" uid="uid://1bdubusw76mh" path="res://Sounds/Melodias/mejoras.mp3" id="4_5wkkt"]
 
 [node name="Mejoras" type="Control"]
 layout_mode = 3
@@ -112,3 +113,6 @@ theme_override_font_sizes/font_size = 20
 text = "GRACIAS POR JUGAR"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5wkkt")

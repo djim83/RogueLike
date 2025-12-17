@@ -2,9 +2,16 @@ extends Area2D
 
 @export var arma_scene: PackedScene
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var sonido_recoger: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+var jugador: Node = null
+var label: Label = null
+var puede_recoger := false
+
 
 func _ready():
 	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
 	_actualizar_sprite()
 
 
@@ -32,6 +39,57 @@ func _actualizar_sprite():
 
 
 func _on_body_entered(body):
-	if body.is_in_group("Jugador") and arma_scene:
-		body.recoger_secundaria(arma_scene)
-		queue_free()
+	if not body.is_in_group("Jugador"):
+		return
+
+	jugador = body
+	puede_recoger = true
+	_mostrar_label()
+
+
+func _on_body_exited(body):
+	if body != jugador:
+		return
+
+	puede_recoger = false
+	jugador = null
+	_ocultar_label()
+
+
+func _process(delta):
+	if puede_recoger and Input.is_action_just_pressed("ui_accept"):
+		_recoger()
+
+
+func _recoger():
+	if not jugador or not arma_scene:
+		return
+
+	if jugador.has_method("recoger_secundaria"):
+		jugador.recoger_secundaria(arma_scene)
+
+	if sonido_recoger:
+		sonido_recoger.play()
+
+	_ocultar_label()
+	queue_free()
+
+
+func _mostrar_label():
+	if label:
+		return
+
+	label = Label.new()
+	label.text = "[ESPACIO] Recoger"
+	label.scale = Vector2(2.5, 2.5)
+	label.modulate = Color(1, 1, 0)  # amarillo
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	get_tree().current_scene.add_child(label)
+	label.global_position = global_position + Vector2(0, -40)
+
+
+func _ocultar_label():
+	if label and is_instance_valid(label):
+		label.queue_free()
+	label = null

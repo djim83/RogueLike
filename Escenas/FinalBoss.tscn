@@ -149,14 +149,14 @@ height = 184.0
 scale = Vector2(2, 2)
 collision_mask = 143
 script = ExtResource("2_jqv3j")
-life_max = 3.0
+life_max = 200.0
 tipo_disparo = 3
 vision_range = 750.0
 bullet_scene = ExtResource("3_61rft")
 municion_scene = ExtResource("4_enidy")
 laser_scene = null
 bullet_texture = ExtResource("5_h6pbi")
-bullet_scale = Vector2(5, 5)
+bullet_scale = Vector2(6, 6)
 circular_offset_radius = 64.0
 circular_offset_speed = 3.0
 

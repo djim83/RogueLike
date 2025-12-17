@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=115 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -62,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://b1vi282t15pwk" path="res://Sprites/Varios/GameOver.png" id="57_lgdig"]
 [ext_resource type="Texture2D" uid="uid://ckpon1u8i77bu" path="res://Sprites/Balas/2.png" id="58_vwhtd"]
 [ext_resource type="Texture2D" uid="uid://b0rjiuuk4gcdp" path="res://Sprites/Varios/theEnd.png" id="59_vwhtd"]
+[ext_resource type="AudioStream" uid="uid://dt1gx7sfse7md" path="res://Sounds/Melodias/nivel1.mp3" id="63_shhuy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lda5"]
 texture = ExtResource("1_c0sgf")
@@ -8194,10 +8195,10 @@ texture = ExtResource("57_lgdig")
 
 [node name="Jugar" type="Button" parent="GameOverLayer/Panel"]
 layout_mode = 0
-offset_left = 653.0
-offset_top = 515.0
-offset_right = 941.0
-offset_bottom = 640.0
+offset_left = 654.0
+offset_top = 592.0
+offset_right = 942.0
+offset_bottom = 717.0
 theme_override_colors/font_hover_color = Color(0.505882, 0.0980392, 0.0901961, 1)
 theme_override_colors/font_color = Color(0.976471, 0.615686, 0, 1)
 theme_override_fonts/font = ExtResource("57_03n5p")
@@ -8206,24 +8207,13 @@ text = "MENÚ PRINCIPAL"
 [node name="Salir" type="Button" parent="GameOverLayer/Panel"]
 layout_mode = 0
 offset_left = 652.0
-offset_top = 768.0
+offset_top = 721.0
 offset_right = 942.0
-offset_bottom = 888.0
+offset_bottom = 841.0
 theme_override_colors/font_hover_color = Color(0.505882, 0.0980392, 0.0901961, 1)
 theme_override_colors/font_color = Color(0.976471, 0.615686, 0, 1)
 theme_override_fonts/font = ExtResource("57_03n5p")
 text = "SALIR"
-
-[node name="Repetir" type="Button" parent="GameOverLayer/Panel"]
-layout_mode = 0
-offset_left = 653.0
-offset_top = 643.0
-offset_right = 943.0
-offset_bottom = 763.0
-theme_override_colors/font_hover_color = Color(0.505882, 0.0980392, 0.0901961, 1)
-theme_override_colors/font_color = Color(0.976471, 0.615686, 0, 1)
-theme_override_fonts/font = ExtResource("57_03n5p")
-text = "JUGAR OTRA VEZ"
 
 [node name="FinalOverLayer" type="CanvasLayer" parent="."]
 
@@ -8286,3 +8276,8 @@ theme_override_font_sizes/font_size = 20
 text = "GRACIAS POR JUGAR"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Melodia" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("63_shhuy")
+volume_db = -5.0
+autoplay = true

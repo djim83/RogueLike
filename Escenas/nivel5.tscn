@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b84ca5bg0ndto"]
+[gd_scene load_steps=8 format=3 uid="uid://b84ca5bg0ndto"]
 
 [ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_2fcb2"]
 [ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="2_8tj7d"]
 [ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="3_oa2pq"]
+[ext_resource type="PackedScene" uid="uid://cecj3sdjv2xhb" path="res://Escenas/EnemigoSlime.tscn" id="4_4oeic"]
+[ext_resource type="AudioStream" uid="uid://dqbxb4p7kyroc" path="res://Sounds/Melodias/5.mp3" id="4_8tj7d"]
+[ext_resource type="PackedScene" uid="uid://ddai5ei6f2enq" path="res://Escenas/Enemigo5.tscn" id="5_o3w20"]
+[ext_resource type="PackedScene" uid="uid://ox71vs3dspko" path="res://Escenas/Enemigo6.tscn" id="6_8us72"]
 
 [node name="Node2D2" instance=ExtResource("1_2fcb2")]
 
 [node name="TileMap" parent="." index="0"]
-enemy_scenes = Array[PackedScene]([ExtResource("2_8tj7d"), ExtResource("3_oa2pq")])
+enemy_scenes = Array[PackedScene]([ExtResource("2_8tj7d"), ExtResource("3_oa2pq"), ExtResource("4_4oeic"), ExtResource("5_o3w20"), ExtResource("6_8us72")])
 total_enemy_groups = 5
 group_size_range = Vector2i(4, 5)
-enemigos_min = 4
-enemigos_max = 5
+enemigos_min = 12
 current_biome = "hielo"
 
 [node name="Label2" parent="FinalOverLayer/Panel" index="3"]
@@ -25,3 +28,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 1280.0
 offset_bottom = 120.0
+
+[node name="Melodia" parent="." index="5"]
+stream = ExtResource("4_8tj7d")

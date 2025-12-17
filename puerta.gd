@@ -12,12 +12,8 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
-	if usada:
-		return
-
-	if body is CharacterBody2D:
-		usada = true
-		monitoring = false
+	
+	if body is CharacterBody2D and body.has_method("recoger_secundaria"):
 		call_deferred("_cambiar_escena")
 		print("Entrada válida del jugador")
 
@@ -29,7 +25,7 @@ func _cambiar_escena():
 	if escena_actual.ends_with("nivelBoss.tscn"):
 		get_tree().change_scene_to_file("res://Escenas/escenaFinal.tscn")
 	else:
-		var mejoras_scene: Node = load("res://Escenas/Mejoras.tscn").instantiate()
+		var mejoras_scene: Node = load("res://Escenas/mejoras.tscn").instantiate()
 		mejoras_scene.previous_scene_path = escena_actual
 
 		get_tree().root.add_child(mejoras_scene)

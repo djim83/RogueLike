@@ -7,6 +7,7 @@ var previous_scene_path: String = ""
 @onready var contenedor := $VBoxContainer
 @onready var titulo: Label = $Label
 @onready var final_panel: Panel = $"../FinalOverLayer/Panel"
+@onready var melodia: AudioStreamPlayer = $AudioStreamPlayer
 
 var mejoras := [
 	{
@@ -60,11 +61,11 @@ var mejoras := [
 	},
 ]
 
-
-
 # Seleccionamos 4 mejoras aleatorias y generamos los botones
 func _ready() -> void:
 
+	if melodia and melodia.stream:
+		melodia.play()
 	# Poner un color aleatorio al label
 	_set_random_title_color()
 	
