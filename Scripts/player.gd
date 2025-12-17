@@ -4,7 +4,7 @@ var move_dir: Vector2
 var velocidad := PlayerStats.velocidad
 
 @export var bullet_scene: PackedScene
-var fire_rate: float = PlayerStats.velocidad_disparo
+var fire_rate: float
 
 var time_since_last_shot: float = 0.0
 
@@ -90,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	time_since_last_shot += delta
 	move_and_slide()
 
-	# --- Animación del jugador ---
+	# Animación del jugador
 	if move_dir.length() > 0.1:
 		if anim_player.animation != "Andar":
 			anim_player.play("Andar")
@@ -98,6 +98,12 @@ func _physics_process(delta: float) -> void:
 		if anim_player.animation != "Quieto":
 			anim_player.play("Quieto")
 
+	# Cadencia según arma 
+	if arma_actual == 0:
+		fire_rate = PlayerStats.velocidad_disparo
+	else:
+		if arma_secundaria:
+			fire_rate = PlayerStats.velocidad_disparo_secundaria
 	if Input.is_action_pressed("disparo") and time_since_last_shot >= fire_rate:
 		shoot()
 		time_since_last_shot = 0.0	

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwjfmqrcsunk"]
+[gd_scene load_steps=6 format=3 uid="uid://dwjfmqrcsunk"]
 
 [ext_resource type="PackedScene" uid="uid://cvheuf6g8f1ee" path="res://Escenas/tile_map.tscn" id="1_jfe0r"]
 [ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="2_vaoqd"]
+[ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="4_phhgc"]
 [ext_resource type="PackedScene" uid="uid://dyvhf84ryrim5" path="res://Escenas/Enemigo4.tscn" id="5_sqbcj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03n5p"]
+bg_color = Color(0, 0, 0, 1)
+corner_detail = 20
 
 [node name="Node2D" instance=ExtResource("1_jfe0r")]
 
@@ -18,6 +23,22 @@ current_biome = "casa"
 [node name="AnimatedSprite2D" parent="jugador" index="0" groups=["Jugador"]]
 
 [node name="CollisionShape2D" parent="jugador" index="1" groups=["Jugador"]]
+
+[node name="Nivel" type="Label" parent="Hud/ColorRect" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 91.0
+offset_right = -129.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.635294, 0.415686, 1)
+theme_override_fonts/font = ExtResource("4_phhgc")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_03n5p")
 
 [node name="Label2" parent="FinalOverLayer/Panel" index="3"]
 offset_left = 0.0

@@ -40,3 +40,7 @@ res://menu_principal.gd
 res://mejoras.gd
 res://Scripts/PlayerStats.gd
 res://Scripts/tile_map.gd
+res://Ayuda.tscn
+res://ayuda.gd
+res://Scripts/player.gd
+res://Scripts/canvas_layer.gd

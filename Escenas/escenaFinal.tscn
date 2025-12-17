@@ -28,7 +28,11 @@ offset_left = 458.0
 offset_top = 296.0
 offset_right = 746.0
 offset_bottom = 421.0
-text = "MENÚ PRINCIPAL"
+theme_override_colors/font_hover_color = Color(1, 0.823529, 0.329412, 1)
+theme_override_colors/font_color = Color(0.945098, 0.521569, 0, 1)
+theme_override_fonts/font = ExtResource("2_v6cfp")
+theme_override_font_sizes/font_size = 27
+text = "INICIO"
 
 [node name="Salir" type="Button" parent="FinalOverLayer/Panel"]
 layout_mode = 0
@@ -36,15 +40,19 @@ offset_left = 786.0
 offset_top = 299.0
 offset_right = 1076.0
 offset_bottom = 419.0
+theme_override_colors/font_hover_color = Color(1, 0.823529, 0.329412, 1)
+theme_override_colors/font_color = Color(0.945098, 0.521569, 0, 1)
+theme_override_fonts/font = ExtResource("2_v6cfp")
+theme_override_font_sizes/font_size = 27
 text = "SALIR"
 
 [node name="Label2" type="Label" parent="FinalOverLayer/Panel"]
 z_index = 1
 layout_mode = 0
 offset_left = 117.0
-offset_top = 88.0
+offset_top = 69.0
 offset_right = 1397.0
-offset_bottom = 208.0
+offset_bottom = 189.0
 theme_override_colors/font_color = Color(1, 0.823529, 0.329412, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -67,5 +75,21 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_v6cfp")
 theme_override_font_sizes/font_size = 20
 text = "GRACIAS POR JUGAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="FinalOverLayer/Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = 197.0
+offset_right = 1400.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(1, 0.823529, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_v6cfp")
+theme_override_font_sizes/font_size = 20
+text = "El joven Pixel consiguió volver a su casa"
 horizontal_alignment = 1
 vertical_alignment = 1

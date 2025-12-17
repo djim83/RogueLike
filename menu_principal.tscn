@@ -83,18 +83,30 @@ offset_bottom = 522.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.807843, 0.317647, 0.0980392, 1)
+theme_override_colors/font_color = Color(0.878431, 0.647059, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 20
 text = "JUGAR"
 
 [node name="BtnTutorial" type="Button" parent="Botonera"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.807843, 0.317647, 0.0980392, 1)
+theme_override_colors/font_color = Color(0.878431, 0.647059, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 20
 text = "AYUDA"
 
 [node name="BtnSalir" type="Button" parent="Botonera"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.807843, 0.317647, 0.0980392, 1)
+theme_override_colors/font_color = Color(0.878431, 0.647059, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("2_ns3he")
+theme_override_font_sizes/font_size = 20
 text = "SALIR"
 
 [node name="Logo" type="Sprite2D" parent="."]

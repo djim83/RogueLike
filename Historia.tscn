@@ -75,7 +75,7 @@ position = Vector2(1305, 437)
 scale = Vector2(10.1562, 11.7813)
 sprite_frames = SubResource("SpriteFrames_om6oy")
 animation = &"Normal"
-frame_progress = 0.0850427
+frame_progress = 0.0157463
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -104,9 +104,9 @@ theme_override_font_sizes/font_size = 25
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 522.0
+offset_left = 455.0
 offset_top = 852.0
-offset_right = 1082.0
+offset_right = 1015.0
 offset_bottom = 880.0
 theme_override_fonts/font = ExtResource("2_ky6sj")
 theme_override_font_sizes/font_size = 28

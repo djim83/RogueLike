@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=114 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -8051,6 +8051,10 @@ height = 85.7143
 bg_color = Color(0, 0, 0, 1)
 corner_detail = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cv0gp"]
+bg_color = Color(0, 0, 0, 1)
+corner_detail = 20
+
 [node name="Node2D2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
@@ -8159,6 +8163,22 @@ position = Vector2(24, 79)
 scale = Vector2(4.08333, 3.5)
 texture = ExtResource("58_vwhtd")
 
+[node name="Nivel" type="Label" parent="Hud/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 91.0
+offset_right = -129.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.635294, 0.415686, 1)
+theme_override_fonts/font = ExtResource("57_03n5p")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_cv0gp")
+
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="GameOverLayer"]
@@ -8175,18 +8195,35 @@ texture = ExtResource("57_lgdig")
 [node name="Jugar" type="Button" parent="GameOverLayer/Panel"]
 layout_mode = 0
 offset_left = 653.0
-offset_top = 553.0
+offset_top = 515.0
 offset_right = 941.0
-offset_bottom = 678.0
+offset_bottom = 640.0
+theme_override_colors/font_hover_color = Color(0.505882, 0.0980392, 0.0901961, 1)
+theme_override_colors/font_color = Color(0.976471, 0.615686, 0, 1)
+theme_override_fonts/font = ExtResource("57_03n5p")
 text = "MENÚ PRINCIPAL"
 
 [node name="Salir" type="Button" parent="GameOverLayer/Panel"]
 layout_mode = 0
-offset_left = 651.0
-offset_top = 682.0
-offset_right = 941.0
-offset_bottom = 802.0
+offset_left = 652.0
+offset_top = 768.0
+offset_right = 942.0
+offset_bottom = 888.0
+theme_override_colors/font_hover_color = Color(0.505882, 0.0980392, 0.0901961, 1)
+theme_override_colors/font_color = Color(0.976471, 0.615686, 0, 1)
+theme_override_fonts/font = ExtResource("57_03n5p")
 text = "SALIR"
+
+[node name="Repetir" type="Button" parent="GameOverLayer/Panel"]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 643.0
+offset_right = 943.0
+offset_bottom = 763.0
+theme_override_colors/font_hover_color = Color(0.505882, 0.0980392, 0.0901961, 1)
+theme_override_colors/font_color = Color(0.976471, 0.615686, 0, 1)
+theme_override_fonts/font = ExtResource("57_03n5p")
+text = "JUGAR OTRA VEZ"
 
 [node name="FinalOverLayer" type="CanvasLayer" parent="."]
 

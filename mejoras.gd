@@ -22,15 +22,15 @@ var mejoras := [
 	},
 
 	{
-	"texto": "Munición +100",
+	"texto": "Munición +150",
 	"accion": func():
-	PlayerStats.municion_pistola += 100
+	PlayerStats.municion_pistola += 150
 	},
 
 	{
-	"texto": "Munición +200",
+	"texto": "Munición +300",
 	"accion": func():
-	PlayerStats.municion_pistola += 200
+	PlayerStats.municion_pistola += 300
 	},
 
 	{
@@ -49,12 +49,14 @@ var mejoras := [
 	"texto": "Cadencia +10%",
 	"accion": func():
 	PlayerStats.velocidad_disparo = max(0.02, PlayerStats.velocidad_disparo * 0.9)
+	PlayerStats.velocidad_disparo_secundaria = max(0.02, PlayerStats.velocidad_disparo_secundaria * 0.9)
 	},
 
 	{
 	"texto": "Cadencia +20%",
 	"accion": func():
 	PlayerStats.velocidad_disparo = max(0.02, PlayerStats.velocidad_disparo * 0.8)
+	PlayerStats.velocidad_disparo_secundaria = max(0.02, PlayerStats.velocidad_disparo_secundaria * 0.8)
 	},
 ]
 
