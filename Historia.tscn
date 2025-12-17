@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://pon2p2hr2ju7"]
+
+[ext_resource type="Script" uid="uid://ycc3rbrwet02" path="res://IntroJuego.gd" id="1_m865l"]
+[ext_resource type="Texture2D" uid="uid://b4wdm1i0l88ja" path="res://Sprites/Puerta/portal5_spritesheet.png" id="2_c5k72"]
+[ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="2_ky6sj"]
+[ext_resource type="Texture2D" uid="uid://w340xxj1yd24" path="res://Sprites/Varios/imagenHisto.png" id="2_sx523"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rev2"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr2rn"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhwwa"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2766"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn0da"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtqtk"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7jdm"]
+atlas = ExtResource("2_c5k72")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_om6oy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rev2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr2rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhwwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2766")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn0da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtqtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7jdm")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_m865l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(1305, 437)
+scale = Vector2(10.1562, 11.7813)
+sprite_frames = SubResource("SpriteFrames_om6oy")
+animation = &"Normal"
+frame_progress = 0.0850427
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -655.0
+offset_top = -58.0
+offset_right = 1094.0
+offset_bottom = 966.0
+texture = ExtResource("2_sx523")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1642.0
+offset_bottom = 1002.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 32.0
+offset_right = 1143.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.905882, 0.823529, 0.192157, 1)
+theme_override_fonts/font = ExtResource("2_ky6sj")
+theme_override_font_sizes/font_size = 25
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 852.0
+offset_right = 1082.0
+offset_bottom = 880.0
+theme_override_fonts/font = ExtResource("2_ky6sj")
+theme_override_font_sizes/font_size = 28
+text = "Pulsa para continuar"
+
+[node name="Timer" type="Timer" parent="."]

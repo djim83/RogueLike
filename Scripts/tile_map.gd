@@ -68,6 +68,8 @@ var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 func _ready():
 	rng.randomize()
+	# Almacenar nombre de la pantalla
+	PlayerStats.push(get_tree().current_scene.scene_file_path)
 	
 	# Aplicar automáticamente el bioma elegido
 	if biomas.has(current_biome):

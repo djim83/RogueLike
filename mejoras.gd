@@ -92,23 +92,28 @@ func _ready() -> void:
 func _go_next():
 	var next := ""
 
-	if previous_scene_path.ends_with("tile_map.tscn"):
+	var base_scene := PlayerStats.get_last_non_mejoras()
+
+	print("Escena base real:", base_scene)
+
+	if base_scene.ends_with("tile_map.tscn"):
 		next = "res://Escenas/nivel2.tscn"
-	elif previous_scene_path.ends_with("nivel2.tscn"):
+	elif base_scene.ends_with("nivel2.tscn"):
 		next = "res://Escenas/nivel3.tscn"
-	elif previous_scene_path.ends_with("nivel3.tscn"):
+	elif base_scene.ends_with("nivel3.tscn"):
 		next = "res://Escenas/nivel4.tscn"
-	elif previous_scene_path.ends_with("nivel4.tscn"):
+	elif base_scene.ends_with("nivel4.tscn"):
 		next = "res://Escenas/nivel5.tscn"
-	elif previous_scene_path.ends_with("nivel5.tscn"):
+	elif base_scene.ends_with("nivel5.tscn"):
 		next = "res://Escenas/nivelBoss.tscn"
-	elif previous_scene_path.ends_with("nivelBoss.tscn"):
+	elif base_scene.ends_with("nivelBoss.tscn"):
 		next = "res://Escenas/escenaFinal.tscn"
 	else:
-		next = "res://Escenas/menu_principal"
+		next = "res://menu_principal"
 
 	print("Cargando siguiente nivel:", next)
 	get_tree().change_scene_to_file(next)
+
 
 func _set_random_title_color() -> void:
 	# Colores estilo pixel interesantes:

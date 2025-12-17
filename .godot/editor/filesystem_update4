@@ -34,3 +34,9 @@ res://Escenas/balaEnemigoGrande.tscn
 res://Escenas/Fragmento_Bala.tscn
 res://Escenas/Fragmento_Escopeta.tscn
 res://Escenas/Mejoras.tscn
+res://IntroJuego.gd
+res://Historia.tscn
+res://menu_principal.gd
+res://mejoras.gd
+res://Scripts/PlayerStats.gd
+res://Scripts/tile_map.gd

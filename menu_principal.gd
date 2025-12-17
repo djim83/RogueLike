@@ -6,7 +6,7 @@ func _ready():
 	$Botonera/BtnSalir.pressed.connect(_on_salir_pressed)
 
 func _on_iniciar_pressed():
-	get_tree().change_scene_to_file("res://Escenas/tile_map.tscn")  # Ajusta la ruta
+	get_tree().change_scene_to_file("res://Historia.tscn")  # Ajusta la ruta
 
 func _on_tutorial_pressed():
 	get_tree().change_scene_to_file("res://Escenas/Tutorial.tscn")

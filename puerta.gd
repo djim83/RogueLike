@@ -15,7 +15,7 @@ func _on_body_entered(body):
 	if usada:
 		return
 
-	if body is CharacterBody2D and body.is_in_group("Jugador"):
+	if body is CharacterBody2D:
 		usada = true
 		monitoring = false
 		call_deferred("_cambiar_escena")
