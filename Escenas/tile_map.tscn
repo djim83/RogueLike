@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://cvheuf6g8f1ee"]
+[gd_scene load_steps=116 format=3 uid="uid://cvheuf6g8f1ee"]
 
 [ext_resource type="Script" uid="uid://cqbdnqdo6q0lv" path="res://Scripts/tile_map.gd" id="1_7yhko"]
 [ext_resource type="Texture2D" uid="uid://bxemjwph5vwli" path="res://Tiles/tile_0049.png" id="1_c0sgf"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://scs2vmdq2vlm" path="res://Tiles/Floor2.png" id="37_lgdig"]
 [ext_resource type="PackedScene" uid="uid://cjw5h3aasn85e" path="res://Escenas/Enemigo2.tscn" id="43_cv0gp"]
 [ext_resource type="PackedScene" uid="uid://cbswf2jl7ovw0" path="res://Escenas/EnemigoAbeja.tscn" id="46_shhuy"]
+[ext_resource type="Texture2D" uid="uid://eltckhd3ymwf" path="res://Sprites/Armas/3_2.png" id="50_w6op7"]
 [ext_resource type="AudioStream" uid="uid://ckko0ptut0sqy" path="res://Sounds/Muerto.wav" id="53_03n5p"]
 [ext_resource type="AudioStream" uid="uid://bt3aq73wqp8h2" path="res://Sounds/Herido.wav" id="54_vwhtd"]
 [ext_resource type="FontFile" uid="uid://dedda7atfkm43" path="res://Fonts/PressStart2P-Regular.ttf" id="57_03n5p"]
@@ -8077,6 +8078,7 @@ enemigos_min = 14
 enemigos_max = 18
 player = NodePath("../jugador")
 torch_scene = ExtResource("17_5lda5")
+icono_arma_principal = ExtResource("50_w6op7")
 current_biome = "agua"
 
 [node name="jugador" type="CharacterBody2D" parent="." groups=["Jugador"]]
@@ -8169,16 +8171,39 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 91.0
+offset_left = 1.0
+offset_top = 90.0
 offset_right = -129.0
-offset_bottom = 43.0
+offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.898039, 0.635294, 0.415686, 1)
 theme_override_fonts/font = ExtResource("57_03n5p")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_cv0gp")
+
+[node name="Equipo" type="ColorRect" parent="Hud"]
+offset_left = 8.0
+offset_top = 118.0
+offset_right = 91.0
+offset_bottom = 160.0
+color = Color(1, 1, 1, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/Equipo"]
+layout_mode = 0
+offset_right = 83.0
+offset_bottom = 42.0
+alignment = 1
+
+[node name="ArmaPrincipal" type="TextureRect" parent="Hud/Equipo/HBoxContainer"]
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ArmaSecundaria" type="TextureRect" parent="Hud/Equipo/HBoxContainer"]
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 

@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dqdg6xhsqlqw5" path="res://Scripts/bala.gd" id="1_q3a34"]
 [ext_resource type="PackedScene" uid="uid://bqae3dkdrgyom" path="res://Escenas/Fragmento_Escopeta.tscn" id="2_i2q3r"]
-[ext_resource type="Texture2D" uid="uid://dhcesdcl1iusg" path="res://Sprites/Balas/8.png" id="3_q3a34"]
+[ext_resource type="Texture2D" uid="uid://d3rr5c7wasbfk" path="res://Sprites/Balas/7.png" id="3_q3a34"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jql1f"]
-radius = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2q3r"]
 
 [node name="Area2D" type="Area2D" groups=["Proyectiles"]]
 collision_layer = 8
@@ -17,8 +16,9 @@ fragment_scene = ExtResource("2_i2q3r")
 fragments_count = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Proyectiles"]]
-scale = Vector2(6, 6)
+position = Vector2(1.13249e-06, -1.19209e-07)
+scale = Vector2(5, 6.66667)
 texture = ExtResource("3_q3a34")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Proyectiles"]]
-shape = SubResource("CircleShape2D_jql1f")
+shape = SubResource("RectangleShape2D_i2q3r")

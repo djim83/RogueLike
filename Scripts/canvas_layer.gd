@@ -29,6 +29,6 @@ func _actualizar_nombre_nivel():
 		"nivel5.tscn":
 			nivel_label.text = " NIVEL 5"
 		"nivelBoss.tscn":
-			nivel_label.text = " JEFE FINAL"
+			nivel_label.text = " BOSS"
 		_:
 			nivel_label.text = ""

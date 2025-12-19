@@ -38,6 +38,11 @@ var enemigos: int = 0
 @onready var game_over_panel: Panel = $GameOverLayer/Panel
 @onready var melodia: AudioStreamPlayer = $Melodia
 
+@onready var arma_principal_icon: TextureRect = $"../Hud/Equipo/HBoxContainer/ArmaPrincipal"
+@onready var arma_secundaria_icon: TextureRect = $"../Hud/Equipo/HBoxContainer/ArmaSecundaria"
+@export var icono_arma_principal: Texture2D
+@export var icono_vacio: Texture2D
+
 @export var biomas := {
 	"bosque": {
 		"floor": [34, 32, 33, 34, 34],     
@@ -68,6 +73,12 @@ var enemigos: int = 0
 var player_spawn_tile := Vector2i(0, 0)  # Aquí se guardará el tile válido
 
 func _ready():
+	
+	arma_principal_icon.texture = icono_arma_principal
+	arma_principal_icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	arma_secundaria_icon.texture = icono_vacio
+	arma_secundaria_icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	
 	if melodia and melodia.stream:
 		melodia.finished.connect(_on_melodia_finished)
 		melodia.play()
@@ -92,6 +103,14 @@ func _ready():
 	poner_enemigos(enemigos)
 	poner_antorchas(12)
 
+func _process(_delta):
+	if not player:
+		return
+
+	if player.tiene_secundaria and player.arma_secundaria and player.arma_secundaria.iconoHud:
+		arma_secundaria_icon.texture = player.arma_secundaria.iconoHud
+	else:
+		arma_secundaria_icon.texture = icono_vacio
 
 func generate_random_walk_with_coverage():
 	var total_tiles = (map_width - 2) * (map_height - 2)

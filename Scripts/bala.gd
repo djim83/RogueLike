@@ -6,6 +6,8 @@ var direction: Vector2 = Vector2.ZERO
 
 @export var fragment_scene: PackedScene  # referencia a la escena fragmento
 @export var fragments_count: int = 6  # cuántos fragmentos se crean
+@export var damage := 1
+
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
@@ -20,7 +22,7 @@ func _on_body_entered(body):
 	if body.is_in_group("Enemigos") or body.is_in_group("Barriles"):
 		_spawn_fragments()
 		if body.has_method("recibir_daño"):
-			body.recibir_daño(1)
+			body.recibir_daño(damage)
 		queue_free()
 	elif body is TileMap:
 		_spawn_fragments()

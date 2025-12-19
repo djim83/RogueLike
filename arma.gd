@@ -3,8 +3,8 @@ class_name Arma
 
 enum TipoDisparo {
 	SIMPLE,
-	ABANICO_3,
-	RAFAGA_3
+	ESCOPETA,
+	BOMBA
 }
 
 @export var nombre: String = "Arma Base"
@@ -15,6 +15,7 @@ enum TipoDisparo {
 @export var bullet_scale: Vector2 = Vector2.ONE  
 @export var sonido_disparo: AudioStream
 @export var tipo_disparo: TipoDisparo = TipoDisparo.SIMPLE
+@export var iconoHud: Texture2D
 
 
 var tiempo_disparo := 0.0

@@ -33,7 +33,7 @@ var life: int = PlayerStats.vida
 @onready var sonido_herido: AudioStreamPlayer2D = $SonidoHerido
 
 @export var aim_radius := 80.0
-
+var recoil := Vector2.ZERO
 
 
 var armas: Array[Arma] = []
@@ -46,6 +46,7 @@ var arma_base_fire_rate: float
 
 var invulnerable_time: float = 0.5
 var tiempo_invulnerable: float = 0.0
+var disparo_bloqueado := false
 
 
 func _ready():
@@ -88,7 +89,8 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	move_dir = Input.get_vector("izquierda", "derecha", "arriba", "abajo")
-	velocity = move_dir * velocidad
+	velocity = move_dir * velocidad + recoil
+	recoil = recoil.move_toward(Vector2.ZERO, 1200 * delta)
 	time_since_last_shot += delta
 	move_and_slide()
 
@@ -106,9 +108,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		if arma_secundaria:
 			fire_rate = PlayerStats.velocidad_disparo_secundaria
-	if Input.is_action_pressed("disparo") and time_since_last_shot >= fire_rate:
+	if Input.is_action_pressed("disparo") \
+		and time_since_last_shot >= fire_rate \
+		and not disparo_bloqueado:
 		shoot()
-		time_since_last_shot = 0.0	
+		time_since_last_shot = 0.0
+
 
 	if tiempo_invulnerable > 0:
 		tiempo_invulnerable -= delta
@@ -238,7 +243,7 @@ func shoot():
 
 	match arma_secundaria.tipo_disparo:
 
-		Arma.TipoDisparo.ABANICO_3:
+		Arma.TipoDisparo.ESCOPETA:
 			# Necesita 3 balas
 			if current_ammo < 3:
 				return
@@ -254,25 +259,33 @@ func shoot():
 			_spawn_bullet(muzzle, dir.rotated(-spread), speed_mul)
 
 
-		Arma.TipoDisparo.RAFAGA_3:
-			# Necesita 3 balas
+		Arma.TipoDisparo.BOMBA:
+			# Disparo pesado y lento
 			if current_ammo < 3:
 				return
 
 			current_ammo -= 3
 			PlayerStats.municion_pistola = current_ammo
 
-			_fire_rafaga(muzzle, dir)
+			var bala = bullet_scene.instantiate()
+			bala.damage = 3                
+			bala.fragments_count = 12      
+			bala.scale = Vector2(2, 2)
 
+			bala.global_position = muzzle + dir * 20.0
+			bala.direction = dir
+			bala.rotation = dir.angle()
+			bala.speed *= 1.4
 
-		_:
-			if current_ammo <= 0:
-				return
+			get_parent().add_child(bala)
 
-			current_ammo -= 1
-			PlayerStats.municion_pistola = current_ammo
-			_spawn_bullet(muzzle, dir)
+			# Retroceso del player real
+			recoil -= dir * 180
 
+			# Bloqueo de disparo
+			disparo_bloqueado = true
+			await get_tree().create_timer(fire_rate * 2.5).timeout
+			disparo_bloqueado = false
 
 
 

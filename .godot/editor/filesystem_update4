@@ -1,5 +1,3 @@
-res://Escenas/puerta.tscn
-res://puerta.gd
 res://Escenas/tile_map.tscn
 res://Escenas/FinalBoss.tscn
 res://Escenas/nivelBoss.tscn
@@ -18,3 +16,14 @@ res://Ayuda.tscn
 res://Escenas/nivel3.tscn
 res://Escenas/mejoras.tscn
 res://Escenas/nivel2.tscn
+res://Escenas/puerta.tscn
+res://Scripts/player.gd
+res://Scripts/bala.gd
+res://arma.gd
+res://Escenas/Bala_pistola.tscn
+res://Escenas/Bala_Agua.tscn
+res://Escenas/arma_escopeta.tscn
+res://Escenas/arma_pistola.tscn
+res://Escenas/Bala.tscn
+res://Scripts/tile_map.gd
+res://Scripts/canvas_layer.gd
