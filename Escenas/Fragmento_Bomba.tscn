@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c28y00v0jew2v"]
+
+[ext_resource type="Script" uid="uid://d0w50ouqpto8b" path="res://Scripts/fragmento_bala.gd" id="1_gk5fr"]
+[ext_resource type="Texture2D" uid="uid://d3rr5c7wasbfk" path="res://Sprites/Balas/7.png" id="2_gk5fr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rjqsx"]
+radius = 4.12311
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gk5fr")
+speed = 300.0
+lifetime = 0.4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rjqsx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_gk5fr")

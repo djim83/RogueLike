@@ -33,7 +33,9 @@ var time_since_last_shot: float = 0.0
 
 var puede_dañar_por_contacto := true
 
-
+@export var explosion_scene: PackedScene
+var is_dead := false
+@export var fragment_color: Color = Color.WHITE
 
 var drop_chance = 0.4  # 40% de probabilidad
 
@@ -104,40 +106,79 @@ func _on_body_entered(body):
 		queue_free()
 
 func recibir_daño(amount: int = 1) -> void:
+	if is_dead:
+		return
+
 	life -= amount
-	if life <= 0:
-		_play_death_sound()
+	if life > 0:
+		return
 
-		var parent = get_parent()
-		var is_last := false
+	# Muerte definitiva 
+	is_dead = true
+	set_process(false)
+	set_physics_process(false)
 
-		# Comprobar si es el último enemigo 
-		if parent:
-			var enemies_left = get_tree().get_nodes_in_group("Enemigos")
-			if enemies_left.size() == 1: # solo queda él mismo
-				is_last = true
+	# Guardar posición exacta de muerte
+	var death_pos := global_position
 
-		# Si NO es el último enemigo, puede soltar objetos 
-		if not is_last and randf() < drop_chance:
-			var r = randf()
-			if r < 0.8:
-				if municion_scene:
-					var pick = municion_scene.instantiate()
-					pick.global_position = global_position
-					parent.add_child(pick)
-			else:
-				if vida_scene:
-					var pick = vida_scene.instantiate()
-					pick.global_position = global_position
-					parent.add_child(pick)
+	# Desactivar colisiones
+	set_deferred("monitoring", false)
+	set_deferred("collision_layer", 0)
+	set_deferred("collision_mask", 0)
 
-		# Si ES el último, generar la puerta
-		if is_last and puerta_scene:
-			var puerta = puerta_scene.instantiate()
-			puerta.global_position = global_position
-			parent.add_child(puerta)
+	# Ocultar enemigo
+	hide()
 
-		queue_free()
+	# Sonido de muerte
+	_play_death_sound()
+
+	var parent = get_parent()
+	var is_last := false
+
+	if parent:
+		var enemies_left = get_tree().get_nodes_in_group("Enemigos")
+		if enemies_left.size() == 1:
+			is_last = true
+
+	# Explosión
+	if explosion_scene:
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = death_pos
+
+		if explosion.process_material:
+			var mat := explosion.process_material.duplicate() as ParticleProcessMaterial
+			mat.color = fragment_color
+			explosion.process_material = mat
+
+		parent.add_child(explosion)
+
+		if explosion is GPUParticles2D:
+			explosion.emitting = true
+			explosion.finished.connect(func():
+				explosion.queue_free()
+			)
+
+	# Drops
+	if not is_last and randf() < drop_chance:
+		var pick_pos := death_pos
+		var r = randf()
+		if r < 0.8 and municion_scene:
+			var pick = municion_scene.instantiate()
+			pick.global_position = pick_pos
+			parent.add_child(pick)
+		elif vida_scene:
+			var pick = vida_scene.instantiate()
+			pick.global_position = pick_pos
+			parent.add_child(pick)
+
+	# Puerta 
+	if is_last and puerta_scene:
+		var puerta = puerta_scene.instantiate()
+		puerta.global_position = death_pos
+		parent.add_child(puerta)
+
+	queue_free()
+
 
 
 	

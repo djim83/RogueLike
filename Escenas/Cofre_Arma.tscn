@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfc5qu3amymbi" path="res://Escenas/cofre_arma.gd" id="1_y5svx"]
 [ext_resource type="PackedScene" uid="uid://c80nenseoepp" path="res://Escenas/arma_escopeta.tscn" id="2_5ec0r"]
 [ext_resource type="Texture2D" uid="uid://cufibrjxct2rh" path="res://Sprites/Armas/6_1.png" id="2_h8wus"]
-[ext_resource type="AudioStream" uid="uid://8uw8wmpp7fgh" path="res://Sounds/Barril.wav" id="4_jj0jq"]
+[ext_resource type="AudioStream" uid="uid://bibs1xrkackoj" path="res://Sounds/pick.mp3" id="4_jj0jq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5svx"]
 size = Vector2(48, 62)
@@ -22,5 +22,5 @@ texture = ExtResource("2_h8wus")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_y5svx")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Sonido" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_jj0jq")

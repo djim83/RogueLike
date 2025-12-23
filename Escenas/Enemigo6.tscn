@@ -58,8 +58,10 @@ animations = [{
 
 [node name="CharacterBody2D" instance=ExtResource("1_4ooy8")]
 speed = 80.0
-life = 5.0
+life = 4.0
 tipo_disparo = 1
+fire_rate = 1.25
+fragment_color = Color(0.768627, 0.133333, 0.568627, 1)
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_tc41v")

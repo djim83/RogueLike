@@ -2,7 +2,7 @@ extends Area2D
 
 @export var arma_scene: PackedScene
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var sonido_recoger: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var sonido_recoger: AudioStreamPlayer2D = $Sonido
 
 var jugador: Node = null
 var label: Label = null
@@ -57,8 +57,10 @@ func _on_body_exited(body):
 
 
 func _process(delta):
-	if puede_recoger and Input.is_action_just_pressed("ui_accept"):
+	if puede_recoger and Input.is_action_just_pressed("recoger"):
 		_recoger()
+		if sonido_recoger:
+			sonido_recoger.play()
 
 
 func _recoger():
@@ -80,7 +82,7 @@ func _mostrar_label():
 		return
 
 	label = Label.new()
-	label.text = "[ESPACIO] Recoger"
+	label.text = "[F] Recoger"
 	label.scale = Vector2(2.5, 2.5)
 	label.modulate = Color(1, 1, 0)  # amarillo
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
