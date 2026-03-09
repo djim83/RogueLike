@@ -69,3 +69,9 @@ El juego es completamente jugable y funcional.
 
 David Jiménez  
 Trabajo Final de Grado – Desarrollo de Videojuegos
+
+![Gameplay](1.png)
+
+![Gameplay](2.png)
+
+![Gameplay](3.png)
